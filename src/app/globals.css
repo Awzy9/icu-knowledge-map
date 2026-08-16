@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+
+  /* --- Neutrals / Surfaces (Light Mode) --- */
+  --color-canvas: #faf9f6;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-surface-sunken: #f3f1ec;
+  --color-surface-muted: #f3f1ec;
+  --color-border: #e4e1da;
+  --color-border-strong: #cfcbc0;
+  --color-ink: #16191c;
+  --color-ink-muted: #5b6168;
+  --color-ink-faint: #8b9096;
+  --color-accent: #0f6e63;
+  --color-accent-strong: #0b544c;
+  --color-accent-soft: #eaf3f1;
+
+  /* --- Status / Semantics (Light Mode) --- */
+  --color-success: #1b873f;
+  --color-success-soft: #edf8ef;
+  --color-warning: #b26a00;
+  --color-warning-soft: #fef7ec;
+  --color-danger: #c0392b;
+  --color-danger-soft: #fdf2f2;
+  --color-info: #2563eb;
+  --color-info-soft: #eff6ff;
+
+  /* --- Topic Category Colors (Light Mode) --- */
+  --color-topic-respiratory: #127d72;
+  --color-topic-respiratory-tint: #e6f5f2;
+  --color-topic-respiratory-text: #0e5f56;
+
+  --color-topic-cardiovascular: #b23b4e;
+  --color-topic-cardiovascular-tint: #fbeaec;
+  --color-topic-cardiovascular-text: #8a2e3d;
+
+  --color-topic-renal: #a97418;
+  --color-topic-renal-tint: #faf1dd;
+  --color-topic-renal-text: #7e5713;
+
+  --color-topic-neurologic: #6a4fb8;
+  --color-topic-neurologic-tint: #f0ecfb;
+  --color-topic-neurologic-text: #4f3a8c;
+
+  --color-topic-infectious-disease: #3e7f49;
+  --color-topic-infectious-disease-tint: #e9f4ea;
+  --color-topic-infectious-disease-text: #2f6138;
+
+  --color-topic-hematology: #a83e74;
+  --color-topic-hematology-tint: #f9eaf1;
+  --color-topic-hematology-text: #82305a;
+
+  /* --- Evidence Category Colors (Light Mode) --- */
+  --color-evidence-guideline: #2f5d82;
+  --color-evidence-guideline-tint: #e9f1f6;
+  --color-evidence-guideline-text: #234866;
+
+  --color-evidence-rct: #4a4fa0;
+  --color-evidence-rct-tint: #eceef7;
+  --color-evidence-rct-text: #363f6c;
+
+  --color-evidence-meta-analysis: #7a4a8c;
+  --color-evidence-meta-analysis-tint: #f1ecf6;
+  --color-evidence-meta-analysis-text: #513a69;
+
+  --color-evidence-observational: #3d7a78;
+  --color-evidence-observational-tint: #e8f2f3;
+  --color-evidence-observational-text: #2f5d66;
+
+  --color-evidence-review: #556c99;
+  --color-evidence-review-tint: #eef0f5;
+  --color-evidence-review-text: #414f68;
+
+  --color-evidence-consensus: #8a6f4e;
+  --color-evidence-consensus-tint: #f5f1e9;
+  --color-evidence-consensus-text: #5c503a;
+
+  /* --- Shadow --- */
+  --shadow-overlay: 0 8px 24px -4px rgb(22 25 28 / 0.12), 0 2px 8px -2px rgb(22 25 28 / 0.08);
+}
+
+.dark, [data-theme="dark"] {
+  color-scheme: dark;
+
+  /* --- Neutrals / Surfaces (Dark Mode: Professional Clinical Navy/Charcoal) --- */
+  --color-canvas: #0c1017;
+  --color-surface: #141b24;
+  --color-surface-elevated: #1d2633;
+  --color-surface-sunken: #090d14;
+  --color-surface-muted: #1d2633;
+  --color-border: #222c3d;
+  --color-border-strong: #334155;
+  --color-ink: #f1f5f9;
+  --color-ink-muted: #94a3b8;
+  --color-ink-faint: #64748b;
+  --color-accent: #14b8a6;
+  --color-accent-strong: #5eead4;
+  --color-accent-soft: #0f2d29;
+
+  /* --- Status / Semantics (Dark Mode) --- */
+  --color-success: #34d399;
+  --color-success-soft: #0a291e;
+  --color-warning: #fbbf24;
+  --color-warning-soft: #2d2107;
+  --color-danger: #f87171;
+  --color-danger-soft: #301417;
+  --color-info: #60a5fa;
+  --color-info-soft: #0f213b;
+
+  /* --- Topic Category Colors (Dark Mode) --- */
+  --color-topic-respiratory: #2dd4bf;
+  --color-topic-respiratory-tint: #10312d;
+  --color-topic-respiratory-text: #5eead4;
+
+  --color-topic-cardiovascular: #f87171;
+  --color-topic-cardiovascular-tint: #36151a;
+  --color-topic-cardiovascular-text: #fca5a5;
+
+  --color-topic-renal: #fbbf24;
+  --color-topic-renal-tint: #332508;
+  --color-topic-renal-text: #fde68a;
+
+  --color-topic-neurologic: #a78bfa;
+  --color-topic-neurologic-tint: #241940;
+  --color-topic-neurologic-text: #c4b5fd;
+
+  --color-topic-infectious-disease: #4ade80;
+  --color-topic-infectious-disease-tint: #13331b;
+  --color-topic-infectious-disease-text: #86efac;
+
+  --color-topic-hematology: #f472b6;
+  --color-topic-hematology-tint: #381527;
+  --color-topic-hematology-text: #fbcfe8;
+
+  /* --- Evidence Category Colors (Dark Mode) --- */
+  --color-evidence-guideline: #60a5fa;
+  --color-evidence-guideline-tint: #13243f;
+  --color-evidence-guideline-text: #93c5fd;
+
+  --color-evidence-rct: #818cf8;
+  --color-evidence-rct-tint: #1e204a;
+  --color-evidence-rct-text: #a5b4fc;
+
+  --color-evidence-meta-analysis: #c084fc;
+  --color-evidence-meta-analysis-tint: #2d1844;
+  --color-evidence-meta-analysis-text: #d8b4fe;
+
+  --color-evidence-observational: #38bdf8;
+  --color-evidence-observational-tint: #112d3b;
+  --color-evidence-observational-text: #7dd3fc;
+
+  --color-evidence-review: #94a3b8;
+  --color-evidence-review-tint: #1e293b;
+  --color-evidence-review-text: #cbd5e1;
+
+  --color-evidence-consensus: #d97706;
+  --color-evidence-consensus-tint: #341e0b;
+  --color-evidence-consensus-text: #fde68a;
+
+  /* --- Shadow --- */
+  --shadow-overlay: 0 8px 24px -4px rgb(0 0 0 / 0.5), 0 2px 8px -2px rgb(0 0 0 / 0.3);
+}
+
+@theme {
+  --color-canvas: var(--color-canvas);
+  --color-surface: var(--color-surface);
+  --color-surface-elevated: var(--color-surface-elevated);
+  --color-surface-sunken: var(--color-surface-sunken);
+  --color-surface-muted: var(--color-surface-muted);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-ink-faint: var(--color-ink-faint);
+  --color-accent: var(--color-accent);
+  --color-accent-strong: var(--color-accent-strong);
+  --color-accent-soft: var(--color-accent-soft);
+
+  --color-success: var(--color-success);
+  --color-success-soft: var(--color-success-soft);
+  --color-warning: var(--color-warning);
+  --color-warning-soft: var(--color-warning-soft);
+  --color-danger: var(--color-danger);
+  --color-danger-soft: var(--color-danger-soft);
+  --color-info: var(--color-info);
+  --color-info-soft: var(--color-info-soft);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  --shadow-overlay: var(--shadow-overlay);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-source-serif);
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.6;
+
+  --color-topic-respiratory: var(--color-topic-respiratory);
+  --color-topic-respiratory-tint: var(--color-topic-respiratory-tint);
+  --color-topic-respiratory-text: var(--color-topic-respiratory-text);
+
+  --color-topic-cardiovascular: var(--color-topic-cardiovascular);
+  --color-topic-cardiovascular-tint: var(--color-topic-cardiovascular-tint);
+  --color-topic-cardiovascular-text: var(--color-topic-cardiovascular-text);
+
+  --color-topic-renal: var(--color-topic-renal);
+  --color-topic-renal-tint: var(--color-topic-renal-tint);
+  --color-topic-renal-text: var(--color-topic-renal-text);
+
+  --color-topic-neurologic: var(--color-topic-neurologic);
+  --color-topic-neurologic-tint: var(--color-topic-neurologic-tint);
+  --color-topic-neurologic-text: var(--color-topic-neurologic-text);
+
+  --color-topic-infectious-disease: var(--color-topic-infectious-disease);
+  --color-topic-infectious-disease-tint: var(--color-topic-infectious-disease-tint);
+  --color-topic-infectious-disease-text: var(--color-topic-infectious-disease-text);
+
+  --color-topic-hematology: var(--color-topic-hematology);
+  --color-topic-hematology-tint: var(--color-topic-hematology-tint);
+  --color-topic-hematology-text: var(--color-topic-hematology-text);
+
+  --color-evidence-guideline: var(--color-evidence-guideline);
+  --color-evidence-guideline-tint: var(--color-evidence-guideline-tint);
+  --color-evidence-guideline-text: var(--color-evidence-guideline-text);
+
+  --color-evidence-rct: var(--color-evidence-rct);
+  --color-evidence-rct-tint: var(--color-evidence-rct-tint);
+  --color-evidence-rct-text: var(--color-evidence-rct-text);
+
+  --color-evidence-meta-analysis: var(--color-evidence-meta-analysis);
+  --color-evidence-meta-analysis-tint: var(--color-evidence-meta-analysis-tint);
+  --color-evidence-meta-analysis-text: var(--color-evidence-meta-analysis-text);
+
+  --color-evidence-observational: var(--color-evidence-observational);
+  --color-evidence-observational-tint: var(--color-evidence-observational-tint);
+  --color-evidence-observational-text: var(--color-evidence-observational-text);
+
+  --color-evidence-review: var(--color-evidence-review);
+  --color-evidence-review-tint: var(--color-evidence-review-tint);
+  --color-evidence-review-text: var(--color-evidence-review-text);
+
+  --color-evidence-consensus: var(--color-evidence-consensus);
+  --color-evidence-consensus-tint: var(--color-evidence-consensus-tint);
+  --color-evidence-consensus-text: var(--color-evidence-consensus-text);
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Subtle theme transition without lag */
+@media (prefers-reduced-motion: no-preference) {
+  body, header, footer, aside, nav, main {
+    transition: background-color 120ms ease, border-color 120ms ease;
+  }
+}
+
+/* KnowledgeMap ring transition: short, one-shot, no continuous/looping motion. */
+@keyframes km-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.km-ring-enter {
+  transform-origin: center;
+  animation: km-fade-in 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .km-ring-enter {
+    animation: none;
+  }
+}
