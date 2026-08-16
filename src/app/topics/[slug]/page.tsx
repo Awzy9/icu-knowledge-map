@@ -16,6 +16,7 @@ import {
 import { TopicLayoutShell } from "@/components/layout/TopicLayoutShell";
 import { MobileSectionNav } from "@/components/layout/MobileSectionNav";
 import { TopicHeader } from "@/components/content/TopicHeader";
+import { TopicClinicalOrientation } from "@/components/content/TopicClinicalOrientation";
 import { SectionRenderer } from "@/components/content/SectionRenderer";
 import { SectionNav } from "@/components/content/SectionNav";
 import { KnowledgeMap } from "@/components/knowledge-map/KnowledgeMap";
@@ -131,6 +132,8 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
             flashcardCount={flashcards.length}
             questionCount={questions.length}
           />
+
+          <TopicClinicalOrientation topic={topic} />
 
           {topic.status === "placeholder" && (
             <Callout tone="caution">

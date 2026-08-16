@@ -5,7 +5,6 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { BookmarkToggle } from "@/components/bookmarks/BookmarkToggle";
 import { PathwayFlow } from "@/components/pathways/PathwayFlow";
 import { Callout } from "@/components/ui/Callout";
-import { RelatedConceptsRow } from "@/components/ui/RelatedConceptsRow";
 import { ReferenceCard } from "@/components/evidence/ReferenceCard";
 import { resolveEvidenceReferences } from "@/lib/resolve-evidence-reference";
 
@@ -104,10 +103,40 @@ export default async function PathwayDetailPage({ params }: PathwayPageProps) {
       )}
 
       {/* Linked Knowledge Topics */}
-      <RelatedConceptsRow
-        label="Linked Knowledge Topics"
-        items={linkedTopics.map((topic) => ({ id: topic.id, href: `/topics/${topic.slug}`, title: topic.title }))}
-      />
+      {linkedTopics.length > 0 && (
+        <div className="flex flex-col gap-3 border-t border-border pt-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-ink-faint">
+              Linked Deep-Dive Topics ({linkedTopics.length})
+            </h2>
+            <span className="text-[11px] text-ink-faint">Reference Knowledge</span>
+          </div>
+          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
+            {linkedTopics.map((topic) => (
+              <Link
+                key={topic.id}
+                href={`/topics/${topic.slug}`}
+                className="group flex flex-col justify-between rounded-lg border border-border/80 bg-surface p-3.5 transition-all hover:border-accent/60 hover:bg-surface-elevated"
+              >
+                <div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-ink group-hover:text-accent">
+                      {topic.title}
+                    </span>
+                    <span className="text-[10px] text-ink-faint uppercase">{topic.category}</span>
+                  </div>
+                  <p className="mt-1 text-xs text-ink-muted line-clamp-2 leading-relaxed">
+                    {topic.oneLiner}
+                  </p>
+                </div>
+                <div className="mt-2 text-[11px] font-medium text-accent">
+                  Explore Topic &rarr;
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {references.length > 0 && (
         <div className="flex flex-col gap-2">
