@@ -10,14 +10,16 @@ export function TopicClinicalOrientation({ topic }: TopicClinicalOrientationProp
     (s) => s.kind === "diagnosis" || s.kind === "clinical-presentation",
   );
   const management = topic.sections.find((s) => s.kind === "management");
+  const complications = topic.sections.find((s) => s.kind === "complications");
 
   const items = [
     { label: "WHAT IS THIS?", text: topic.oneLiner },
     overview && overview.summary && overview.summary !== topic.oneLiner
-      ? { label: "WHY IT MATTERS IN THE ICU", text: overview.summary }
+      ? { label: "WHY DOES IT MATTER?", text: overview.summary }
       : null,
-    diagnosis && diagnosis.summary ? { label: "WHAT TO RECOGNIZE", text: diagnosis.summary } : null,
-    management && management.summary ? { label: "WHAT TO DO", text: management.summary } : null,
+    diagnosis && diagnosis.summary ? { label: "WHAT SHOULD I RECOGNIZE?", text: diagnosis.summary } : null,
+    management && management.summary ? { label: "WHAT SHOULD I DO?", text: management.summary } : null,
+    complications && complications.summary ? { label: "WHAT CAN GO WRONG?", text: complications.summary } : null,
   ].filter(Boolean) as { label: string; text: string }[];
 
   if (items.length <= 1) return null;

@@ -48,21 +48,30 @@ export function QuestionCard({ question, selectedOptionId, onSelect }: QuestionC
 
       {revealed && (
         <div className="flex flex-col gap-3">
-          <div className="rounded-md bg-surface-sunken p-3 text-sm text-ink">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-ink-faint">Explanation</p>
-            {question.explanation}
+          <div className="rounded-md bg-surface-sunken p-3.5 text-sm text-ink border border-border/60">
+            <p className="mb-1.5 text-xs font-bold uppercase tracking-wider text-accent-strong">Why?</p>
+            <p className="leading-relaxed">{question.explanation}</p>
           </div>
-          <div className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-ink-faint">
-            {question.references.map((reference, i) => {
-              const resolved = resolveStudyReference(reference);
-              return resolved.href ? (
-                <Link key={i} href={resolved.href} className="hover:text-accent">
-                  {resolved.text}
-                </Link>
-              ) : (
-                <span key={i}>{resolved.text}</span>
-              );
-            })}
+          <div className="flex flex-wrap items-center justify-between gap-3 pt-1 text-xs">
+            <div className="flex flex-wrap gap-x-3 gap-y-1 text-ink-faint">
+              {question.references.map((reference, i) => {
+                const resolved = resolveStudyReference(reference);
+                return resolved.href ? (
+                  <Link key={i} href={resolved.href} className="hover:text-accent font-medium">
+                    {resolved.text}
+                  </Link>
+                ) : (
+                  <span key={i}>{resolved.text}</span>
+                );
+              })}
+            </div>
+
+            <Link
+              href={`/topics/${question.topicId}${question.sectionId ? `#${question.sectionId}` : ""}`}
+              className="font-semibold text-accent hover:text-accent-strong flex items-center gap-1"
+            >
+              Review this concept &rarr;
+            </Link>
           </div>
         </div>
       )}
