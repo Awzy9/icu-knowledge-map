@@ -37,11 +37,18 @@ import { hyperkalemiaHarmonizeTrial } from "./hyperkalemia-harmonize-trial";
 import { hypoxemicFloraliTrial } from "./hypoxemic-florali-trial";
 import { ichInteract2Trial } from "./ich-interact2-trial";
 import { ichPatchTrial } from "./ich-patch-trial";
+import { immunocompromisedElianaCartTrial } from "./immunocompromised-eliana-cart-trial";
+import { immunocompromisedHighTrial } from "./immunocompromised-high-trial";
 import { intracranialHypertensionDecra } from "./intracranial-hypertension-decra";
 import { intracranialHypertensionRescueicp } from "./intracranial-hypertension-rescueicp";
 import { meningitisDeGansTrial } from "./meningitis-de-gans-trial";
+import { neuromuscularEarlyMobilitySchweickertTrial } from "./neuromuscular-early-mobility-schweickert-trial";
+import { neuromuscularGbsIvigPlexTrial } from "./neuromuscular-gbs-ivig-plex-trial";
 import { nutritionEpanicTrial } from "./nutrition-epanic-trial";
 import { nutritionTargetTrial } from "./nutrition-target-trial";
+import { obstetricChapTrial } from "./obstetric-chap-trial";
+import { obstetricMagpieTrial } from "./obstetric-magpie-trial";
+import { obstetricWomanTrial } from "./obstetric-woman-trial";
 import { pancreatitisPanterTrial } from "./pancreatitis-panter-trial";
 import { pancreatitisWaterfallTrial } from "./pancreatitis-waterfall-trial";
 import { pePeithoTrial } from "./pe-peitho-trial";
@@ -62,6 +69,9 @@ import { tbiCrash3Trial } from "./tbi-crash-3-trial";
 import { transfusionTriccTrial } from "./transfusion-tricc-trial";
 import { transfusionTrissTrial } from "./transfusion-triss-trial";
 import { ugibVillanuevaTrial } from "./ugib-villanueva-trial";
+import { valvularEaseTrial } from "./valvular-ease-trial";
+import { valvularPartner3Trial } from "./valvular-partner3-trial";
+import { valvularPrometheusTrial } from "./valvular-prometheus-trial";
 import { vapChastre8dayTrial } from "./vap-chastre-8day-trial";
 
 export const trials: readonly Trial[] = [
@@ -103,11 +113,18 @@ export const trials: readonly Trial[] = [
   hypoxemicFloraliTrial,
   ichInteract2Trial,
   ichPatchTrial,
+  immunocompromisedElianaCartTrial,
+  immunocompromisedHighTrial,
   intracranialHypertensionDecra,
   intracranialHypertensionRescueicp,
   meningitisDeGansTrial,
+  neuromuscularEarlyMobilitySchweickertTrial,
+  neuromuscularGbsIvigPlexTrial,
   nutritionEpanicTrial,
   nutritionTargetTrial,
+  obstetricChapTrial,
+  obstetricMagpieTrial,
+  obstetricWomanTrial,
   pancreatitisPanterTrial,
   pancreatitisWaterfallTrial,
   pePeithoTrial,
@@ -128,5 +145,8 @@ export const trials: readonly Trial[] = [
   transfusionTriccTrial,
   transfusionTrissTrial,
   ugibVillanuevaTrial,
+  valvularEaseTrial,
+  valvularPartner3Trial,
+  valvularPrometheusTrial,
   vapChastre8dayTrial,
 ];

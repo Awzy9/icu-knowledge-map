@@ -12,6 +12,7 @@ import { cardiacArrestPostArrest } from "./cardiac-arrest-post-arrest";
 import { acuteAorticSyndromes } from "./acute-aortic-syndromes";
 import { hypertensiveEmergencies } from "./hypertensive-emergencies";
 import { pulmonaryHypertension } from "./pulmonary-hypertension";
+import { valvularHeartDiseaseEndocarditis } from "./valvular-heart-disease-endocarditis";
 
 export const cardiovascularTopics: readonly Topic[] = [
   shock,
@@ -27,4 +28,5 @@ export const cardiovascularTopics: readonly Topic[] = [
   acuteAorticSyndromes,
   hypertensiveEmergencies,
   pulmonaryHypertension,
+  valvularHeartDiseaseEndocarditis,
 ];

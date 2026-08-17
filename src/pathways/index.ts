@@ -18,7 +18,7 @@ import { neurologicDeteriorationWorkflow } from "./neurologic-deterioration-work
 import { statusEpilepticusWorkflow } from "./status-epilepticus-workflow";
 import { icuNutritionWorkflow } from "./icu-nutrition-workflow";
 
-// Established diagnostic evaluation pathways (restructured)
+// Established diagnostic evaluation pathways
 import { acuteHypoxemia } from "./acute-hypoxemia";
 import { hypotension } from "./hypotension";
 import { shock } from "./shock";
@@ -29,6 +29,12 @@ import { alteredConsciousness } from "./altered-consciousness";
 import { feverSepsis } from "./fever-sepsis";
 import { bleeding } from "./bleeding";
 
+// 4 New Advanced Decision Pathways
+import { acuteValvularHemodynamicCollapse } from "./acute-valvular-hemodynamic-collapse";
+import { neuromuscularRespiratoryFailure } from "./neuromuscular-respiratory-failure";
+import { maternalCriticalIllnessRapidAssessment } from "./maternal-critical-illness-rapid-assessment";
+import { neutropenicImmunocompromisedSepsis } from "./neutropenic-immunocompromised-sepsis";
+
 export const pathways: readonly Pathway[] = [
   // Respiratory Workflows
   mechanicalVentilationInitiation,
@@ -38,6 +44,7 @@ export const pathways: readonly Pathway[] = [
   ardsFirstSixHours,
   difficultWeaningTracheostomyWorkflow,
   acuteHypoxemia,
+  neuromuscularRespiratoryFailure,
 
   // Hemodynamic Workflows
   hemodynamicResuscitationWorkflow,
@@ -45,6 +52,7 @@ export const pathways: readonly Pathway[] = [
   refractoryShockEscalation,
   hypotension,
   shock,
+  acuteValvularHemodynamicCollapse,
 
   // Renal & Metabolic Workflows
   rrtCrrtInitiationWorkflow,
@@ -57,6 +65,7 @@ export const pathways: readonly Pathway[] = [
   // Sepsis & Infectious Disease Workflows
   sepsisBundleWorkflow,
   feverSepsis,
+  neutropenicImmunocompromisedSepsis,
 
   // Hemostasis & Hematology Workflows
   massiveHemorrhageProtocol,
@@ -70,6 +79,9 @@ export const pathways: readonly Pathway[] = [
   statusEpilepticusWorkflow,
   alteredConsciousness,
 
-  // Supportive Care & Nutrition Workflows
+  // Nutrition & Metabolic Support
   icuNutritionWorkflow,
+
+  // Obstetric & Special Critical Care Workflows
+  maternalCriticalIllnessRapidAssessment,
 ];

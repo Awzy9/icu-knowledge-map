@@ -8,6 +8,7 @@ import { intracranialHemorrhage } from "./intracranial-hemorrhage";
 import { severeTbi } from "./severe-tbi";
 import { meningitisEncephalitis } from "./meningitis-encephalitis";
 import { icuSedationDelirium } from "./icu-sedation-delirium";
+import { neuromuscularCriticalIllness } from "./neuromuscular-critical-illness";
 
 export const neurologyTopics: readonly Topic[] = [
   alteredConsciousness,
@@ -19,4 +20,5 @@ export const neurologyTopics: readonly Topic[] = [
   severeTbi,
   meningitisEncephalitis,
   icuSedationDelirium,
+  neuromuscularCriticalIllness,
 ];

@@ -34,6 +34,7 @@ import { hyperkalemiaQuestions } from "./hyperkalemia";
 import { hypertensiveEmergenciesQuestions } from "./hypertensive-emergencies";
 import { hypoxemicRespiratoryFailureQuestions } from "./hypoxemic-respiratory-failure";
 import { icuSedationDeliriumQuestions } from "./icu-sedation-delirium";
+import { immunocompromisedOncologicCriticalIllnessQuestions } from "./immunocompromised-oncologic-critical-illness";
 import { intracranialHemorrhageQuestions } from "./intracranial-hemorrhage";
 import { intracranialHypertensionQuestions } from "./intracranial-hypertension";
 import { lowerGiBleedingQuestions } from "./lower-gi-bleeding";
@@ -42,6 +43,8 @@ import { mechanicalVentilationQuestions } from "./mechanical-ventilation";
 import { meningitisEncephalitisQuestions } from "./meningitis-encephalitis";
 import { metabolicAcidosisQuestions } from "./metabolic-acidosis";
 import { necrotizingSoftTissueInfectionsQuestions } from "./necrotizing-soft-tissue-infections";
+import { neuromuscularCriticalIllnessQuestions } from "./neuromuscular-critical-illness";
+import { obstetricCriticalCareQuestions } from "./obstetric-critical-care";
 import { obstructiveShockQuestions } from "./obstructive-shock";
 import { pneumoniaQuestions } from "./pneumonia";
 import { pneumothoraxQuestions } from "./pneumothorax";
@@ -58,75 +61,75 @@ import { statusEpilepticusQuestions } from "./status-epilepticus";
 import { toxicologicEmergenciesQuestions } from "./toxicologic-emergencies";
 import { transfusionQuestions } from "./transfusion";
 import { upperGiBleedingQuestions } from "./upper-gi-bleeding";
+import { valvularHeartDiseaseEndocarditisQuestions } from "./valvular-heart-disease-endocarditis";
 import { vapQuestions } from "./vap";
 
-export const questions: readonly Question[] = [
-  ...acidBaseDisordersQuestions,
-  ...acuteAorticSyndromesQuestions,
-  ...acuteCoronarySyndromeQuestions,
-  ...acuteHeartFailureQuestions,
-  ...acuteIschemicStrokeQuestions,
-  ...acuteLiverFailureQuestions,
-  ...acuteMesentericIschemiaQuestions,
-  ...acutePancreatitisQuestions,
-  ...airwayManagementRsiQuestions,
-  ...akiQuestions,
-  ...alteredConsciousnessQuestions,
-  ...anticoagulationQuestions,
-  ...ardsQuestions,
-  ...arrhythmiasQuestions,
-  ...asthmaQuestions,
-  ...bleedingQuestions,
-  ...brainDeathQuestions,
-  ...burnsCriticalCareQuestions,
-  ...cardiacArrestPostArrestQuestions,
-  ...cardiogenicPulmonaryEdemaQuestions,
-  ...cardiogenicShockQuestions,
-  ...copdExacerbationQuestions,
-  ...criticalIllnessNutritionQuestions,
-  ...crrtQuestions,
-  ...diabeticKetoacidosisQuestions,
-  ...dicQuestions,
-  ...ecmoFundamentalsQuestions,
-  ...endocrineEmergenciesQuestions,
-  ...hapQuestions,
-  ...hitQuestions,
-  ...hypercapnicRespiratoryFailureQuestions,
-  ...hyperkalemiaQuestions,
-  ...hypertensiveEmergenciesQuestions,
-  ...hypoxemicRespiratoryFailureQuestions,
-  ...icuSedationDeliriumQuestions,
-  ...intracranialHemorrhageQuestions,
-  ...intracranialHypertensionQuestions,
-  ...lowerGiBleedingQuestions,
-  ...mdrOrganismsQuestions,
-  ...mechanicalVentilationQuestions,
-  ...meningitisEncephalitisQuestions,
-  ...metabolicAcidosisQuestions,
-  ...necrotizingSoftTissueInfectionsQuestions,
-  ...obstructiveShockQuestions,
-  ...pneumoniaQuestions,
-  ...pneumothoraxQuestions,
-  ...pulmonaryEmbolismQuestions,
-  ...pulmonaryHypertensionQuestions,
-  ...respiratoryFailureBasicsQuestions,
-  ...rvFailureQuestions,
-  ...sepsisQuestions,
-  ...septicShockQuestions,
-  ...severeSodiumDisordersQuestions,
-  ...severeTbiQuestions,
-  ...shockQuestions,
-  ...statusEpilepticusQuestions,
-  ...toxicologicEmergenciesQuestions,
-  ...transfusionQuestions,
-  ...upperGiBleedingQuestions,
-  ...vapQuestions,
-];
+export const questionsByTopic: Record<string, readonly Question[]> = {
+  "acid-base-disorders": acidBaseDisordersQuestions,
+  "acute-aortic-syndromes": acuteAorticSyndromesQuestions,
+  "acute-coronary-syndrome": acuteCoronarySyndromeQuestions,
+  "acute-heart-failure": acuteHeartFailureQuestions,
+  "acute-ischemic-stroke": acuteIschemicStrokeQuestions,
+  "acute-liver-failure": acuteLiverFailureQuestions,
+  "acute-mesenteric-ischemia": acuteMesentericIschemiaQuestions,
+  "acute-pancreatitis": acutePancreatitisQuestions,
+  "airway-management-rsi": airwayManagementRsiQuestions,
+  "aki": akiQuestions,
+  "altered-consciousness": alteredConsciousnessQuestions,
+  "anticoagulation": anticoagulationQuestions,
+  "ards": ardsQuestions,
+  "arrhythmias": arrhythmiasQuestions,
+  "asthma": asthmaQuestions,
+  "bleeding": bleedingQuestions,
+  "brain-death": brainDeathQuestions,
+  "burns-critical-care": burnsCriticalCareQuestions,
+  "cardiac-arrest-post-arrest": cardiacArrestPostArrestQuestions,
+  "cardiogenic-pulmonary-edema": cardiogenicPulmonaryEdemaQuestions,
+  "cardiogenic-shock": cardiogenicShockQuestions,
+  "copd-exacerbation": copdExacerbationQuestions,
+  "critical-illness-nutrition": criticalIllnessNutritionQuestions,
+  "crrt": crrtQuestions,
+  "diabetic-ketoacidosis": diabeticKetoacidosisQuestions,
+  "dic": dicQuestions,
+  "ecmo-fundamentals": ecmoFundamentalsQuestions,
+  "endocrine-emergencies": endocrineEmergenciesQuestions,
+  "hap": hapQuestions,
+  "hit": hitQuestions,
+  "hypercapnic-respiratory-failure": hypercapnicRespiratoryFailureQuestions,
+  "hyperkalemia": hyperkalemiaQuestions,
+  "hypertensive-emergencies": hypertensiveEmergenciesQuestions,
+  "hypoxemic-respiratory-failure": hypoxemicRespiratoryFailureQuestions,
+  "icu-sedation-delirium": icuSedationDeliriumQuestions,
+  "immunocompromised-oncologic-critical-illness": immunocompromisedOncologicCriticalIllnessQuestions,
+  "intracranial-hemorrhage": intracranialHemorrhageQuestions,
+  "intracranial-hypertension": intracranialHypertensionQuestions,
+  "lower-gi-bleeding": lowerGiBleedingQuestions,
+  "mdr-organisms": mdrOrganismsQuestions,
+  "mechanical-ventilation": mechanicalVentilationQuestions,
+  "meningitis-encephalitis": meningitisEncephalitisQuestions,
+  "metabolic-acidosis": metabolicAcidosisQuestions,
+  "necrotizing-soft-tissue-infections": necrotizingSoftTissueInfectionsQuestions,
+  "neuromuscular-critical-illness": neuromuscularCriticalIllnessQuestions,
+  "obstetric-critical-care": obstetricCriticalCareQuestions,
+  "obstructive-shock": obstructiveShockQuestions,
+  "pneumonia": pneumoniaQuestions,
+  "pneumothorax": pneumothoraxQuestions,
+  "pulmonary-embolism": pulmonaryEmbolismQuestions,
+  "pulmonary-hypertension": pulmonaryHypertensionQuestions,
+  "respiratory-failure-basics": respiratoryFailureBasicsQuestions,
+  "rv-failure": rvFailureQuestions,
+  "sepsis": sepsisQuestions,
+  "septic-shock": septicShockQuestions,
+  "severe-sodium-disorders": severeSodiumDisordersQuestions,
+  "severe-tbi": severeTbiQuestions,
+  "shock": shockQuestions,
+  "status-epilepticus": statusEpilepticusQuestions,
+  "toxicologic-emergencies": toxicologicEmergenciesQuestions,
+  "transfusion": transfusionQuestions,
+  "upper-gi-bleeding": upperGiBleedingQuestions,
+  "valvular-heart-disease-endocarditis": valvularHeartDiseaseEndocarditisQuestions,
+  "vap": vapQuestions,
+};
 
-export const allQuestions = questions;
-
-export const questionsByTopic = questions.reduce<Record<string, Question[]>>((acc, q) => {
-  if (!acc[q.topicId]) acc[q.topicId] = [];
-  acc[q.topicId].push(q);
-  return acc;
-}, {});
+export const allQuestions: readonly Question[] = Object.values(questionsByTopic).flat();
+export const questions = allQuestions;

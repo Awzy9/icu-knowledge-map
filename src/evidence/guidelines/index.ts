@@ -13,20 +13,24 @@ import { ardsGuidelineEsicm2023Peep } from "./ards-guideline-esicm-2023-peep";
 import { ardsGuidelineEsicm2023RecruitmentManeuvers } from "./ards-guideline-esicm-2023-recruitment-maneuvers";
 import { ardsGuidelineHigherPeep } from "./ards-guideline-higher-peep";
 import { ardsGuidelineLowTidalVolume } from "./ards-guideline-low-tidal-volume";
-import { ardsGuidelineProning } from "./ards-guideline-prone-positioning";
+import { ardsGuidelinePronePositioning } from "./ards-guideline-prone-positioning";
 import { arrhythmiasGuidelineAf2023 } from "./arrhythmias-guideline-af-2023";
 import { arrhythmiasGuidelineAhaAccHrsVa2017 } from "./arrhythmias-guideline-aha-acc-hrs-va-2017";
 import { asthmaGuidelineGina2023 } from "./asthma-guideline-gina-2023";
 import { bleedingGuidelineEuropeanTrauma6thEdition } from "./bleeding-guideline-european-trauma-6th-edition";
 import { brainDeathGuidelineAan2023 } from "./brain-death-guideline-aan-2023";
 import { burnsGuidelineAbaIsbi2023 } from "./burns-guideline-aba-isbi-2023";
+import { carTCrsIcansGuidelineAstct2019 } from "./car-t-crs-icans-guideline-astct-2019";
 import { cardiacArrestGuidelineAhaErcIlcor2021 } from "./cardiac-arrest-guideline-aha-erc-ilcor-2021";
 import { cardiogenicShockGuidelineAha2017 } from "./cardiogenic-shock-guideline-aha-2017";
 import { copdGuidelineGold2024 } from "./copd-guideline-gold-2024";
 import { dicGuidelineIsth2025 } from "./dic-guideline-isth-2025";
 import { dkaGuidelineAda2023 } from "./dka-guideline-ada-2023";
 import { ecmoGuidelineElso2021 } from "./ecmo-guideline-elso-2021";
+import { endocarditisGuidelineEsc2023 } from "./endocarditis-guideline-esc-2023";
 import { endocrineGuidelineAtaThyroidStorm2016 } from "./endocrine-guideline-ata-thyroid-storm-2016";
+import { febrileNeutropeniaGuidelineIdsaAsco2018 } from "./febrile-neutropenia-guideline-idsa-asco-2018";
+import { gbsGuidelineAanEan2021 } from "./gbs-guideline-aan-ean-2021";
 import { hitGuidelineAsh2018 } from "./hit-guideline-ash-2018";
 import { hypercapnicRespiratoryFailureGuidelineNiv } from "./hypercapnic-respiratory-failure-guideline-niv";
 import { hyperkalemiaGuidelineUkka2023 } from "./hyperkalemia-guideline-ukka-2023";
@@ -34,18 +38,22 @@ import { hypertensionGuidelineAhaAcc2017 } from "./hypertension-guideline-aha-ac
 import { hypoxemicRespiratoryFailureGuidelineHfnc } from "./hypoxemic-respiratory-failure-guideline-hfnc";
 import { ichGuidelineAhaAsa2022 } from "./ich-guideline-aha-asa-2022";
 import { intracranialHypertensionGuidelineBtf2016 } from "./intracranial-hypertension-guideline-btf-2016";
+import { invasiveAspergillosisGuidelineIdsa2016 } from "./invasive-aspergillosis-guideline-idsa-2016";
 import { lgibGuidelineAcg2023 } from "./lgib-guideline-acg-2023";
 import { mdrOrganismsGuidelineIdsaAmr2026 } from "./mdr-organisms-guideline-idsa-amr-2026";
 import { mechanicalVentilationGuidelineLiberationSbt } from "./mechanical-ventilation-guideline-liberation-sbt";
 import { meningitisGuidelineIdsa2004 } from "./meningitis-guideline-idsa-2004";
 import { mesentericIschemiaGuidelineWses2022 } from "./mesenteric-ischemia-guideline-wses-2022";
+import { myastheniaGuidelineInternationalConsensus2020 } from "./myasthenia-guideline-international-consensus-2020";
 import { nstiGuidelineIdsa2014 } from "./nsti-guideline-idsa-2014";
 import { nutritionGuidelineEspen2019 } from "./nutrition-guideline-espen-2019";
+import { obstetricHemorrhageGuidelineSmfm2023 } from "./obstetric-hemorrhage-guideline-smfm-2023";
 import { obstructiveShockGuidelinePe2026 } from "./obstructive-shock-guideline-pe-2026";
 import { pancreatitisGuidelineAga2018 } from "./pancreatitis-guideline-aga-2018";
 import { phGuidelineEscErs2022 } from "./ph-guideline-esc-ers-2022";
 import { pneumoniaGuidelineIdsaAtsCap2019 } from "./pneumonia-guideline-idsa-ats-cap-2019";
 import { pneumothoraxGuidelineBts2023 } from "./pneumothorax-guideline-bts-2023";
+import { preeclampsiaGuidelineAcog2020 } from "./preeclampsia-guideline-acog-2020";
 import { rvFailureGuidelineAha2018 } from "./rv-failure-guideline-aha-2018";
 import { sedationGuidelinePadisSccm2018 } from "./sedation-guideline-padis-sccm-2018";
 import { sepsisSsc2026AntibioticTiming } from "./sepsis-ssc2026-antibiotic-timing";
@@ -67,6 +75,7 @@ import { statusEpilepticusGuidelineAes2016 } from "./status-epilepticus-guidelin
 import { toxicologyGuidelineExtrip2015 } from "./toxicology-guideline-extrip-2015";
 import { transfusionGuidelineAabb2023 } from "./transfusion-guideline-aabb-2023";
 import { ugibGuidelineAasld2017 } from "./ugib-guideline-aasld-2017";
+import { valvularGuidelineAccAha2020 } from "./valvular-guideline-acc-aha-2020";
 import { vapGuidelineIdsaAts2016 } from "./vap-guideline-idsa-ats-2016";
 
 export const guidelines: readonly Guideline[] = [
@@ -84,20 +93,24 @@ export const guidelines: readonly Guideline[] = [
   ardsGuidelineEsicm2023RecruitmentManeuvers,
   ardsGuidelineHigherPeep,
   ardsGuidelineLowTidalVolume,
-  ardsGuidelineProning,
+  ardsGuidelinePronePositioning,
   arrhythmiasGuidelineAf2023,
   arrhythmiasGuidelineAhaAccHrsVa2017,
   asthmaGuidelineGina2023,
   bleedingGuidelineEuropeanTrauma6thEdition,
   brainDeathGuidelineAan2023,
   burnsGuidelineAbaIsbi2023,
+  carTCrsIcansGuidelineAstct2019,
   cardiacArrestGuidelineAhaErcIlcor2021,
   cardiogenicShockGuidelineAha2017,
   copdGuidelineGold2024,
   dicGuidelineIsth2025,
   dkaGuidelineAda2023,
   ecmoGuidelineElso2021,
+  endocarditisGuidelineEsc2023,
   endocrineGuidelineAtaThyroidStorm2016,
+  febrileNeutropeniaGuidelineIdsaAsco2018,
+  gbsGuidelineAanEan2021,
   hitGuidelineAsh2018,
   hypercapnicRespiratoryFailureGuidelineNiv,
   hyperkalemiaGuidelineUkka2023,
@@ -105,18 +118,22 @@ export const guidelines: readonly Guideline[] = [
   hypoxemicRespiratoryFailureGuidelineHfnc,
   ichGuidelineAhaAsa2022,
   intracranialHypertensionGuidelineBtf2016,
+  invasiveAspergillosisGuidelineIdsa2016,
   lgibGuidelineAcg2023,
   mdrOrganismsGuidelineIdsaAmr2026,
   mechanicalVentilationGuidelineLiberationSbt,
   meningitisGuidelineIdsa2004,
   mesentericIschemiaGuidelineWses2022,
+  myastheniaGuidelineInternationalConsensus2020,
   nstiGuidelineIdsa2014,
   nutritionGuidelineEspen2019,
+  obstetricHemorrhageGuidelineSmfm2023,
   obstructiveShockGuidelinePe2026,
   pancreatitisGuidelineAga2018,
   phGuidelineEscErs2022,
   pneumoniaGuidelineIdsaAtsCap2019,
   pneumothoraxGuidelineBts2023,
+  preeclampsiaGuidelineAcog2020,
   rvFailureGuidelineAha2018,
   sedationGuidelinePadisSccm2018,
   sepsisSsc2026AntibioticTiming,
@@ -138,5 +155,6 @@ export const guidelines: readonly Guideline[] = [
   toxicologyGuidelineExtrip2015,
   transfusionGuidelineAabb2023,
   ugibGuidelineAasld2017,
+  valvularGuidelineAccAha2020,
   vapGuidelineIdsaAts2016,
 ];

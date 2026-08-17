@@ -7,20 +7,22 @@ import { suddenVentilatorDeterioration } from "./sudden-ventilator-deterioration
 import { acuteRespiratoryDistress } from "./acute-respiratory-distress";
 import { newHemoptysis } from "./new-hemoptysis";
 
-// 6-10: Hemodynamic
+// 6-11: Hemodynamic
 import { acuteHypotension } from "./acute-hypotension";
 import { refractoryShock } from "./refractory-shock";
 import { newTachycardia } from "./new-tachycardia";
 import { newBradycardia } from "./new-bradycardia";
 import { acuteHypertension } from "./acute-hypertension";
+import { newMurmurShockPulmonaryEdema } from "./new-murmur-shock-pulmonary-edema";
 
-// 11-14: Neurologic
+// 12-16: Neurologic
 import { acuteAlteredMentalStatus } from "./acute-altered-mental-status";
 import { newFocalNeurologicDeficit } from "./new-focal-neurologic-deficit";
 import { newSeizureStatusEpilepticus } from "./new-seizure-status-epilepticus";
 import { acuteComaLossOfBrainstemFunction } from "./acute-coma-loss-of-brainstem-function";
+import { rapidlyProgressiveWeaknessVentilatoryFailure } from "./rapidly-progressive-weakness-ventilatory-failure";
 
-// 15-20: Renal / Metabolic
+// 17-22: Renal / Metabolic
 import { oliguriaFallingUrineOutput } from "./oliguria-falling-urine-output";
 import { metabolicAcidosis } from "./metabolic-acidosis";
 import { metabolicAlkalosis } from "./metabolic-alkalosis";
@@ -28,14 +30,18 @@ import { severeHyponatremia } from "./severe-hyponatremia";
 import { severeHypernatremia } from "./severe-hypernatremia";
 import { severeHyperkalemia } from "./severe-hyperkalemia";
 
-// 21-23: Infectious
+// 23-26: Infectious & Immunocompromised
 import { newFeverSuspectedInfection } from "./new-fever-suspected-infection";
 import { suspectedSepsis } from "./suspected-sepsis";
 import { persistentFeverDespiteAntibiotics } from "./persistent-fever-despite-antibiotics";
+import { immunocompromisedFeverOrganFailure } from "./immunocompromised-fever-organ-failure";
 
-// 24-25: Hematology / GI
+// 27-28: Hematology / GI
 import { acuteBleedingFallingHemoglobin } from "./acute-bleeding-falling-hemoglobin";
 import { newThrombocytopeniaCoagulopathy } from "./new-thrombocytopenia-coagulopathy";
+
+// 29: Special Populations / Obstetric
+import { criticallyIllPregnantPostpartumPatient } from "./critically-ill-pregnant-postpartum-patient";
 
 export const clinicalProblems: readonly ClinicalProblem[] = [
   // Respiratory
@@ -51,12 +57,14 @@ export const clinicalProblems: readonly ClinicalProblem[] = [
   newTachycardia,
   newBradycardia,
   acuteHypertension,
+  newMurmurShockPulmonaryEdema,
 
   // Neurologic
   acuteAlteredMentalStatus,
   newFocalNeurologicDeficit,
   newSeizureStatusEpilepticus,
   acuteComaLossOfBrainstemFunction,
+  rapidlyProgressiveWeaknessVentilatoryFailure,
 
   // Renal / Metabolic
   oliguriaFallingUrineOutput,
@@ -66,12 +74,16 @@ export const clinicalProblems: readonly ClinicalProblem[] = [
   severeHypernatremia,
   severeHyperkalemia,
 
-  // Infectious
+  // Infectious & Immunocompromised
   newFeverSuspectedInfection,
   suspectedSepsis,
   persistentFeverDespiteAntibiotics,
+  immunocompromisedFeverOrganFailure,
 
   // Hematology / GI
   acuteBleedingFallingHemoglobin,
   newThrombocytopeniaCoagulopathy,
+
+  // Special Populations
+  criticallyIllPregnantPostpartumPatient,
 ];

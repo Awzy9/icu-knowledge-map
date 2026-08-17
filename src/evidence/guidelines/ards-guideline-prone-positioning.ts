@@ -1,6 +1,6 @@
 import type { Guideline } from "@/content-types";
 
-export const ardsGuidelineProning: Guideline = {
+export const ardsGuidelinePronePositioning: Guideline = {
   id: "ards-guideline-prone-positioning",
   society: "American Thoracic Society / European Society of Intensive Care Medicine / Society of Critical Care Medicine",
   abbreviation: "ATS/ESICM/SCCM",

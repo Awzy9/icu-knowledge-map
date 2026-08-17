@@ -18,7 +18,7 @@ const ACTION_PILLARS = [
     step: "LEARN",
     title: "Explore ICU Topics",
     description: "Understand diseases, physiology, diagnosis, management, complications, and evidence.",
-    badge: "60 Core Topics",
+    badge: "64 Core Topics",
     href: "/topics",
     action: "Open Topics",
   },
@@ -26,7 +26,7 @@ const ACTION_PILLARS = [
     step: "SOLVE",
     title: "Start with a Clinical Problem",
     description: "Start with the patient presentation rather than the disease name.",
-    badge: "25 Bedside Problems",
+    badge: "29 Bedside Problems",
     href: "/problems",
     action: "Open Clinical Problems",
   },
@@ -34,7 +34,7 @@ const ACTION_PILLARS = [
     step: "DECIDE",
     title: "Follow a Clinical Pathway",
     description: "Work through structured bedside decision-making from presentation to escalation.",
-    badge: "27 Decision Protocols",
+    badge: "31 Decision Protocols",
     href: "/pathways",
     action: "Open Pathways",
   },
@@ -42,23 +42,23 @@ const ACTION_PILLARS = [
     step: "VERIFY",
     title: "Explore the Evidence",
     description: "Find guidelines, landmark trials, and evidence synthesis kept in clear layers.",
-    badge: "143 Evidence Records",
+    badge: "166 Evidence Records",
     href: "/evidence",
-    action: "Open Evidence Explorer",
+    action: "Open Evidence",
   },
   {
     step: "PRACTICE",
-    title: "Test Your Knowledge",
-    description: "Use scenario-based clinical questions and active recall flashcard decks.",
-    badge: "391 Cards · 208 Questions",
-    href: "/flashcards",
-    action: "Open Questions / Flashcards",
+    title: "Active Recall & Self-Assessment",
+    description: "Reinforce clinical reasoning with flashcards and board-style scenario questions.",
+    badge: "Flashcards & Scenarios",
+    href: "/study",
+    action: "Start Practice",
   },
   {
     step: "CALCULATE",
-    title: "Use ICU Calculators",
-    description: "Access formula-based point-of-care critical care calculators computed locally.",
-    badge: "18 Bedside Calculators",
+    title: "Point-of-Care ICU Calculators",
+    description: "Rapid bedside clinical scores with inline physiological interpretations.",
+    badge: "Validated Calculators",
     href: "/calculators",
     action: "Open Calculators",
   },
@@ -115,14 +115,14 @@ export default function HomePage() {
         <p className="text-base leading-relaxed text-ink-muted">
           A coherent critical-care knowledge workflow. Move naturally from patient presentations to deep
           disease understanding, structured decision pathways, point-of-care calculators, landmark trial
-          evidence, and active recall assessment across exactly 60 core ICU topics.
+          evidence, and active recall assessment across exactly 64 core ICU topics.
         </p>
         <div className="flex flex-wrap gap-3 pt-2">
           <Link
             href="/topics"
             className="rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-xs transition-colors hover:bg-accent-strong"
           >
-            Explore 60 Topics
+            Explore 64 Topics
           </Link>
           <Link
             href="/problems"
@@ -271,15 +271,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 6: CLINICAL DOMAINS (60 TOPICS) */}
+      {/* SECTION 6: CLINICAL DOMAINS (64 TOPICS) */}
       <section className="flex flex-col gap-4">
         <div className="flex items-baseline justify-between">
           <div>
-            <h2 className="text-xl font-bold text-ink">ICU Knowledge Library (60 Topics)</h2>
-            <p className="mt-1 max-w-2xl text-sm text-ink-muted">Browse all 60 core ICU topics by organ system.</p>
+            <h2 className="text-xl font-bold text-ink">ICU Knowledge Library (64 Topics)</h2>
+            <p className="mt-1 max-w-2xl text-sm text-ink-muted">Browse all 64 core ICU topics by organ system.</p>
           </div>
           <Link href="/topics" className="shrink-0 text-sm font-semibold text-accent hover:text-accent-strong">
-            Explore all 60 Topics →
+            Explore all 64 Topics →
           </Link>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">

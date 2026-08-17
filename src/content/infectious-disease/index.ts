@@ -4,6 +4,7 @@ import { hap } from "./hap";
 import { mdrOrganisms } from "./mdr-organisms";
 import { sepsis } from "./sepsis";
 import { necrotizingSoftTissueInfections } from "./necrotizing-soft-tissue-infections";
+import { immunocompromisedOncologicCriticalIllness } from "./immunocompromised-oncologic-critical-illness";
 
 export const infectiousDiseaseTopics: readonly Topic[] = [
   vap,
@@ -11,5 +12,6 @@ export const infectiousDiseaseTopics: readonly Topic[] = [
   mdrOrganisms,
   sepsis,
   necrotizingSoftTissueInfections,
+  immunocompromisedOncologicCriticalIllness,
 ];
 
