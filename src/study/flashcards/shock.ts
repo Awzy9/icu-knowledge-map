@@ -2,27 +2,27 @@ import type { Flashcard } from "@/content-types";
 
 export const shockFlashcards: readonly Flashcard[] = [
   {
-    "id": "shock.fc.definition-four-classes",
+    "id": "shock.fc.classification-four-types",
     "topicId": "shock",
-    "question": "What are the 4 fundamental physiological classifications of shock?",
-    "answer": "1. Distributive (vasodilatory); 2. Cardiogenic (pump failure); 3. Hypovolemic (volume loss); 4. Obstructive (mechanical vascular obstruction).",
-    "explanation": "Weil and Shubin's classification groups shock based on the primary hemodynamic abnormality driving global tissue hypoperfusion.",
+    "question": "What are the four primary pathophysiological categories of shock, and what is the primary hemodynamic defect in each?",
+    "answer": "1. Distributive (Vasodilation, low SVR); 2. Cardiogenic (Myocardial pump failure, low CO/CI, high SVR); 3. Hypovolemic (Intravascular volume loss, low CVP/preload, high SVR); 4. Obstructive (Physical impediment to flow, high afterload or impaired RV/LV filling).",
+    "explanation": "Understanding the primary hemodynamic deficit guides targeted fluid, inotrope, vasopressor, or mechanical intervention.",
     "difficulty": "basic",
-    "category": "Definition",
+    "category": "Classification",
     "references": [
-      "Weil MH, Shubin H. Proposed classification of shock states. Circulation 1972."
+      "Vincent JL, De Backer D. Circulatory Shock. NEJM 2013."
     ]
   },
   {
     "id": "shock.fc.lactate-clearance-kinetics",
     "topicId": "shock",
-    "question": "What lactate clearance target during early resuscitation is associated with improved ICU survival?",
-    "answer": "A reduction in blood lactate of ≥ 10–20% every 2 hours during the first 6–8 hours of resuscitation.",
-    "explanation": "Serial lactate clearance reflects restoration of cellular microcirculatory perfusion and aerobic metabolism; failure to clear lactate indicates unresolved shock.",
+    "question": "What historical lactate clearance benchmark was evaluated in early septic shock studies (e.g. Arnold 2009)?",
+    "answer": "Historically, a reduction in blood lactate of ≥ 10–20% every 2 hours was associated with survival. In current practice, serial lactate trends are tracked alongside clinical perfusion markers (CRT, MAP, urine output) without enforcing rigid universal clearance percentages.",
+    "explanation": "Arnold et al. (Shock 2009) demonstrated that clearing lactate correlates with recovery, but modern guidelines treat serial trends as one component of clinical assessment rather than an automatic mandate to give additional fluids.",
     "difficulty": "basic",
     "category": "Monitoring",
     "references": [
-      "Arnold RC et al. Multicenter study of early lactate clearance in septic shock. Shock 2009."
+      "Arnold RC et al. Multicenter study of early lactate clearance in septic shock. Shock 2009; Surviving Sepsis Campaign 2026."
     ]
   },
   {
@@ -41,7 +41,7 @@ export const shockFlashcards: readonly Flashcard[] = [
     "id": "shock.fc.capillary-refill-andromeda-shock",
     "topicId": "shock",
     "question": "What did the ANDROMEDA-SHOCK trial conclude regarding Capillary Refill Time (CRT) vs Lactate-guided resuscitation?",
-    "answer": "CRT-guided resuscitation (normalizing CRT ≤ 3 seconds) led to faster organ dysfunction resolution and reduced 28-day mortality on adjusted analysis.",
+    "answer": "CRT-guided resuscitation (normalizing CRT ≤ 3 seconds) led to faster organ dysfunction resolution and reduced 28-day mortality on adjusted analysis compared to protocolized lactate clearance.",
     "explanation": "Published in JAMA 2019, CRT offers instantaneous, non-invasive assessment of peripheral perfusion without the kinetic delay of biochemical lactate clearance.",
     "difficulty": "advanced",
     "category": "Evidence",
@@ -53,24 +53,12 @@ export const shockFlashcards: readonly Flashcard[] = [
     "id": "shock.fc.passive-leg-raise",
     "topicId": "shock",
     "question": "How does the Passive Leg Raise (PLR) test determine fluid responsiveness, and what constitutes a positive result?",
-    "answer": "Transferring ~300 mL of venous blood from legs to the heart; an increase in stroke volume or cardiac output ≥ 10% within 60–90 seconds confirms fluid responsiveness.",
-    "explanation": "PLR acts as a reversible 'autotransfusion' independent of respiratory variation, cardiac arrhythmias, or spontaneous breathing efforts.",
+    "answer": "Transitioning from semi-recumbent to supine with legs elevated 45° autotransfuses ~300 mL of venous blood; a ≥ 10% increase in Stroke Volume or Cardiac Output indicates fluid responsiveness.",
+    "explanation": "PLR is a reversible, preload-dependent physiological challenge that is valid during spontaneous breathing, cardiac arrhythmias, and low tidal volume ventilation.",
     "difficulty": "intermediate",
-    "category": "Monitoring",
+    "category": "Assessment",
     "references": [
-      "Monnet X, Teboul JL. Passive leg raising for predicting fluid responsiveness. Intensive Care Med 2015."
-    ]
-  },
-  {
-    "id": "shock.fc.scvo2-normal-threshold",
-    "topicId": "shock",
-    "question": "What does a central venous oxygen saturation (ScvO2) < 70% indicate in a shock state?",
-    "answer": "Systemic oxygen extraction exceeds supply, signifying inadequate cardiac output, severe anemia, or profound hypoxemia.",
-    "explanation": "ScvO2 = SaO2 - (VO2 / [CO * 1.34 * Hb]). When cardiac output drops, tissues extract a higher fraction of oxygen, lowering returning venous saturation.",
-    "difficulty": "intermediate",
-    "category": "Monitoring",
-    "references": [
-      "Rivers E et al. NEJM 2001; Irwin & Rippe."
+      "Monnet X, Teboul JL. Passive leg raising: five rules to follow. Crit Care 2015."
     ]
   }
 ];

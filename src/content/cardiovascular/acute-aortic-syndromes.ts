@@ -21,10 +21,11 @@ export const acuteAorticSyndromes: Topic = {
       note: "Chapter 23: Acute Aortic Emergencies"
     }
   ],
-  currentStatus: "Current as of the 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease and the 2024 ESC Guidelines on Aortic Diseases.",
+  currentStatus: "Reflects current guideline-supported management under both the 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease and the 2024 ESC Guidelines for the Management of Peripheral Arterial and Aortic Diseases — both are current guidance from their respective societies, not sequential/superseding versions. INSTEAD-XL is retained as foundational long-term trial evidence, not as guideline authority.",
   otherReferences: [
     "Isselbacher EM, et al. 2022 ACC/AHA Guideline for the Diagnosis and Management of Aortic Disease. Circulation. 2022;146(24):e334-e482.",
-    "Nienaber CA, et al. Randomized Comparison of Strategies for Type B Aortic Dissection: INSTEAD-XL Trial. Circ Cardiovasc Interv. 2013;6(4):407-416."
+    "Mazzolai L, Teixido-Tura G, Lanzi S, et al. 2024 ESC Guidelines for the Management of Peripheral Arterial and Aortic Diseases. Eur Heart J. 2024;45(36):3538-3700.",
+    "Nienaber CA, et al. Randomized Comparison of Strategies for Type B Aortic Dissection: INSTEAD-XL Trial (foundational RCT/long-term follow-up evidence, not a guideline). Circ Cardiovasc Interv. 2013;6(4):407-416."
   ],
   relationships: [
     { type: "prerequisite", targetId: "hypertensive-emergencies", label: "Acute anti-impulse pressure and heart rate control" },
@@ -44,7 +45,7 @@ export const acuteAorticSyndromes: Topic = {
         {
           kind: "guideline",
           id: "aortic-syndromes-guideline-acc-aha-2022",
-          relevance: "ACC/AHA 2022 Comprehensive Guideline for the Diagnosis and Management of Aortic Disease"
+          relevance: "Current ACC/AHA guidance — 2022 Comprehensive Guideline for the Diagnosis and Management of Aortic Disease"
         }
       ],
       body: [
@@ -108,20 +109,33 @@ export const acuteAorticSyndromes: Topic = {
       id: "acute-aortic-syndromes.anti-impulse",
       kind: "management",
       title: "Medical Anti-Impulse Therapy (Step-by-Step)",
-      summary: "Immediate reduction of aortic wall shear stress (dP/dt) and blood pressure is mandatory for all acute aortic syndrome patients from the moment of clinical suspicion.",
+      summary: "Immediate reduction of aortic wall shear stress (dP/dt) is mandatory for all acute aortic syndrome patients from the moment of clinical suspicion, without driving the patient into end-organ hypoperfusion.",
       provenance: "guideline",
+      evidenceRefs: [
+        {
+          kind: "guideline",
+          id: "aortic-syndromes-guideline-esc-2024",
+          relevance: "Current ESC guidance — anti-impulse therapy framework and blood pressure/heart rate targets"
+        }
+      ],
       body: [
         {
           type: "paragraph",
-          text: "Aortic shear stress is driven by the rate of left ventricular pressure rise (dP/dt) multiplied by blood pressure. Lowering heart rate reduces both the number of stress cycles per minute and the mechanical impulse generated with each ventricular systole."
+          text: "Aortic shear stress is driven by the rate of left ventricular pressure rise (dP/dt) multiplied by blood pressure: heart rate reduction and contractility reduction lower dP/dt, and blood pressure reduction lowers the pressure term, so together they reduce aortic wall shear stress. The core goal is to blunt this impulse without causing organ hypoperfusion — the targets below are a range to titrate within, not a universal fixed number for every patient."
+        },
+        {
+          type: "callout",
+          tone: "guideline",
+          text: "Physiologic chain: heart rate down + contractility down + systolic blood pressure down -> dP/dt down -> aortic wall shear stress down. Current guidance (2022 ACC/AHA; 2024 ESC) frames this as reducing wall stress while preserving end-organ perfusion, not as hitting one rigid number in every patient.",
+          evidenceId: "aortic-syndromes-guideline-esc-2024"
         },
         {
           type: "key-value-table",
           rows: [
-            { label: "Step 1: Heart Rate Control (dP/dt Reduction)", value: "Intravenous short-acting Beta-Blocker FIRST: IV Esmolol (0.5 mg/kg bolus over 1 min, then 50-300 mcg/kg/min infusion) or IV Labetalol (20 mg bolus, then 40-80 mg every 10 min up to 300 mg, or 1-2 mg/min infusion). Target Heart Rate <= 60 bpm." },
-            { label: "Step 2: Blood Pressure Reduction", value: "Vasodilator therapy ONLY AFTER target heart rate <= 60 bpm is achieved: IV Nicardipine (5 mg/h, titrate by 2.5 mg/h every 5-15 min to max 15 mg/h) or IV Nitroprusside. Target SBP 100-120 mmHg (or lowest tolerated pressure with preserved brain/renal perfusion)." },
-            { label: "CRITICAL PITFALL: Vasodilator Alone", value: "Never administer a pure vasodilator (nitroprusside, hydralazine, or nicardipine) without prior beta-blockade. Vasodilator-induced reflex tachycardia markedly increases dP/dt and propagates aortic dissection tear length or triggers fatal rupture." },
-            { label: "Step 3: Adequate Analgesia", value: "Intravenous Opioids (Fentanyl or Morphine) to abolish sympathetic surges and pain-induced hypertension." }
+            { label: "Step 1: Heart Rate Control (dP/dt Reduction)", value: "Intravenous short-acting Beta-Blocker FIRST: IV Esmolol (0.5 mg/kg bolus over 1 min, then 50-300 mcg/kg/min infusion) or IV Labetalol (20 mg bolus, then 40-80 mg every 10 min up to 300 mg, or 1-2 mg/min infusion). Target heart rate ~60-80 bpm, where tolerated and clinically appropriate — not a rigid universal cutoff; titrate to the individual patient's hemodynamic tolerance." },
+            { label: "Step 2: Blood Pressure Reduction", value: "Vasodilator therapy ONLY AFTER heart rate control is achieved: IV Nicardipine (5 mg/h, titrate by 2.5 mg/h every 5-15 min to max 15 mg/h) or IV Nitroprusside. Target SBP < 120 mmHg, or the lowest blood pressure that maintains adequate end-organ (cerebral, coronary, renal) perfusion." },
+            { label: "CRITICAL PITFALL: Vasodilator Alone", value: "Never administer a pure vasodilator (nitroprusside, hydralazine, or nicardipine) without prior beta-blockade. Vasodilator-induced reflex tachycardia increases contractility and heart rate, raising dP/dt and aortic wall shear stress despite a falling blood pressure, and can propagate the dissection tear or trigger rupture." },
+            { label: "Step 3: Adequate Analgesia", value: "Intravenous opioid analgesia (e.g., Fentanyl or Morphine, titrated to effect) is an integral part of anti-impulse therapy: pain drives sympathetic activation, which raises heart rate and blood pressure and increases wall stress, so treating pain lowers sympathetic drive alongside pharmacologic rate/pressure control." }
           ]
         }
       ]
@@ -129,14 +143,14 @@ export const acuteAorticSyndromes: Topic = {
     {
       id: "acute-aortic-syndromes.surgical-endovascular",
       kind: "management",
-      title: "Definitive Management: Type A Surgery vs Type B TEVAR",
-      summary: "Stanford Type A mandates emergent open surgical repair. Stanford Type B is managed medically unless complicated by malperfusion, rupture, refractory pain, or high-risk anatomical features.",
+      title: "Definitive Management: Type A Surgical Repair vs Type B Medical Therapy / Selective TEVAR",
+      summary: "Stanford Type A mandates emergent surgical evaluation and repair. Stanford Type B is managed with medical therapy as the foundational strategy, with TEVAR reserved for complicated disease or selected high-risk uncomplicated cases after individualized assessment.",
       provenance: "trial",
       evidenceRefs: [
         {
           kind: "trial",
           id: "aortic-syndromes-instead-xl-trial",
-          relevance: "INSTEAD-XL trial demonstrating that proactive TEVAR in stable uncomplicated Type B dissection reduces 5-year aorta-specific mortality (6.9% vs 19.3%, P=0.04) and delays disease progression (27.0% vs 46.1%, P=0.04) with favorable false-lumen remodeling"
+          relevance: "Foundational RCT/long-term follow-up evidence (not a guideline) demonstrating that proactive TEVAR in stable uncomplicated Type B dissection reduces 5-year aorta-specific mortality (6.9% vs 19.3%, P=0.04) and delays disease progression (27.0% vs 46.1%, P=0.04) with favorable false-lumen remodeling in the studied population"
         }
       ],
       body: [
@@ -144,11 +158,17 @@ export const acuteAorticSyndromes: Topic = {
           type: "list",
           ordered: true,
           items: [
-            "Stanford Type A Repair: Emergent median sternotomy with cardiopulmonary bypass and deep hypothermic circulatory arrest. Surgical resection of the primary intimal tear, replacement of ascending aorta with a synthetic graft, and repair/resuspension or replacement of the aortic valve.",
-            "Stanford Type B (Uncomplicated): Initial medical anti-impulse therapy in the ICU is the foundational strategy for stable patients without overt complications.",
-            "Stanford Type B (Complicated): Emergent TEVAR (or open surgery if endovascularly unsuitable) is indicated for established life-threatening complications: branch-vessel malperfusion syndromes (mesenteric, renal, spinal cord, or lower extremity ischemia), contained or impending aortic rupture/hemothorax, refractory or recurrent severe pain despite maximal medical therapy, and uncontrolled hypertension despite multi-agent IV infusions.",
-            "Stanford Type B (High-Risk Features): Proactive TEVAR or escalated surveillance is considered in selected stable patients exhibiting guideline-defined high-risk anatomical features (per 2022 ACC/AHA and 2024 ESC guidelines), such as maximal aortic diameter > 40 mm, false-lumen diameter > 20–22 mm, primary entry tear > 10 mm or on the lesser curvature, interval enlargement > 5 mm between serial studies, or bloody pleural effusion; the INSTEAD-XL trial demonstrated reduced 5-year aorta-specific mortality (6.9% vs 19.3%, P=0.04) and positive false-lumen remodeling with proactive TEVAR in stable survivors with favorable endovascular anatomy, though the decision must weigh perioperative risks against long-term benefits on an individualized basis."
+            "Stanford Type A: Emergent surgical evaluation and repair. Anti-impulse therapy is short-term stabilization only — it must never be used to delay surgery in pursuit of perfect hemodynamic numbers, and prolonged medical optimization does not substitute for definitive repair. The specific operative strategy (extent of ascending/arch replacement, valve-sparing repair vs replacement, use of circulatory arrest) is individualized based on entry-tear location, root/arch/valve involvement, malperfusion, and institutional surgical expertise, rather than one fixed universal operation.",
+            "Stanford Type B (Uncomplicated): Initial optimal medical therapy — anti-impulse control, analgesia, ICU-level hemodynamic monitoring, and serial clinical and imaging surveillance — is the foundational strategy for stable patients without overt complications. Not every uncomplicated Type B dissection is managed with TEVAR; medical therapy alone is the default unless a complication or a verified high-risk feature (see below) prompts reconsideration.",
+            "Stanford Type B (Complicated): Intervention is indicated for established life-threatening complications — aortic rupture or impending rupture, branch-vessel occlusion/malperfusion (mesenteric, renal, spinal cord, or lower-extremity ischemia), dissection extension, progressive aortic enlargement, intractable pain despite maximal therapy, or uncontrolled hypertension despite multi-agent IV infusions. TEVAR is generally favored when anatomy is suitable, with open or hybrid repair reserved for anatomy unfavorable for an endovascular approach — TEVAR is not always technically possible, and the choice depends on individual anatomy and available expertise.",
+            "Stanford Type B — High-Risk Uncomplicated: Medical therapy remains the foundational strategy even when high-risk anatomical features are present. A high-risk feature is not, by itself, an automatic indication for TEVAR — selected stable patients with such features may be considered for pre-emptive TEVAR only after individualized, multidisciplinary assessment weighing anatomy, age, procedural risk, comorbidities, life expectancy, and local expertise against the likelihood of late complications on medical therapy alone."
           ]
+        },
+        {
+          type: "callout",
+          tone: "caution",
+          text: "HIGH-RISK FEATURE DOES NOT EQUAL AUTOMATIC TEVAR. ACC/AHA 2022 identifies high-risk anatomical features in uncomplicated Type B dissection as: maximal aortic diameter > 40 mm, false-lumen diameter > 20-22 mm, and primary entry tear > 10 mm or located on the lesser (inner) curvature of the aorta. ESC 2024 separately recommends TEVAR in the subacute phase for uncomplicated Type B dissection with anatomy favorable for endovascular repair (Class IIa, Level of Evidence B), and describes selected patients with high-risk anatomical features (larger aortic or false-lumen diameter, larger entry tear) as candidates for individualized pre-emptive TEVAR — without publishing the same specific millimeter cutoffs in its accessible recommendation text. These two guidelines are not asserted here as using identical numeric thresholds. Additional features reported in the broader Type B dissection literature (e.g., interval aortic growth on serial imaging, hemorrhagic pleural effusion) may also inform multidisciplinary risk assessment, but are not asserted here as numerically codified thresholds within either guideline's text. INSTEAD-XL supports favorable 5-year remodeling and survival with proactive TEVAR in the specific stable, favorable-anatomy population it studied — it does not mean every uncomplicated Type B patient should receive TEVAR.",
+          evidenceId: "aortic-syndromes-instead-xl-trial"
         }
       ]
     },

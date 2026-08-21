@@ -49,7 +49,7 @@ export const acuteHypotension: ClinicalProblem = {
         },
         {
           label: "6. REASSESSMENT & ESCALATION",
-          value: "• Perfusion Tracking: Reassess serum lactate every 2–4 hours (aim for > 20% lactate clearance every 2 hours), normalize capillary refill time (< 2 seconds), and track urine output.\n• Refractory Vasoplegia: If norepinephrine dose exceeds 0.25–0.50 mcg/kg/min, add Vasopressin (fixed 0.03 U/min) and consider stress-dose Hydrocortisone (200 mg/day).",
+          value: "• Perfusion Tracking: Reassess serial serum lactate every 2–4 hours in clinical context, normalize capillary refill time (≤ 2 seconds), and track urine output (≥ 0.5 mL/kg/hr).\n• Refractory Vasoplegia: If norepinephrine dose exceeds 0.25–0.50 mcg/kg/min, add Vasopressin (fixed 0.03 U/min) and consider stress-dose Hydrocortisone (200 mg/day).",
         },
       ],
     },

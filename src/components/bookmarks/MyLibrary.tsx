@@ -36,7 +36,7 @@ export function MyLibrary() {
   );
 
   const countsByCategory = useMemo(() => {
-    const counts: Record<LibraryCategory, number> = { topics: 0, evidence: 0, guidelines: 0, calculators: 0, learning: 0 };
+    const counts: Record<LibraryCategory, number> = { topics: 0, medications: 0, evidence: 0, guidelines: 0, calculators: 0, learning: 0 };
     for (const { entry } of resolved) counts[categoryByBookmarkType[entry.type]] += 1;
     return counts;
   }, [resolved]);

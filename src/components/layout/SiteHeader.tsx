@@ -6,14 +6,16 @@ import { DesktopNavMore } from "./DesktopNavMore";
 import { MobileNav } from "./MobileNav";
 
 const primaryLinks = [
+  { href: "/learn", label: "Learn" },
   { href: "/map", label: "Knowledge Map" },
+  { href: "/medications", label: "Medications" },
   { href: "/topics", label: "Topics" },
   { href: "/problems", label: "Clinical Problems" },
   { href: "/pathways", label: "Pathways" },
-  { href: "/evidence", label: "Evidence Explorer" },
 ];
 
 const secondaryLinks = [
+  { href: "/evidence", label: "Evidence Explorer" },
   { href: "/physiology", label: "Physiology" },
   { href: "/trials", label: "Trials" },
   { href: "/guidelines", label: "Guidelines" },

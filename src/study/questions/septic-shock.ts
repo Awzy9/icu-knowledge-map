@@ -37,7 +37,7 @@ export const septicShockQuestions: readonly Question[] = [
   {
     "id": "septicshock.q.approcchss-steroid-selection",
     "topicId": "septic-shock",
-    "stem": "A patient in refractory septic shock requires Norepinephrine at 0.35 mcg/kg/min and Vasopressin at 0.03 U/min. Based on the Surviving Sepsis Campaign 2021 guidelines and the APROCCHSS trial, which corticosteroid regimen is indicated?",
+    "stem": "A patient in refractory septic shock requires Norepinephrine at 0.35 mcg/kg/min and Vasopressin at 0.03 U/min. Based on Surviving Sepsis Campaign guidelines and the APROCCHSS trial, which corticosteroid regimen is indicated?",
     "options": [
       {
         "id": "a",
@@ -60,11 +60,11 @@ export const septicShockQuestions: readonly Question[] = [
         "isCorrect": false
       }
     ],
-    "explanation": "Surviving Sepsis Campaign 2021 guidelines recommend initiating IV Hydrocortisone (200 mg/day) in patients with septic shock requiring ongoing vasopressor support (typically Norepinephrine ≥ 0.25 mcg/kg/min for >4 hours). The APROCCHSS trial demonstrated improved 90-day survival with this strategy.",
+    "explanation": "Surviving Sepsis Campaign guidelines recommend initiating IV Hydrocortisone (200 mg/day) in patients with septic shock requiring ongoing vasopressor support (typically Norepinephrine ≥ 0.25 mcg/kg/min for >4 hours). The APROCCHSS trial demonstrated improved 90-day survival with this strategy.",
     "difficulty": "intermediate",
     "category": "Guidelines",
     "references": [
-      "Annane D et al. APROCCHSS Trial. NEJM 2018; SSC Guidelines 2021."
+      "Annane D et al. APROCCHSS Trial. NEJM 2018; Surviving Sepsis Campaign Guidelines."
     ]
   }
 ,

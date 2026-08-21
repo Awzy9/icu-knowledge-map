@@ -16,16 +16,22 @@ export const pulmonaryEmbolism: Topic = {
       note: "Chapters on Venous Thromboembolism, Pulmonary Embolism, and Acute Right Ventricular Failure in the ICU",
     },
     {
-      title: "2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism developed in collaboration with the ERS",
+      title: "2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults",
+      edition: "Circulation 2026",
+    },
+    {
+      title: "2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism (Prior European Guidance)",
       edition: "Eur Heart J 2020;41(4):543-603",
     },
   ],
-  currentStatus: "Current as of the 2019/2026 ESC PE Guidelines, the CHEST 2021 antithrombotic recommendations, and the PERT consensus on catheter-directed therapies.",
+  currentStatus: "Current as of the 2026 AHA/ACC Multisociety Acute PE Guidelines and the 2019 ESC PE Guidelines.",
   otherReferences: [
+    "2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults. Circulation. 2026.",
     "Konstantinides SV, et al. 2019 ESC Guidelines for the diagnosis and management of acute pulmonary embolism. Eur Heart J. 2020;41(4):543-603.",
-    "Meyer G, et al. Fibrinolysis for patients with intermediate-risk pulmonary embolism (PEITHO trial). N Engl J Med. 2014;370(15):1402-1411.",
+    "Meyer G, et al. Fibrinolysis for patients with intermediate-risk pulmonary embolism (PEITHO trial: Intermediate-Risk Evidence). N Engl J Med. 2014;370(15):1402-1411.",
     "Sharifi M, et al. Moderate Pulmonary Embolism Treated With Thrombolysis (MOPETT trial). Am J Cardiol. 2013;111(2):273-277.",
     "Sista AK, et al. Stratification and management of pulmonary embolism in the ICU. CHEST. 2021;160(2):657-670.",
+    "Jaff MR, et al. Management of massive and submassive pulmonary embolism (Historical AHA Statement). Circulation. 2011;123(16):1788-1830.",
   ],
   relationships: [
     { type: "prerequisite", targetId: "anticoagulation", label: "Immediate parenteral anticoagulation protocols" },
@@ -42,7 +48,7 @@ export const pulmonaryEmbolism: Topic = {
         {
           kind: "guideline",
           id: "obstructive-shock-guideline-pe-2026",
-          relevance: "ESC 2019 clinical practice guidelines on acute pulmonary embolism"
+          relevance: "2026 AHA/ACC multisociety guideline on acute pulmonary embolism evaluation and management"
         },
         {
           kind: "trial",
@@ -61,7 +67,7 @@ export const pulmonaryEmbolism: Topic = {
         },
         {
           type: "paragraph",
-          text: "The clinical priority in the ICU is rapid risk stratification (High vs Intermediate-High vs Intermediate-Low vs Low) to guide urgent reperfusion (systemic thrombolysis, catheter-directed thrombectomy, surgical embolectomy) while preventing lethal RV ischemia and avoiding high-risk ventilator-induced hemodynamic collapse.",
+          text: "The clinical priority in the ICU is rapid risk stratification (Categories A through E under the 2026 multisociety framework) to guide urgent reperfusion (selecting among systemic thrombolysis, catheter-directed therapies, and surgical embolectomy) while preventing lethal RV ischemia and avoiding high-risk ventilator-induced hemodynamic collapse.",
         },
       ],
     },
@@ -100,10 +106,10 @@ export const pulmonaryEmbolism: Topic = {
       ],
     },
     {
-      id: "pulmonary-embolism.diagnosis-stratification",
+      id: "pulmonary-embolism.diagnosis",
       kind: "diagnosis",
-      title: "Diagnostic Evaluation & ESC/AHA Risk Stratification",
-      summary: "Defining High-Risk (massive), Intermediate-High (submassive), Intermediate-Low, and Low-Risk PE using hemodynamics, sPESI, biomarkers, and imaging.",
+      title: "Diagnostic Evaluation & 2026 Multisociety Risk Stratification (Categories A–E)",
+      summary: "Stratifying acute PE into Categories A through E (Low Risk, Intermediate-Low, Intermediate-High, Category D Incipient Failure, and Category E Cardiopulmonary Failure) using hemodynamics, biomarkers, and imaging.",
       provenance: "guideline",
       body: [
         {
@@ -114,20 +120,20 @@ export const pulmonaryEmbolism: Topic = {
           type: "key-value-table",
           rows: [
             {
-              label: "1. High-Risk (Massive) PE",
-              value: "• Definition: PE with Hemodynamic Instability, defined by any of:\n  - Cardiac arrest / PEA\n  - Obstructive shock: SBP < 90 mmHg or vasopressors required to maintain SBP ≥ 90 despite adequate volume, with end-organ hypoperfusion (lactate > 2.0, oliguria, cold extremities, altered mentation)\n  - Persistent hypotension: SBP < 90 mmHg or SBP drop ≥ 40 mmHg lasting > 15 minutes, not caused by new-onset arrhythmia, hypovolemia, or sepsis.\n• Immediate Action: Immediate primary reperfusion (Systemic Thrombolysis, Catheter-Directed Therapy, or Surgical Embolectomy).",
+              label: "1. Category E: Cardiopulmonary Failure (High Risk)",
+              value: "• Subcategories:\n  - E1: Persistent/recurrent hypotension (SBP < 90 mmHg, MAP < 65 mmHg, or drop in SBP ≥ 40 mmHg lasting ≥ 15 min) or requirement for vasopressor/inotropic support with cardiogenic shock/end-organ hypoperfusion (elevated lactate, oliguria, altered mentation).\n  - E2: Cardiopulmonary arrest / impending arrest / severe refractory collapse.\n• Action: Prompt advanced reperfusion (Class 2a for Systemic Thrombolysis, Catheter-Directed Thrombolysis, or Mechanical Thrombectomy; Surgical Embolectomy may also be considered) tailored to bleeding risk, speed to therapy, and institutional PERT capabilities.",
             },
             {
-              label: "2. Intermediate-High Risk (Submassive) PE",
-              value: "• Definition: Hemodynamically stable (SBP ≥ 90 mmHg) + Simplified PESI (sPESI) ≥ 1 point, PLUS BOTH of:\n  - RV Dysfunction on bedside Echo (RV/LV > 1.0, TAPSE < 16 mm, McConnell's sign) or CTPA (RV/LV diameter ratio ≥ 1.0 in 4-chamber view)\n  - Myocardial Injury Biomarkers: Elevated Cardiac Troponin I/T or elevated BNP / NT-proBNP.\n• Management: Immediate therapeutic anticoagulation + intensive ICU hemodynamic monitoring; standby reperfusion for clinical decompensation.",
+              label: "2. Category D: Incipient Cardiopulmonary Failure (High Risk)",
+              value: "• Subcategories:\n  - D1: Transient hypotension (SBP < 90 mmHg responding rapidly to minimal volume/positioning) or clinical hypoperfusion without persistent hypotension.\n  - D2: Normotensive shock with severe tissue hypoperfusion (compensated normal blood pressure but rising lactate, oliguria, altered mental status, and progressive RV dysfunction).\n• Action: Therapeutic anticoagulation, intensive ICU monitoring, and consideration of advanced reperfusion in deteriorating patients.",
             },
             {
-              label: "3. Intermediate-Low Risk PE",
-              value: "• Definition: Hemodynamically stable + sPESI ≥ 1, with EITHER RV dysfunction OR elevated biomarkers positive, but not both.\n• Management: Therapeutic anticoagulation, step-down monitoring.",
+              label: "3. Category C: Intermediate-High Risk PE",
+              value: "• Definition: Hemodynamically stable (SBP ≥ 90 mmHg) with BOTH RV dysfunction on Echo/CT AND elevated cardiac biomarkers (Troponin or BNP).\n• Action: Immediate therapeutic anticoagulation + intensive hemodynamic monitoring. Landmark PEITHO trial confirmed routine thrombolysis reduces decompensation but increases major bleeding and stroke without reducing 30-day mortality, so rescue reperfusion is reserved for clinical deterioration.",
             },
             {
-              label: "4. Low-Risk PE",
-              value: "• Definition: Hemodynamically stable + sPESI = 0 + normal RV function + normal biomarkers. Mortality < 1%.",
+              label: "4. Category B & A: Intermediate-Low & Low Risk PE",
+              value: "• Category B (Intermediate-Low): Stable with EITHER RV dysfunction OR elevated biomarker, but not both.\n• Category A (Low Risk): Stable without RV dysfunction or elevated biomarkers (mortality < 1%).",
             },
           ],
         },
@@ -184,16 +190,16 @@ export const pulmonaryEmbolism: Topic = {
               value: "• Start immediately upon high clinical suspicion while diagnostic workup is underway.\n• High-Risk / Hemodynamically Unstable: Unfractionated Heparin (UFH) 80 U/kg IV bolus followed by 18 U/kg/hr infusion (target anti-Xa 0.3–0.7 IU/mL or aPTT 60–85s). UFH is preferred due to rapid cessation and full reversibility with protamine if emergent interventions are required.\n• Stable Intermediate/Low-Risk: Low-Molecular-Weight Heparin (Enoxaparin 1 mg/kg SC q12h) or Fondaparinux.",
             },
             {
-              label: "2. Primary Systemic Thrombolysis (Indicated in High-Risk / Massive PE)",
-              value: "• Full-Dose Alteplase (tPA): 100 mg IV infusion over 2 hours (or 0.6 mg/kg over 15 minutes, max 50 mg in imminent collapse).\n• Cardiac Arrest / PEA Resuscitation: Alteplase 50 mg IV bolus push over 2 minutes, continuing CPR for at least 15–30 minutes to allow clot dissolution and RV unloading.\n• Landmark Evidence (PEITHO Trial): In intermediate-high risk PE, routine systemic fibrinolysis reduced hemodynamic decompensation (from 5.6% to 2.6%) but significantly increased major bleeding (from 2.4% to 11.5%) and hemorrhagic stroke (from 0.2% to 2.0%). Therefore, systemic lytics are reserved for high-risk shock or secondary deterioration on anticoagulation.",
+              label: "2. Systemic Thrombolysis (High-Risk Reperfusion Strategy)",
+              value: "• Standardized Regimen: Alteplase (tPA) 100 mg IV infusion over 2 hours.\n• Multimodal Reperfusion Framework (2026 Guideline): In acute PE presenting with persistent hypotension or cardiogenic shock requiring vasopressor/inotropic support (Category E1), systemic thrombolysis, catheter-directed thrombolysis, and mechanical thrombectomy are each guideline-reasonable options (Class 2a); surgical embolectomy may also be considered. Systemic thrombolysis provides rapid bedside reperfusion when bleeding risk is low and intervention teams are not immediately available.\n• Landmark Evidence in Intermediate-Risk PE (PEITHO Trial): In normotensive intermediate-high risk PE, routine systemic fibrinolysis reduced hemodynamic decompensation (from 5.6% to 2.6%) but significantly increased major bleeding (from 2.4% to 11.5%) and hemorrhagic stroke (from 0.2% to 2.0%) with no reduction in 30-day mortality. Therefore, routine systemic lytics are withheld in normotensive intermediate-risk PE and reserved for Category E1 cardiopulmonary failure (or deteriorating Category D1/D2 incipient failure) or rescue.",
             },
             {
-              label: "3. Catheter-Directed Therapy (CDT) & Mechanical Thrombectomy",
-              value: "• Indication: High-risk PE with absolute contraindications to systemic lysis, failed systemic lysis, or intermediate-high risk PE with clinical worsening.\n• Modalities:\n  - Ultrasound-Assisted Catheter-Directed Thrombolysis (EKOS): Infuses low-dose tPA (e.g. 0.5–1.0 mg/hr/catheter, total 12–24 mg) combined with ultrasound cavitation; achieves rapid RV unloading with low bleeding risk (< 2% major bleeding).\n  - Large-Bore Mechanical Aspiration Thrombectomy (FlowTriever, Lightning Flash): Rapid percutaneous aspiration of massive clots without requiring lytic agents (proven rapid reduction in mean PAP and RV/LV ratio in the FLARE and FLASH registries).",
+              label: "3. Catheter-Based Interventions (CDT & Mechanical Thrombectomy)",
+              value: "• Indication: Category E1 cardiopulmonary failure or deteriorating Category D1/D2 (or Category C with secondary deterioration), particularly when systemic lysis is contraindicated, bleeding risk is high, or as a primary Class 2a option in centers with immediate catheterization capabilities.\n• Modalities:\n  - Catheter-Directed Thrombolysis (CDT): Infuses low-dose tPA (e.g. 0.5–1.0 mg/hr/catheter) combined with ultrasound or infusion catheter; achieves RV unloading with lower bleeding rates than systemic lysis.\n  - Large-Bore Mechanical Aspiration Thrombectomy: Percutaneous aspiration of obstructing clot without requiring systemic lytics, achieving rapid reduction in RV afterload.",
             },
             {
               label: "4. Surgical Pulmonary Embolectomy",
-              value: "Median sternotomy with cardiopulmonary bypass and pulmonary arteriotomy for clot extraction. Indicated for massive PE with contraindications to thrombolysis, failed CDT/thrombolysis, or right heart 'thrombus-in-transit' straddling a patent foramen ovale.",
+              value: "Median sternotomy with cardiopulmonary bypass and pulmonary arteriotomy for clot extraction. Indicated for high-risk PE with absolute contraindications to thrombolysis, failed catheter/thrombolytic therapy, or right heart thrombus-in-transit straddling a patent foramen ovale.",
             },
             {
               label: "5. Hemodynamic Support & Vasopressors",
@@ -260,7 +266,7 @@ export const pulmonaryEmbolism: Topic = {
       body: [
         {
           type: "paragraph",
-          text: "Half-Dose (Reduced-Dose) Systemic Thrombolysis: The MOPETT trial (Sharifi 2013) evaluated 'safe dose' tPA (50 mg total: 10 mg bolus + 40 mg over 2 hours) in moderate/submassive PE, showing significant reduction in pulmonary hypertension and hospital stay without any major bleeding. Ongoing trials are investigating whether half-dose lytics represent the optimal balance between efficacy and safety in intermediate-high risk PE.",
+          text: "Half-Dose Systemic Thrombolysis (Historical / Limited Evidence): The single-center MOPETT trial (Sharifi 2013) evaluated reduced-dose tPA (50 mg total: 10 mg IV bolus + 40 mg over 2 hours) in moderate PE, reporting an acute reduction in pulmonary arterial pressure. However, MOPETT represents older, limited trial evidence and does NOT establish routine half-dose thrombolysis as standard current care over full-dose lysis or catheter-based interventions. Modern guidelines maintain full-dose systemic lysis (Alteplase 100 mg over 2 hours) or catheter-based strategies when advanced reperfusion is indicated.",
         },
         {
           type: "paragraph",

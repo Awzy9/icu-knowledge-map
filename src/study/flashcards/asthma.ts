@@ -10,7 +10,7 @@ export const asthmaFlashcards: readonly Flashcard[] = [
     "difficulty": "basic",
     "category": "Pathophysiology",
     "references": [
-      "GINA Guidelines for Asthma Management and Prevention 2023."
+      "Global Initiative for Asthma (2026 GINA Report)."
     ]
   },
   {
@@ -40,13 +40,13 @@ export const asthmaFlashcards: readonly Flashcard[] = [
   {
     "id": "asthma.fc.first-line-pharmacotherapy",
     "topicId": "asthma",
-    "question": "What is the first-line pharmacotherapy for acute severe asthma exacerbation in the ICU?",
-    "answer": "Continuous or frequent nebulized short-acting beta-2 agonists (Albuterol) combined with ipratropium bromide, plus early systemic corticosteroids.",
-    "explanation": "Inhaled beta-2 agonists provide rapid bronchodilation. Ipratropium adds additive bronchodilation and reduces hospitalizations. Systemic steroids (IV Methylprednisolone 40–60 mg or oral Prednisone 50 mg) blunt the inflammatory cascade over 4–6 hours.",
+    "question": "What is the first-line pharmacotherapy bundle for acute severe asthma exacerbation in the ICU?",
+    "answer": "Continuous or frequent nebulized short-acting beta-2 agonists (Albuterol) combined with ipratropium bromide, early systemic corticosteroids, and controlled oxygen (SpO2 93–95%).",
+    "explanation": "Inhaled beta-2 agonists provide rapid bronchodilation. Ipratropium adds additive bronchodilation and reduces hospitalizations. Systemic steroids blunt the inflammatory cascade over 4–6 hours.",
     "difficulty": "basic",
     "category": "Management",
     "references": [
-      "GINA Guidelines 2023; Cochrane Systematic Review on SABA + Anticholinergics."
+      "Global Initiative for Asthma (2026 GINA Report); Cochrane Systematic Review on SABA + Anticholinergics."
     ]
   },
   {
@@ -58,7 +58,7 @@ export const asthmaFlashcards: readonly Flashcard[] = [
     "difficulty": "intermediate",
     "category": "Management",
     "references": [
-      "3Mg Trial; Cochrane Database Syst Rev 2014."
+      "3Mg Trial; Cochrane Database Syst Rev 2014; 2026 GINA Report."
     ]
   },
   {
@@ -77,7 +77,7 @@ export const asthmaFlashcards: readonly Flashcard[] = [
     "id": "asthma.fc.dynamic-hyperinflation",
     "topicId": "asthma",
     "question": "What mechanical ventilation strategy prevents dynamic hyperinflation (Auto-PEEP) in intubated asthmatics?",
-    "answer": "Prolong expiratory time (I:E ratio 1:3 to 1:5), low respiratory rate (8–12 bpm), low tidal volume (6–8 mL/kg PBW), and high inspiratory flow rate (70–90 L/min).",
+    "answer": "Prolong expiratory time (I:E ratio 1:3 to 1:5), low initial respiratory rate (8–12 bpm), low tidal volume (6–8 mL/kg PBW), and high inspiratory flow rate (70–90 L/min).",
     "explanation": "Allowing complete exhalation minimizes stacked breaths (auto-PEEP), preventing barotrauma and hemodynamic collapse from impaired venous return.",
     "difficulty": "advanced",
     "category": "Management",
@@ -89,7 +89,7 @@ export const asthmaFlashcards: readonly Flashcard[] = [
     "id": "asthma.fc.permissive-hypercapnia",
     "topicId": "asthma",
     "question": "What is permissive hypercapnia, and what is its primary objective in mechanical ventilation for asthma?",
-    "answer": "Tolerating elevated PaCO2 (e.g., 50–70 mmHg) and moderate respiratory acidosis (pH ≥ 7.20) to prevent barotrauma and high alveolar pressures.",
+    "answer": "Tolerating elevated PaCO2 (e.g., 50–70 mmHg) and moderate respiratory acidosis (pH ≥ 7.15–7.20) as a practical strategy to prevent dynamic hyperinflation and barotrauma.",
     "explanation": "Attempting to normalize PaCO2 by increasing minute ventilation causes severe gas trapping, high plateau pressures, pneumothorax, and cardiovascular collapse.",
     "difficulty": "intermediate",
     "category": "Management",

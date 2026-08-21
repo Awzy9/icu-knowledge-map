@@ -14,7 +14,7 @@ export const acuteAorticSyndromesQuestions: readonly Question[] = [
       },
       {
         "id": "b",
-        "text": "Administer IV Esmolol or Labetalol FIRST to achieve HR < 60 bpm, then add IV Nicardipine if SBP remains > 120 mmHg",
+        "text": "Administer IV Esmolol or Labetalol FIRST to achieve heart rate control (~60-80 bpm, where tolerated), then add IV Nicardipine if SBP remains >= 120 mmHg",
         "isCorrect": true
       },
       {
@@ -28,7 +28,7 @@ export const acuteAorticSyndromesQuestions: readonly Question[] = [
         "isCorrect": false
       }
     ],
-    "explanation": "Anti-impulse therapy requires beta-blockade FIRST to lower heart rate (< 60 bpm) and reduce dP/dt. Giving vasodilators first causes reflex tachycardia, which increases aortic shear stress and propagates dissection.",
+    "explanation": "Anti-impulse therapy requires beta-blockade FIRST to lower heart rate and contractility and reduce dP/dt. Giving vasodilators first causes reflex tachycardia, which increases aortic shear stress and propagates dissection. Targets are titrated to the patient (heart rate ~60-80 bpm where tolerated, SBP <120 mmHg or the lowest pressure maintaining end-organ perfusion), not fixed for every patient.",
     "difficulty": "basic",
     "references": [
       {
@@ -149,7 +149,7 @@ export const acuteAorticSyndromesQuestions: readonly Question[] = [
     "options": [
       {
         "id": "a",
-        "text": "Heart rate < 60 bpm and SBP 100-120 mmHg",
+        "text": "Heart rate ~60-80 bpm (where tolerated) and SBP < 120 mmHg, or the lowest BP maintaining end-organ perfusion",
         "isCorrect": true
       },
       {
@@ -168,7 +168,7 @@ export const acuteAorticSyndromesQuestions: readonly Question[] = [
         "isCorrect": false
       }
     ],
-    "explanation": "HR < 60 bpm and SBP 100-120 mmHg (or lowest pressure maintaining cerebral and coronary perfusion) reduces shear stress (dP/dt) and wall tension.",
+    "explanation": "Heart rate ~60-80 bpm where tolerated and SBP <120 mmHg (or the lowest pressure maintaining cerebral, coronary, and renal perfusion) reduces shear stress (dP/dt) and wall tension without causing organ hypoperfusion. These are titration targets, not fixed for every patient.",
     "difficulty": "basic",
     "references": [
       "ACC/AHA Guidelines 2022"

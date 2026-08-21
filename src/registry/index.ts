@@ -8,12 +8,19 @@ import { pathways } from "@/pathways";
 import { clinicalProblems } from "@/problems";
 import { flashcards } from "@/study/flashcards";
 import { questions } from "@/study/questions";
+import { allMedications } from "@/content/medications";
+import { clinicalCases } from "@/content/clinical-cases";
+import { medicationChallenges } from "@/content/medication-challenges";
+import type { ClinicalCase } from "@/content-types/clinical-case";
+import type { MedicationChallenge } from "@/content-types/medication-challenge";
 import type {
   Calculator,
   ClinicalProblem,
   ContentSection,
   EvidenceRef,
   Guideline,
+  Medication,
+  MedicationCategory,
   NodeId,
   Pathway,
   PhysiologyConcept,
@@ -28,11 +35,11 @@ import { buildGraph, resolveRelationships as resolveGraphRelationships, type Gra
 import { buildKnowledgeMapTree, type KnowledgeMapNode } from "./build-knowledge-map";
 import { buildSearchIndex, type SearchEntry, type SearchEntryType } from "./build-search-index";
 import { validateContent } from "./validate";
+import { validateAllMedications } from "./validate-medications";
+import { auditAllRelationships } from "./validate-relationships";
 
 export type { SearchEntry, SearchEntryType };
 
-// Validated and built once, at module scope, so every page that imports this
-// registry shares the same computed indices instead of recomputing them.
 validateContent({
   topics: allTopics,
   trials,
@@ -44,7 +51,16 @@ validateContent({
   problems: clinicalProblems,
   flashcards,
   questions,
+  cases: clinicalCases,
+  challenges: medicationChallenges,
 });
+
+validateAllMedications();
+
+const relationshipAudit = auditAllRelationships();
+if (!relationshipAudit.valid) {
+  throw new Error(`Relationship audit failed with ${relationshipAudit.brokenLinks.length} errors: ${JSON.stringify(relationshipAudit.brokenLinks, null, 2)}`);
+}
 
 const graph: GraphData = buildGraph(allTopics);
 const evidenceIndex: EvidenceIndex = buildEvidenceIndex(allTopics);
@@ -59,6 +75,8 @@ const pathwaysBySlug = new Map(pathways.map((pathway) => [pathway.slug, pathway]
 const problemsBySlug = new Map(clinicalProblems.map((problem) => [problem.slug, problem]));
 const flashcardsById = new Map(flashcards.map((card) => [card.id, card]));
 const questionsById = new Map(questions.map((question) => [question.id, question]));
+const medicationsBySlug = new Map(allMedications.map((med) => [med.slug, med]));
+const clinicalCasesBySlug = new Map(clinicalCases.map((c) => [c.slug, c]));
 
 export function getAllTopics(): readonly Topic[] {
   return allTopics;
@@ -76,7 +94,22 @@ export function getAllTopicSlugs(): readonly string[] {
   return allTopics.filter((topic) => topic.status !== "stub").map((topic) => topic.slug);
 }
 
-/** Computed on demand (cheap, small trees) rather than precomputed for every topic at module scope. */
+export function getAllMedications(): readonly Medication[] {
+  return allMedications;
+}
+
+export function getMedication(slug: string): Medication | undefined {
+  return medicationsBySlug.get(slug);
+}
+
+export function getAllMedicationSlugs(): readonly string[] {
+  return allMedications.map((med) => med.slug);
+}
+
+export function getMedicationsByCategory(category: MedicationCategory): readonly Medication[] {
+  return allMedications.filter((med) => med.category === category);
+}
+
 export function getKnowledgeMapTree(slug: string): KnowledgeMapNode | undefined {
   const topic = topicsBySlug.get(slug);
   if (!topic) return undefined;
@@ -192,7 +225,6 @@ function collectEvidenceRefs(sections: readonly ContentSection[], out: EvidenceR
   }
 }
 
-/** Every trial/guideline/review actually cited anywhere in a topic's section tree — computed, so it can never disagree with what's really in the body. */
 export function getTopicReferences(topicId: NodeId): TopicReferences {
   const topic = allTopics.find((t) => t.id === topicId);
   if (!topic) return { trials: [], guidelines: [], systematicReviews: [] };
@@ -261,7 +293,8 @@ export type BookmarkableType =
   | "calculator"
   | "pathway"
   | "flashcard"
-  | "question";
+  | "question"
+  | "medication";
 
 export interface BookmarkableEntity {
   readonly id: string;
@@ -280,14 +313,13 @@ const searchIndex: readonly SearchEntry[] = buildSearchIndex({
   pathways,
   physiologyConcepts,
   clinicalProblems,
+  medications: allMedications,
 });
 
-/** Flat, pre-built index for the client-side search dialog — small enough to ship as a plain prop. */
 export function getSearchIndex(): readonly SearchEntry[] {
   return searchIndex;
 }
 
-/** Resolves a stored bookmark {type, id} into display data for the /library page. */
 export function getBookmarkableEntity(
   type: BookmarkableType,
   id: string,
@@ -297,6 +329,11 @@ export function getBookmarkableEntity(
       const topic = allTopics.find((t) => t.id === id);
       if (!topic) return undefined;
       return { id, type, title: topic.title, subtitle: topic.oneLiner, href: `/topics/${topic.slug}` };
+    }
+    case "medication": {
+      const med = medicationsBySlug.get(id) ?? allMedications.find((m) => m.id === id);
+      if (!med) return undefined;
+      return { id, type, title: med.name, subtitle: `${med.class} — ${med.summary}`, href: `/medications/${med.slug}` };
     }
     case "trial": {
       const trial = trialsById.get(id);
@@ -351,4 +388,61 @@ export function getBookmarkableEntity(
     default:
       return undefined;
   }
+}
+
+export function getAllClinicalCases(): readonly ClinicalCase[] {
+  return clinicalCases;
+}
+
+export function getClinicalCase(slug: string): ClinicalCase | undefined {
+  return clinicalCasesBySlug.get(slug);
+}
+
+export function getAllClinicalCaseSlugs(): readonly string[] {
+  return clinicalCases.map(c => c.slug);
+}
+
+export function getAllMedicationChallenges(): readonly MedicationChallenge[] {
+  return medicationChallenges;
+}
+
+export function getMedicationChallengesByType(type: string): readonly MedicationChallenge[] {
+  return medicationChallenges.filter(c => c.challengeType === type);
+}
+
+export function getRelatedContentForMedication(slug: string) {
+  const med = getMedication(slug);
+  if (!med) return { items: [] };
+
+  const relatedTopics = allTopics.filter(t => med.relatedTopicIds?.includes(t.id));
+  const relatedPathways = pathways.filter(p => p.relatedTopicIds?.some(id => med.relatedTopicIds?.includes(id)));
+  const relatedProblems = clinicalProblems.filter(p => p.relatedTopicIds?.some(id => med.relatedTopicIds?.includes(id)));
+  const relatedCases = clinicalCases.filter(c => c.relatedMedicationSlugs?.includes(slug) || c.relatedTopicIds?.some(id => med.relatedTopicIds?.includes(id)));
+  const relatedChallenges = medicationChallenges.filter(ch => ch.relatedMedicationSlugs?.includes(slug));
+
+  const items: Array<{ type: string; title: string; href: string; subtitle?: string }> = [
+    ...relatedTopics.slice(0, 2).map(t => ({ type: "Topic", title: t.title, href: `/topics/${t.slug}`, subtitle: t.oneLiner })),
+    ...relatedCases.slice(0, 2).map(c => ({ type: "Clinical Case", title: c.title, href: `/learn/clinical-reasoning/${c.slug}`, subtitle: c.subtitle })),
+    ...relatedProblems.slice(0, 2).map(p => ({ type: "Problem", title: p.title, href: `/problems/${p.slug}`, subtitle: p.oneLiner })),
+    ...relatedPathways.slice(0, 2).map(p => ({ type: "Pathway", title: p.title, href: `/pathways/${p.slug}`, subtitle: p.oneLiner })),
+    ...relatedChallenges.slice(0, 1).map(ch => ({ type: "Challenge", title: ch.stem.slice(0, 60) + "...", href: `/learn/medication-challenges`, subtitle: `Decision Challenge` })),
+  ];
+
+  return { items: items.slice(0, 6) };
+}
+
+export function getRelatedContentForTopic(id: string) {
+  const meds = allMedications.filter(m => m.relatedTopicIds?.includes(id));
+  const pathwaysList = pathways.filter(p => p.relatedTopicIds?.includes(id));
+  const problems = clinicalProblems.filter(p => p.relatedTopicIds?.includes(id));
+  const cases = clinicalCases.filter(c => c.relatedTopicIds?.includes(id));
+
+  const items: Array<{ type: string; title: string; href: string; subtitle?: string }> = [
+    ...meds.slice(0, 2).map(m => ({ type: "Medication", title: m.name, href: `/medications/${m.slug}`, subtitle: m.class })),
+    ...cases.slice(0, 2).map(c => ({ type: "Clinical Case", title: c.title, href: `/learn/clinical-reasoning/${c.slug}`, subtitle: c.subtitle })),
+    ...problems.slice(0, 2).map(p => ({ type: "Problem", title: p.title, href: `/problems/${p.slug}`, subtitle: p.oneLiner })),
+    ...pathwaysList.slice(0, 2).map(p => ({ type: "Pathway", title: p.title, href: `/pathways/${p.slug}`, subtitle: p.oneLiner })),
+  ];
+
+  return { items: items.slice(0, 6) };
 }

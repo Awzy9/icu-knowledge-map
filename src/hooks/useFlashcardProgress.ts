@@ -1,19 +1,37 @@
 "use client";
 
-import { useLocalStorageState } from "./useLocalStorageState";
+import { useSyncExternalStore, useCallback } from "react";
+import {
+  getUnifiedLearningState,
+  updateUnifiedLearningState,
+  subscribeToLearningState,
+  DEFAULT_LEARNING_STATE,
+} from "@/lib/learning-state";
 
 export type FlashcardStatus = "known" | "review";
 export type FlashcardProgressMap = Record<string, FlashcardStatus>;
 
-const STORAGE_KEY = "icu-km:flashcard-progress";
-
-/** Global (not per-topic) so a single store backs both the study deck and the cross-topic Progress page. */
 export function useFlashcardProgress() {
-  const { value: progress, setValue: setProgress } = useLocalStorageState<FlashcardProgressMap>(STORAGE_KEY, {});
+  const state = useSyncExternalStore(
+    subscribeToLearningState,
+    getUnifiedLearningState,
+    () => DEFAULT_LEARNING_STATE
+  );
 
-  const markCard = (cardId: string, status: FlashcardStatus) => {
-    setProgress((prev) => ({ ...prev, [cardId]: status }));
-  };
+  const progress: FlashcardProgressMap = Object.entries(state.flashcards || {}).reduce(
+    (acc, [id, data]) => ({ ...acc, [id]: data.status }),
+    {}
+  );
+
+  const markCard = useCallback((cardId: string, status: FlashcardStatus) => {
+    updateUnifiedLearningState((prev) => ({
+      ...prev,
+      flashcards: {
+        ...prev.flashcards,
+        [cardId]: { status, lastReviewedAt: new Date().toISOString() },
+      },
+    }));
+  }, []);
 
   return { progress, markCard };
 }

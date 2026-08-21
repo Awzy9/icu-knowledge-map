@@ -9,6 +9,8 @@ import {
   systematicReviewSchema,
   topicSchema,
   trialSchema,
+  clinicalCaseSchema,
+  medicationChallengeSchema,
   type Calculator,
   type ClinicalProblem,
   type ContentSection,
@@ -22,6 +24,8 @@ import {
   type SystematicReview,
   type Topic,
   type Trial,
+  type ClinicalCase,
+  type MedicationChallenge,
 } from "@/content-types";
 
 export interface RegistryInput {
@@ -35,6 +39,8 @@ export interface RegistryInput {
   readonly problems: readonly ClinicalProblem[];
   readonly flashcards: readonly Flashcard[];
   readonly questions: readonly Question[];
+  readonly cases?: readonly ClinicalCase[];
+  readonly challenges?: readonly MedicationChallenge[];
 }
 
 function collectSectionIds(sections: readonly ContentSection[], out: Set<string>): void {
@@ -59,13 +65,6 @@ function walkPathwayNodes(node: PathwayNode, visit: (node: PathwayNode) => void)
   for (const child of node.children ?? []) walkPathwayNodes(child, visit);
 }
 
-/**
- * Validates every registered content entity against its zod schema, then
- * checks every cross-reference (relationship targets, evidence refs,
- * calculator embeds, related-topic ids) resolves to a real entity. Throws on
- * the first problem found, which fails the Next.js build — this is what
- * makes it safe to add topic #2 without silently producing dead links.
- */
 export function validateContent(input: RegistryInput): void {
   for (const topic of input.topics) {
     const result = topicSchema.safeParse(topic);
@@ -119,6 +118,22 @@ export function validateContent(input: RegistryInput): void {
     const result = questionSchema.safeParse(question);
     if (!result.success) {
       throw new Error(`Invalid question "${question.id}": ${result.error.message}`);
+    }
+  }
+  if (input.cases) {
+    for (const c of input.cases) {
+      const result = clinicalCaseSchema.safeParse(c);
+      if (!result.success) {
+        throw new Error(`Invalid clinical case "${c.id}": ${result.error.message}`);
+      }
+    }
+  }
+  if (input.challenges) {
+    for (const ch of input.challenges) {
+      const result = medicationChallengeSchema.safeParse(ch);
+      if (!result.success) {
+        throw new Error(`Invalid medication challenge "${ch.id}": ${result.error.message}`);
+      }
     }
   }
 

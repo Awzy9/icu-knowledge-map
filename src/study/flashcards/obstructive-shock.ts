@@ -64,13 +64,13 @@ export const obstructiveShockFlashcards: readonly Flashcard[] = [
   {
     "id": "obstructive.fc.massive-pe-thrombolysis",
     "topicId": "obstructive-shock",
-    "question": "What defines Massive Pulmonary Embolism and what is the first-line therapy?",
-    "answer": "Acute PE with sustained systemic hypotension (SBP < 90 mmHg for >15 min or requiring vasopressors). First-line therapy: Systemic Thrombolysis (Alteplase 100 mg IV over 2 hours) or catheter-directed therapy if high bleeding risk.",
-    "explanation": "PEITHO trial established that in hemodynamically unstable shock, thrombolysis rapidly reverses acute RV afterload and prevents cardiovascular collapse.",
+    "question": "What defines Category E1 high-risk Pulmonary Embolism under the 2026 guideline, and what is the advanced reperfusion approach?",
+    "answer": "Persistent hypotension (SBP < 90 mmHg for ≥ 15 min or requiring vasopressors) with cardiogenic shock. Management: prompt advanced reperfusion selecting among guideline-reasonable options (Systemic Thrombolysis [Alteplase 100 mg IV over 2 hours], Catheter-Directed Thrombolysis, Mechanical Thrombectomy, or Surgical Embolectomy) based on bleeding risk and institutional resources.",
+    "explanation": "Under the 2026 AHA/ACC multisociety guideline, advanced reperfusion is Class 2a for systemic thrombolysis, catheter-directed lysis, and mechanical thrombectomy. Systemic thrombolysis provides rapid bedside lysis when bleeding risk is low, while catheter-based and surgical modalities offer targeted alternatives when lysis is contraindicated or high bleeding risk is present.",
     "difficulty": "basic",
     "category": "Management",
     "references": [
-      "Clinical Guidelines and Landmark ICU Evidence in obstructive-shock"
+      "2026 AHA/ACC Multisociety Acute PE Guideline; ESC Guidelines for Pulmonary Embolism."
     ]
   }
 ];

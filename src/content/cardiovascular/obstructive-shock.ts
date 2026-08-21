@@ -182,7 +182,7 @@ export const obstructiveShock: Topic = {
           rows: [
             {
               label: "1. Massive Pulmonary Embolism (Category E)",
-              value: "Systemic Thrombolysis: Alteplase (tPA) 100 mg IV infusion over 2 hours (or 50 mg IV bolus in peri-arrest / cardiac arrest). Full therapeutic Unfractionated Heparin (UFH) continuous infusion.\nCatheter-Directed Therapy (CDT): Catheter-directed thrombolysis or mechanical aspiration thrombectomy (e.g., FlowTriever, Inari) recommended as class 2a alternative per 2026 multi-society guidelines, especially if high bleeding risk.\nSurgical Embolectomy / VA-ECMO: For refractory shock or contraindications to thrombolysis.",
+              value: "Systemic Thrombolysis: Alteplase (tPA) 100 mg IV infusion over 2 hours with therapeutic Unfractionated Heparin (UFH) continuous infusion.\nCatheter-Directed Therapy (CDT): Catheter-directed thrombolysis or mechanical aspiration thrombectomy recommended as class 2a alternative per 2026 multi-society guidelines, especially if high bleeding risk.\nSurgical Embolectomy / VA-ECMO: For refractory shock or contraindications to thrombolysis.",
             },
             {
               label: "2. Cardiac Tamponade",

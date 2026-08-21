@@ -3,6 +3,7 @@ import type {
   ClinicalProblem,
   ContentSection,
   Guideline,
+  Medication,
   Pathway,
   PhysiologyConcept,
   SystematicReview,
@@ -19,7 +20,8 @@ export type SearchEntryType =
   | "guideline"
   | "review"
   | "calculator"
-  | "problem";
+  | "problem"
+  | "medication";
 
 export interface SearchEntry {
   readonly id: string;
@@ -38,15 +40,9 @@ export interface SearchIndexInput {
   readonly pathways: readonly Pathway[];
   readonly physiologyConcepts: readonly PhysiologyConcept[];
   readonly clinicalProblems: readonly ClinicalProblem[];
+  readonly medications?: readonly Medication[];
 }
 
-/**
- * Every section of a complete topic — including nested ones (e.g. "Prone
- * Positioning" -> "Indications") — indexed as its own fine-grained
- * "concept", distinct from the topic itself. This is what lets a query like
- * "PEEP" surface the specific management section inside ARDS, not just ARDS
- * as a whole.
- */
 function collectSectionEntries(topic: Topic): SearchEntry[] {
   const entries: SearchEntry[] = [];
   const visit = (section: ContentSection) => {
@@ -63,9 +59,9 @@ function collectSectionEntries(topic: Topic): SearchEntry[] {
   return entries;
 }
 
-/** Builds the full, flat search index from the local content database — no network calls, computed once at module load. */
 export function buildSearchIndex(input: SearchIndexInput): readonly SearchEntry[] {
   const searchableTopics = input.topics.filter((topic) => topic.status !== "stub");
+  const meds = input.medications ?? [];
 
   return [
     ...searchableTopics.flatMap(collectSectionEntries),
@@ -139,6 +135,15 @@ export function buildSearchIndex(input: SearchIndexInput): readonly SearchEntry[
         title: problem.title,
         subtitle: problem.oneLiner,
         href: `/problems/${problem.slug}`,
+      }),
+    ),
+    ...meds.map(
+      (med): SearchEntry => ({
+        id: `medication-${med.id}`,
+        type: "medication",
+        title: `${med.name} (${med.genericName})`,
+        subtitle: `${med.class} — ${med.summary}`,
+        href: `/medications/${med.slug}`,
       }),
     ),
   ];

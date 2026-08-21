@@ -129,7 +129,7 @@ export const mdrOrganisms: Topic = {
             },
             {
               label: "6. Stenotrophomonas maltophilia",
-              value: "Intrinsically resistant to all carbapenems due to chromosomal L1 metallo-beta-lactamase and L2 serine beta-lactamase.\nPreferred Therapy: High-dose Trimethoprim-Sulfamethoxazole (TMP-SMX 15 mg/kg/day TMP component divided q6–8h) OR Minocycline (200 mg q12h) OR Cefiderocol.",
+              value: "Intrinsically resistant to carbapenems due to L1 metallo-beta-lactamase and L2 serine beta-lactamase. First, determine whether S. maltophilia represents true infection or colonization, particularly when isolated from respiratory specimens (a positive respiratory culture is not an automatic indication for antimicrobial treatment). For invasive infection, current IDSA 2026 guidance identifies Cefiderocol monotherapy as the preferred treatment approach (supporting clinical evidence is limited; treatment depends on susceptibility, site, severity, and response). TMP-SMX is an important active option that may be used as a component of combination therapy for invasive disease, with transition to TMP-SMX monotherapy considered after clear and sustained clinical improvement.",
             },
           ],
         },

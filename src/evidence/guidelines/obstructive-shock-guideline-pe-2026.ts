@@ -7,7 +7,7 @@ export const obstructiveShockGuidelinePe2026: Guideline = {
   title: "Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults",
   year: 2026,
   recommendationText:
-    "For acute PE with persistent hypotension/cardiogenic shock (Category E), systemic thrombolysis, catheter-directed thrombolysis, and mechanical thrombectomy are each reasonable (class 2a); surgical embolectomy may also be considered. PE response teams (PERTs) are recommended to improve timeliness of care, particularly for higher-severity categories.",
+    "For acute PE presenting with persistent hypotension or cardiogenic shock requiring vasopressor/inotropic support (Category E1), advanced reperfusion with systemic thrombolysis, catheter-directed thrombolysis, or catheter mechanical thrombectomy is reasonable (Class 2a); surgical embolectomy may also be considered. In incipient cardiopulmonary failure (Category D1/D2), advanced therapies can be considered in selected deteriorating patients. Multidisciplinary PE response teams (PERTs) are recommended to improve timeliness and individualized therapy selection.",
   strength: "conditional",
   certainty: "moderate",
   status: "current",

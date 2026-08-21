@@ -8,6 +8,7 @@ import { alfGuidelineAasld2023 } from "./alf-guideline-aasld-2023";
 import { alteredGuidelinePadis2018 } from "./altered-guideline-padis-2018";
 import { anticoagGuidelineAcc2020 } from "./anticoag-guideline-acc-2020";
 import { aorticSyndromesGuidelineAccAha2022 } from "./aortic-syndromes-guideline-acc-aha-2022";
+import { aorticSyndromesGuidelineEsc2024 } from "./aortic-syndromes-guideline-esc-2024";
 import { ardsGuidelineEsicm2023Nmb } from "./ards-guideline-esicm-2023-nmb";
 import { ardsGuidelineEsicm2023Peep } from "./ards-guideline-esicm-2023-peep";
 import { ardsGuidelineEsicm2023RecruitmentManeuvers } from "./ards-guideline-esicm-2023-recruitment-maneuvers";
@@ -25,7 +26,7 @@ import { cardiacArrestGuidelineAhaErcIlcor2021 } from "./cardiac-arrest-guidelin
 import { cardiogenicShockGuidelineAha2017 } from "./cardiogenic-shock-guideline-aha-2017";
 import { copdGuidelineGold2024 } from "./copd-guideline-gold-2024";
 import { dicGuidelineIsth2025 } from "./dic-guideline-isth-2025";
-import { dkaGuidelineAda2023 } from "./dka-guideline-ada-2023";
+import { dkaGuidelineConsensus2024 } from "./dka-guideline-consensus-2024";
 import { ecmoGuidelineElso2021 } from "./ecmo-guideline-elso-2021";
 import { endocarditisGuidelineEsc2023 } from "./endocarditis-guideline-esc-2023";
 import { endocrineGuidelineAtaThyroidStorm2016 } from "./endocrine-guideline-ata-thyroid-storm-2016";
@@ -88,6 +89,7 @@ export const guidelines: readonly Guideline[] = [
   alteredGuidelinePadis2018,
   anticoagGuidelineAcc2020,
   aorticSyndromesGuidelineAccAha2022,
+  aorticSyndromesGuidelineEsc2024,
   ardsGuidelineEsicm2023Nmb,
   ardsGuidelineEsicm2023Peep,
   ardsGuidelineEsicm2023RecruitmentManeuvers,
@@ -105,7 +107,7 @@ export const guidelines: readonly Guideline[] = [
   cardiogenicShockGuidelineAha2017,
   copdGuidelineGold2024,
   dicGuidelineIsth2025,
-  dkaGuidelineAda2023,
+  dkaGuidelineConsensus2024,
   ecmoGuidelineElso2021,
   endocarditisGuidelineEsc2023,
   endocrineGuidelineAtaThyroidStorm2016,

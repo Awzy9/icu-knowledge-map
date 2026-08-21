@@ -31,7 +31,7 @@ export const asthmaQuestions: readonly Question[] = [
     "difficulty": "basic",
     "category": "Diagnosis",
     "references": [
-      "GINA Guidelines 2023; British Thoracic Society Asthma Guidelines."
+      "Global Initiative for Asthma (2026 GINA Report); British Thoracic Society Asthma Guidelines."
     ]
   },
   {
@@ -97,7 +97,7 @@ export const asthmaQuestions: readonly Question[] = [
     "difficulty": "intermediate",
     "category": "Management",
     "references": [
-      "3Mg Trial; Cochrane Database Syst Rev 2014; GINA 2023."
+      "3Mg Trial; Cochrane Database Syst Rev 2014; 2026 GINA Report."
     ]
   },
   {

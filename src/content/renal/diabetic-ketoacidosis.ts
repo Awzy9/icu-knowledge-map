@@ -40,8 +40,8 @@ export const diabeticKetoacidosis: Topic = {
       evidenceRefs: [
         {
           kind: "guideline",
-          id: "dka-guideline-ada-2023",
-          relevance: "ADA/EASD consensus report on management of hyperglycemic emergencies in adults"
+          id: "dka-guideline-consensus-2024",
+          relevance: "ADA/EASD/JBDS/AACE/DTS 2024 consensus report on management of hyperglycemic crises in adults"
         }
       ],
       kind: "overview",
@@ -157,11 +157,11 @@ export const diabeticKetoacidosis: Topic = {
             },
             {
               label: "Step 2: Potassium Management (THE CARDINAL RULE: Check K+ BEFORE Insulin)",
-              value: "• If Serum K+ < 3.3 mEq/L: HOLD INSULIN! Administer IV KCl 20–40 mEq/hr until serum K+ rises > 3.3 mEq/L. (Giving insulin in severe hypokalemia drives remaining K+ intracellularly, precipitating fatal cardiac arrest or diaphragmatic paralysis).\n• If Serum K+ 3.3–5.2 mEq/L: Start IV insulin AND immediately add 20–30 mEq KCl per liter of IV fluids to maintain serum K+ strictly between 4.0–5.0 mEq/L.\n• If Serum K+ > 5.2 mEq/L: Start IV insulin; do NOT add potassium to IV fluids; recheck K+ every 1–2 hours.",
+              value: "• If Serum K+ ≤ 3.5 mmol/L (or < 3.5 mEq/L): DELAY/HOLD INSULIN! Administer IV KCl 20–40 mmol/hr until serum K+ rises > 3.5 mmol/L. (Giving insulin in hypokalemia drives remaining K+ intracellularly, precipitating fatal cardiac arrest or diaphragmatic paralysis).\n• If Serum K+ > 3.5 to 5.3 mmol/L: Start IV insulin AND immediately add 20–30 mmol KCl per liter of IV fluids once urine output is established to maintain serum K+ strictly between 4.0–5.0 mmol/L.\n• If Serum K+ > 5.3 mmol/L: Start IV insulin; do NOT add potassium to IV fluids; recheck K+ every 1–2 hours.",
             },
             {
               label: "Step 3: Continuous IV Regular Insulin Infusion",
-              value: "• Dose: 0.10 units/kg/hr continuous IV infusion (or 0.14 U/kg/hr without an IV bolus; boluses are unnecessary and increase hypoglycemia risk).\n• Target Glycemic Rate of Fall: 50 to 70 mg/dL per hour. If glucose drops < 50 mg/dL in the first hour, increase fluid rate or double insulin infusion rate.",
+              value: "• Dose: 0.10 units/kg/hr continuous IV infusion (or 0.14 U/kg/hr without an IV bolus; boluses are unnecessary and increase hypoglycemia risk).\n• Target Glycemic Rate of Fall: 50 to 70 mg/dL per hour. If glucose drops < 50 mg/dL in the first hour, increase fluid rate or adjust insulin infusion rate.",
             },
             {
               label: "Step 4: Dextrose Addition to Prevent Hypoglycemia & Clear Ketones",
@@ -169,11 +169,11 @@ export const diabeticKetoacidosis: Topic = {
             },
             {
               label: "Step 5: Bicarbonate & Phosphate Rules",
-              value: "• Sodium Bicarbonate: Strictly NOT recommended for pH ≥ 6.90. (Bicarbonate causes paradoxical CSF acidosis, hypocalcemia, and delayed clearance of ketonemia). If pH < 6.90: 100 mmol Sodium Bicarbonate in 400 mL sterile water with 20 mEq KCl over 2 hours.\n• Phosphate: Replace (20–30 mmol Potassium Phosphate) ONLY if serum phosphate drops < 1.0 mg/dL or if respiratory muscle weakness / rhabdomyolysis develops.",
+              value: "• Sodium Bicarbonate: Strictly NOT recommended for routine use. (Bicarbonate does not improve outcomes and causes paradoxical CSF acidosis, hypocalcemia, and delayed clearance of ketonemia). Only considered in severe acidemia (pH < 7.0) with hemodynamic collapse or life-threatening hyperkalemia: 100 mmol Sodium Bicarbonate in 400 mL sterile water with 20 mEq KCl over 2 hours.\n• Phosphate: Replace (20–30 mmol Potassium Phosphate) ONLY if serum phosphate drops < 1.0 mg/dL or if respiratory muscle weakness / rhabdomyolysis develops.",
             },
             {
-              label: "Step 6: Resolution Criteria & Subcutaneous Transition Protocol",
-              value: "• DKA Resolution Criteria (Must Meet ALL):\n  1. Venous/Arterial pH > 7.30\n  2. Serum Bicarbonate ≥ 18 mEq/L\n  3. Anion Gap Normalized (≤ 12 mEq/L)\n  4. Serum Beta-Hydroxybutyrate < 0.6–1.0 mmol/L\n  5. Patient alert and tolerating oral intake.\n• THE TRANSITION OVERLAP MANDATE: Administer Subcutaneous Basal Insulin (Glargine or Degludec, 0.2–0.3 units/kg or home dose) exactly 2 to 4 hours BEFORE stopping the IV insulin infusion. (Stopping IV insulin without basal overlap causes acute rebound ketoacidosis within 30–60 minutes due to the ultra-short 5-minute half-life of IV regular insulin).",
+              label: "Step 6: Resolution Criteria & Subcutaneous Transition Protocol (2024 Consensus)",
+              value: "• DKA Resolution Criteria:\n  1. Plasma Beta-Hydroxybutyrate < 0.6 mmol/L (Preferred Gold Standard for ketone resolution) AND\n  2. Venous pH ≥ 7.30 OR Serum Bicarbonate ≥ 18 mmol/L (Acid-base recovery)\n  3. Blood Glucose ideally < 200 mg/dL (11.1 mmol/L)\n  4. Patient alert and able to tolerate oral intake.\n• Anion Gap & Hyperchloremia Pearl: Anion gap normalization is not the primary resolution criterion because hyperchloremic non-gap acidosis (NAGMA) from large-volume crystalloid resuscitation often depresses bicarbonate even after ketoacidosis has fully resolved. Direct measurement of beta-hydroxybutyrate prevents prolonged unnecessary IV insulin.\n• THE TRANSITION OVERLAP MANDATE: Administer Subcutaneous Basal Insulin (Glargine or Degludec, 0.2–0.3 units/kg or home dose) exactly 2 to 4 hours (minimum 2 hours) BEFORE stopping the IV insulin infusion. (Stopping IV insulin without basal overlap causes acute rebound ketoacidosis within 30–60 minutes due to the ultra-short 5-minute half-life of IV regular insulin).",
             },
           ],
         },
@@ -209,10 +209,10 @@ export const diabeticKetoacidosis: Topic = {
           type: "list",
           ordered: false,
           items: [
-            "Administering insulin when serum potassium is < 3.3 mEq/L: Causes lethal hypokalemic ventricular fibrillation or respiratory arrest; always check K+ and replete first.",
-            "Stopping the IV insulin infusion as soon as blood glucose reaches 200 mg/dL: Blood glucose normalizes hours before ketoacidosis resolves; add 5–10% Dextrose and CONTINUE insulin until the anion gap closes.",
-            "Stopping IV insulin without a 2-hour subcutaneous basal insulin overlap: Rebound ketoacidosis recurs rapidly; administer SubQ Glargine 2–4 hours before turning off the IV infusion.",
-            "Monitoring urine ketones instead of serum beta-hydroxybutyrate to assess resolution: Urine dipsticks measure acetoacetate, which increases as beta-hydroxybutyrate oxidizes during recovery, falsely suggesting worsening DKA; track serum beta-hydroxybutyrate or the serum anion gap.",
+            "Administering insulin when serum potassium is ≤ 3.5 mmol/L: Causes lethal hypokalemic ventricular fibrillation or respiratory arrest; always check K+, delay insulin, and replete first until K+ > 3.5 mmol/L.",
+            "Stopping the IV insulin infusion as soon as blood glucose reaches 200 mg/dL: Blood glucose normalizes hours before ketoacidosis resolves; add 5–10% Dextrose and CONTINUE insulin until beta-hydroxybutyrate clears (< 0.6 mmol/L).",
+            "Stopping IV insulin without a 2- to 4-hour subcutaneous basal insulin overlap: Rebound ketoacidosis recurs rapidly; administer SubQ Glargine/Degludec 2–4 hours before turning off the IV infusion.",
+            "Relying on urine ketones or anion gap instead of serum beta-hydroxybutyrate to assess resolution: Urine dipsticks measure acetoacetate (which increases as beta-hydroxybutyrate oxidizes), and hyperchloremic non-gap acidosis can keep bicarbonate low; track serum beta-hydroxybutyrate (< 0.6 mmol/L).",
             "Missing Euglycemic DKA in patients on SGLT2 inhibitors: Never rule out DKA based on normal blood glucose; check anion gap and beta-hydroxybutyrate.",
           ],
         },

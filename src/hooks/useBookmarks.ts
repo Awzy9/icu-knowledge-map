@@ -1,32 +1,76 @@
 "use client";
 
-import { useLocalStorageState } from "./useLocalStorageState";
+import { useSyncExternalStore, useCallback } from "react";
+import {
+  getUnifiedLearningState,
+  updateUnifiedLearningState,
+  subscribeToLearningState,
+  DEFAULT_LEARNING_STATE,
+} from "@/lib/learning-state";
 import type { BookmarkableType } from "@/registry";
 
 export interface BookmarkEntry {
   readonly id: string;
   readonly type: BookmarkableType;
   readonly savedAt: string;
+  readonly note?: string;
 }
 
-const STORAGE_KEY = "icu-km:bookmarks";
-
 export function useBookmarks() {
-  const { value: bookmarks, setValue: setBookmarks } = useLocalStorageState<BookmarkEntry[]>(
-    STORAGE_KEY,
-    [],
+  const state = useSyncExternalStore(
+    subscribeToLearningState,
+    getUnifiedLearningState,
+    () => DEFAULT_LEARNING_STATE
   );
 
-  const isBookmarked = (type: BookmarkableType, id: string) =>
-    bookmarks.some((entry) => entry.type === type && entry.id === id);
+  const bookmarks: BookmarkEntry[] = (state.bookmarks || []).map((b) => ({
+    id: b.id,
+    type: b.type as BookmarkableType,
+    savedAt: b.savedAt,
+    note: b.note,
+  }));
 
-  const toggleBookmark = (type: BookmarkableType, id: string) => {
-    setBookmarks((prev) => {
-      const exists = prev.some((entry) => entry.type === type && entry.id === id);
-      if (exists) return prev.filter((entry) => !(entry.type === type && entry.id === id));
-      return [...prev, { id, type, savedAt: new Date().toISOString() }];
-    });
-  };
+  const isBookmarked = useCallback(
+    (type: BookmarkableType, id: string): boolean => {
+      return (state.bookmarks || []).some((entry) => entry.type === type && entry.id === id);
+    },
+    [state.bookmarks]
+  );
 
-  return { bookmarks, isBookmarked, toggleBookmark };
+  const toggleBookmark = useCallback(
+    (type: BookmarkableType, id: string, note?: string) => {
+      updateUnifiedLearningState((prev) => {
+        const currentBookmarks = prev.bookmarks || [];
+        const exists = currentBookmarks.some((entry) => entry.type === type && entry.id === id);
+        if (exists) {
+          return {
+            ...prev,
+            bookmarks: currentBookmarks.filter((entry) => !(entry.type === type && entry.id === id)),
+          };
+        }
+        return {
+          ...prev,
+          bookmarks: [...currentBookmarks, { id, type, savedAt: new Date().toISOString(), note }],
+        };
+      });
+    },
+    []
+  );
+
+  const updateBookmarkNote = useCallback(
+    (type: BookmarkableType, id: string, note: string) => {
+      updateUnifiedLearningState((prev) => {
+        const currentBookmarks = prev.bookmarks || [];
+        return {
+          ...prev,
+          bookmarks: currentBookmarks.map((entry) =>
+            entry.type === type && entry.id === id ? { ...entry, note: note.trim() || undefined } : entry
+          ),
+        };
+      });
+    },
+    []
+  );
+
+  return { bookmarks, isBookmarked, toggleBookmark, updateBookmarkNote };
 }

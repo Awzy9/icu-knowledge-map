@@ -3,6 +3,7 @@ import type { SearchEntryType } from "@/registry";
 export const searchCategoryLabel: Record<SearchEntryType, string> = {
   section: "Concepts",
   topic: "Topics",
+  medication: "ICU Medications",
   physiology: "Physiology",
   pathway: "Clinical Pathways",
   trial: "Trials",
@@ -16,6 +17,7 @@ export const searchCategoryLabel: Record<SearchEntryType, string> = {
 export const searchCategoryOrder: readonly SearchEntryType[] = [
   "section",
   "topic",
+  "medication",
   "physiology",
   "pathway",
   "trial",

@@ -10,3 +10,7 @@ export * from "./question";
 export * from "./physiology-concept";
 export * from "./pathway";
 export * from "./clinical-problem";
+export * from "./medication";
+export * from "./clinical-case";
+export * from "./medication-challenge";
+export * from "./physiology-profile";

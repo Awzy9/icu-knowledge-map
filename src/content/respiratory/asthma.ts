@@ -20,9 +20,9 @@ export const asthma: Topic = {
       edition: "9th Edition, 2020",
     },
   ],
-  currentStatus: "Current as of the 2026 GINA Strategy Report and international neurocritical/respiratory consensus on status asthmaticus management.",
+  currentStatus: "Current as of the Global Initiative for Asthma (2026 GINA Report) and international critical care consensus on status asthmaticus management.",
   otherReferences: [
-    "Global Initiative for Asthma. 2026 GINA Strategy Report.",
+    "Global Initiative for Asthma. Global Strategy for Asthma Management and Prevention (2026 GINA Report). Available from: www.ginasthma.org.",
     "Tuxen DV. Detrimental effects of positive end-expiratory pressure during controlled mechanical ventilation of patients with severe airflow obstruction. Am Rev Respir Dis. 1989;140(1):5-9.",
     "Leatherman J. Mechanical ventilation for severe asthma. Chest. 2015;147(6):1671-1680.",
   ],
@@ -41,7 +41,7 @@ export const asthma: Topic = {
         {
           kind: "guideline",
           id: "asthma-guideline-gina-2023",
-          relevance: "GINA 2023 Global Strategy for Asthma Management and Prevention"
+          relevance: "2026 GINA Global Strategy for Asthma Management and Prevention"
         },
         {
           kind: "systematic-review",

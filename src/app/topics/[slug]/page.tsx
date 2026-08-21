@@ -12,6 +12,7 @@ import {
   getCalculatorsForTopic,
   getFlashcardsForTopic,
   getQuestionsForTopic,
+  getRelatedContentForTopic,
 } from "@/registry";
 import { TopicLayoutShell } from "@/components/layout/TopicLayoutShell";
 import { MobileSectionNav } from "@/components/layout/MobileSectionNav";
@@ -23,6 +24,7 @@ import { KnowledgeMap } from "@/components/knowledge-map/KnowledgeMap";
 import { KnowledgeMapTree } from "@/components/knowledge-map/KnowledgeMapTree";
 import { EvidenceRightRail } from "@/components/evidence/EvidenceRightRail";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { RelatedContent } from "@/components/content/RelatedContent";
 import { EvidenceTimeline } from "@/components/evidence/EvidenceTimeline";
 import { TopicReferencesSection } from "@/components/content/TopicReferencesSection";
 import { TopicRelatedConceptsSection } from "@/components/content/TopicRelatedConceptsSection";
@@ -178,6 +180,11 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
             <TopicRelatedConceptsSection topicId={topic.id} />
 
             {/* Contextual Next Steps / What Next */}
+            {/* Related Content */}
+            <div className="mt-8 mb-8 pt-8 border-t border-border">
+              <RelatedContent {...getRelatedContentForTopic(topic.id)} />
+            </div>
+
             <WhatNextNav
               currentTopic={topic}
               problems={problems}

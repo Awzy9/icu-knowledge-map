@@ -1,20 +1,45 @@
 "use client";
 
-import { useLocalStorageState } from "./useLocalStorageState";
-
-const STORAGE_KEY = "icu-km:completed-topics";
+import { useSyncExternalStore, useCallback } from "react";
+import {
+  getUnifiedLearningState,
+  updateUnifiedLearningState,
+  subscribeToLearningState,
+  DEFAULT_LEARNING_STATE,
+} from "@/lib/learning-state";
 
 export function useCompletedTopics() {
-  const { value: completedTopicIds, setValue: setCompletedTopicIds } = useLocalStorageState<string[]>(
-    STORAGE_KEY,
-    [],
+  const state = useSyncExternalStore(
+    subscribeToLearningState,
+    getUnifiedLearningState,
+    () => DEFAULT_LEARNING_STATE
   );
 
-  const isCompleted = (topicId: string) => completedTopicIds.includes(topicId);
+  const completedTopicIds = Object.entries(state.topics || {})
+    .filter(([_, t]) => t.completed)
+    .map(([id]) => id);
 
-  const toggleCompleted = (topicId: string) => {
-    setCompletedTopicIds((prev) => (prev.includes(topicId) ? prev.filter((id) => id !== topicId) : [...prev, topicId]));
-  };
+  const isCompleted = useCallback(
+    (topicId: string) => !!state.topics?.[topicId]?.completed,
+    [state.topics]
+  );
+
+  const toggleCompleted = useCallback((topicId: string) => {
+    updateUnifiedLearningState((prev) => {
+      const existing = prev.topics?.[topicId] || { viewed: true, completed: false };
+      return {
+        ...prev,
+        topics: {
+          ...prev.topics,
+          [topicId]: {
+            ...existing,
+            completed: !existing.completed,
+            lastViewedAt: new Date().toISOString(),
+          },
+        },
+      };
+    });
+  }, []);
 
   return { completedTopicIds, isCompleted, toggleCompleted };
 }

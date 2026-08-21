@@ -59,7 +59,7 @@ export const sepsisBundleWorkflow: Pathway = {
             label: "Reassess lactate clearance and perfusion indices at 3–6 hours",
             kind: "step",
             role: "reassessment",
-            detail: "Target >= 20% lactate clearance per 2h. Normalize capillary refill time and restore urine output.",
+            detail: "Monitor serial lactate downtrend interpreted in clinical context alongside capillary refill time (target <= 2s) and urine output (>= 0.5 mL/kg/hr); do not continue fluid boluses solely to normalize lactate once volume responsiveness is exhausted.",
             children: [
               {
                 id: "microbiology-de-escalation-48-72h",

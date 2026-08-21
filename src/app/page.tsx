@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import Link from "next/link";
 import {
   getAllCalculators,
@@ -5,7 +6,10 @@ import {
   getAllPathways,
   getAllTopics,
   getGraph,
+  getAllMedicationChallenges,
 } from "@/registry";
+import { ContinueLearning } from "@/components/learn/ContinueLearning";
+import { DailyChallengeWidget } from "@/components/learn/DailyChallengeWidget";
 import { categoryStyle } from "@/lib/category-style";
 import { RelationshipGraph } from "@/components/graph/RelationshipGraph";
 import { GraphLegend } from "@/components/graph/GraphLegend";
@@ -53,6 +57,14 @@ const ACTION_PILLARS = [
     badge: "Flashcards & Scenarios",
     href: "/study",
     action: "Start Practice",
+  },
+  {
+    step: "LEARN",
+    title: "Active Learning Engine",
+    description: "Engage with clinical reasoning cases, medication challenges, and daily scenarios.",
+    badge: "Cases & Challenges",
+    href: "/learn",
+    action: "Open Learning Hub",
   },
   {
     step: "CALCULATE",
@@ -143,6 +155,16 @@ export default function HomePage() {
             Knowledge Map
           </Link>
         </div>
+      </section>
+
+      {/* NEW ACTIVE LEARNING WIDGETS */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-border pt-12">
+        <Suspense fallback={<div className="h-40 bg-surface animate-pulse rounded-xl border border-border" />}>
+          <ContinueLearning />
+        </Suspense>
+        <Suspense fallback={<div className="h-40 bg-surface animate-pulse rounded-xl border border-border" />}>
+          <DailyChallengeWidget challenges={getAllMedicationChallenges()} />
+        </Suspense>
       </section>
 
       {/* WHAT ARE YOU TRYING TO DO? — PRIMARY ACTION-ORIENTED ENTRY POINTS */}

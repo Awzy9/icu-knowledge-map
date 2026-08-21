@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { OfflineIndicator } from "@/components/layout/OfflineIndicator";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
@@ -54,6 +55,18 @@ const themeScript = `
 })();
 `;
 
+const swScript = `
+(function() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(reg) {
+        reg.update();
+      }).catch(function() {});
+    });
+  }
+})();
+`;
+
 export default function RootLayout({ children }: { readonly children: React.ReactNode }) {
   return (
     <html
@@ -62,12 +75,19 @@ export default function RootLayout({ children }: { readonly children: React.Reac
       className={`${inter.variable} ${sourceSerif.variable} h-full antialiased`}
     >
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: swScript }} />
       </head>
       <body className="flex min-h-full flex-col bg-canvas text-ink">
         <ThemeProvider>
           <SiteHeader />
           <div className="flex-1">{children}</div>
+          <OfflineIndicator />
           <SiteFooter />
         </ThemeProvider>
       </body>

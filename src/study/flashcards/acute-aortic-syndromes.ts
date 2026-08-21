@@ -18,7 +18,7 @@ export const acuteAorticSyndromesFlashcards: readonly Flashcard[] = [
     "topicId": "acute-aortic-syndromes",
     "sectionId": "acute-aortic-syndromes.anti-impulse-therapy",
     "question": "What is the critical sequence of pharmacotherapy in anti-impulse therapy for acute aortic dissection?",
-    "answer": "Administer IV Beta-blocker (Esmolol or Labetalol) FIRST to achieve heart rate < 60 bpm, then add IV Vasodilator (Nicardipine/Clevidipine/Nitroprusside) if SBP remains > 120 mmHg.",
+    "answer": "Administer IV Beta-blocker (Esmolol or Labetalol) FIRST to achieve heart rate control (~60-80 bpm, where tolerated), then add IV Vasodilator (Nicardipine/Clevidipine/Nitroprusside) if SBP remains >= 120 mmHg.",
     "explanation": "Vasodilators given without prior beta-blockade cause reflex tachycardia, increasing dP/dt (shear stress) and propagating dissection tears.",
     "difficulty": "intermediate",
     "references": [
@@ -34,8 +34,8 @@ export const acuteAorticSyndromesFlashcards: readonly Flashcard[] = [
     "topicId": "acute-aortic-syndromes",
     "sectionId": "acute-aortic-syndromes.anti-impulse-therapy",
     "question": "What are the target heart rate and blood pressure goals in acute aortic dissection?",
-    "answer": "Heart rate < 60 bpm and Systolic Blood Pressure 100-120 mmHg within 20 minutes of presentation.",
-    "explanation": "Minimizes left ventricular ejection force (dP/dt) and systemic wall tension (Laplace law).",
+    "answer": "Heart rate ~60-80 bpm, where tolerated and clinically appropriate, and Systolic Blood Pressure < 120 mmHg or the lowest BP that maintains adequate end-organ perfusion.",
+    "explanation": "Minimizes left ventricular ejection force (dP/dt) and systemic wall tension (Laplace law); these are titration targets, not rigid universal cutoffs for every patient.",
     "difficulty": "basic",
     "references": [
       "2022 ACC/AHA Guideline"
@@ -46,8 +46,8 @@ export const acuteAorticSyndromesFlashcards: readonly Flashcard[] = [
     "topicId": "acute-aortic-syndromes",
     "sectionId": "acute-aortic-syndromes.stanford-classification",
     "question": "What clinical features define complicated Stanford Type B aortic dissection requiring urgent intervention (TEVAR)?",
-    "answer": "Established complications including: 1. Aortic rupture or impending rupture, 2. Branch-vessel malperfusion syndromes (mesenteric, renal, spinal, or limb ischemia), 3. Refractory/recurrent severe pain, and 4. Uncontrolled hypertension despite maximal medical therapy.",
-    "explanation": "Complicated Type B carries high mortality with medical therapy alone, necessitating emergent TEVAR. Separate high-risk anatomical features (e.g. false lumen diameter >20–22 mm, primary entry tear >10 mm or on lesser curve) may prompt proactive TEVAR.",
+    "answer": "Established complications including: 1. Aortic rupture or impending rupture, 2. Branch-vessel occlusion/malperfusion (mesenteric, renal, spinal, or limb ischemia), 3. Dissection extension or progressive aortic enlargement, 4. Intractable/refractory pain, and 5. Uncontrolled hypertension despite maximal medical therapy.",
+    "explanation": "Complicated Type B generally warrants TEVAR when anatomy is suitable (open/hybrid otherwise). Separate high-risk anatomical features in uncomplicated Type B (e.g. false lumen diameter >20-22 mm, primary entry tear >10 mm or on lesser curve) may prompt individualized consideration of pre-emptive TEVAR, but a high-risk feature alone is not an automatic TEVAR indication.",
     "difficulty": "intermediate",
     "references": [
       {

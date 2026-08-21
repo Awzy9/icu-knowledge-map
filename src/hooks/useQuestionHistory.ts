@@ -1,6 +1,12 @@
 "use client";
 
-import { useLocalStorageState } from "./useLocalStorageState";
+import { useSyncExternalStore, useCallback } from "react";
+import {
+  getUnifiedLearningState,
+  updateUnifiedLearningState,
+  subscribeToLearningState,
+  DEFAULT_LEARNING_STATE,
+} from "@/lib/learning-state";
 
 export interface QuestionHistoryEntry {
   readonly lastOptionId: string;
@@ -9,18 +15,45 @@ export interface QuestionHistoryEntry {
 }
 export type QuestionHistoryMap = Record<string, QuestionHistoryEntry>;
 
-const STORAGE_KEY = "icu-km:question-history";
-
-/** Global (not per-topic) so a single store backs both the quiz and the cross-topic Progress / review-incorrect flow. */
 export function useQuestionHistory() {
-  const { value: history, setValue: setHistory } = useLocalStorageState<QuestionHistoryMap>(STORAGE_KEY, {});
+  const state = useSyncExternalStore(
+    subscribeToLearningState,
+    getUnifiedLearningState,
+    () => DEFAULT_LEARNING_STATE
+  );
 
-  const recordAnswer = (questionId: string, optionId: string, correct: boolean) => {
-    setHistory((prev) => ({
-      ...prev,
-      [questionId]: { lastOptionId: optionId, correct, attemptedAt: new Date().toISOString() },
-    }));
-  };
+  const history: QuestionHistoryMap = Object.entries(state.questions || {}).reduce(
+    (acc, [id, data]) => {
+      const last = data.attempts[data.attempts.length - 1];
+      if (!last) return acc;
+      return {
+        ...acc,
+        [id]: {
+          lastOptionId: last.optionId,
+          correct: last.correct,
+          attemptedAt: last.attemptedAt,
+        },
+      };
+    },
+    {}
+  );
+
+  const recordAnswer = useCallback((questionId: string, optionId: string, correct: boolean) => {
+    updateUnifiedLearningState((prev) => {
+      const existing = prev.questions?.[questionId] || { attempts: [], lastAttemptedAt: "" };
+      const now = new Date().toISOString();
+      return {
+        ...prev,
+        questions: {
+          ...prev.questions,
+          [questionId]: {
+            attempts: [...existing.attempts, { optionId, correct, attemptedAt: now }],
+            lastAttemptedAt: now,
+          },
+        },
+      };
+    });
+  }, []);
 
   return { history, recordAnswer };
 }
