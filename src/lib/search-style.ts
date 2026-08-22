@@ -16,6 +16,7 @@ export const searchCategoryLabel: Record<SearchEntryType, string> = {
   guideline: "Guidelines",
   review: "Systematic Reviews",
   calculator: "Calculators",
+  comparison: "Comparisons",
 };
 
 /** Stable tiebreaker when two category groups score equally on a query. */
@@ -35,6 +36,7 @@ export const searchCategoryOrder: readonly SearchEntryType[] = [
   "calculator",
   "flashcard",
   "question",
+  "comparison",
 ];
 
 /**
@@ -57,4 +59,5 @@ export const searchCategoryBadge: Record<SearchEntryType, { label: string; class
   guideline: { label: "Guideline", className: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20" },
   review: { label: "Synthesis", className: "bg-teal-500/15 text-teal-600 dark:text-teal-400 border border-teal-500/20" },
   calculator: { label: "Calculator", className: "bg-lime-500/15 text-lime-700 dark:text-lime-300 border border-lime-500/20" },
+  comparison: { label: "Compare", className: "bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20" },
 };

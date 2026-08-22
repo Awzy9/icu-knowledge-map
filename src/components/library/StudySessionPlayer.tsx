@@ -84,7 +84,7 @@ export function StudySessionPlayer({ setId, catalog }: StudySessionPlayerProps) 
         <p className="mt-1 text-sm text-ink-muted">{current.subtitle}</p>
         <Link
           href={current.href}
-          className="mt-4 inline-flex min-h-11 items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-contrast"
+          className="mt-4 inline-flex min-h-11 items-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white"
         >
           Open this item →
         </Link>

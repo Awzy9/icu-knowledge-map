@@ -125,7 +125,7 @@ export function KnowledgeMapControls({
           onClick={() => onCategoryChange("all")}
           className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full font-medium transition-all ${
             selectedCategory === "all"
-              ? "bg-accent text-accent-contrast shadow-xs"
+              ? "bg-accent text-white shadow-xs"
               : "bg-surface-muted/80 text-ink-muted hover:text-ink border border-border"
           }`}
         >

@@ -8,6 +8,7 @@ import {
 } from "@/registry";
 import { rapidDecisions } from "@/content/rapid-decisions";
 import { icuErrors } from "@/content/icu-errors";
+import { getAllComparisons } from "@/content/comparisons";
 import { formatContentId } from "@/lib/content-id";
 import type { ResolvedItem } from "@/components/library/StudySetsPanel";
 
@@ -99,6 +100,16 @@ export function getStudySetCatalog(): readonly ResolvedItem[] {
       title: error.title,
       subtitle: "Find the ICU Error",
       href: `/learn/find-the-error#${error.id}`,
+    });
+  }
+
+  for (const comparison of getAllComparisons()) {
+    items.push({
+      contentId: formatContentId("comparison", comparison.id),
+      kind: "comparison",
+      title: comparison.title,
+      subtitle: comparison.subtitle ?? comparison.system,
+      href: `/compare/${comparison.id}`,
     });
   }
 

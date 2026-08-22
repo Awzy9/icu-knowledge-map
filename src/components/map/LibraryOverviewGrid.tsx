@@ -103,7 +103,7 @@ export function LibraryOverviewGrid({
                         <span
                           className={`shrink-0 text-[11px] px-2 py-0.5 rounded-full font-medium transition-colors ${
                             isSelected
-                              ? "bg-accent text-accent-contrast"
+                              ? "bg-accent text-white"
                               : "bg-surface-muted border border-border text-ink-muted group-hover:bg-accent-soft group-hover:text-accent-strong"
                           }`}
                           title={`${connections} unique clinical connections mapped`}

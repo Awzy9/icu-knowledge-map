@@ -92,7 +92,7 @@ export function SelectedTopicPanel({
           {selectedNode.status !== "stub" ? (
             <Link
               href={`/topics/${selectedNode.slug}`}
-              className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-accent text-accent-contrast font-medium hover:bg-accent-strong transition-colors shadow-sm"
+              className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-lg bg-accent text-white font-medium hover:bg-accent-strong transition-colors shadow-sm"
             >
               <span>Open Complete Topic</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

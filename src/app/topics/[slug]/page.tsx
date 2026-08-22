@@ -25,6 +25,9 @@ import { KnowledgeMapTree } from "@/components/knowledge-map/KnowledgeMapTree";
 import { EvidenceRightRail } from "@/components/evidence/EvidenceRightRail";
 import { EvidenceFreshnessPanel } from "@/components/evidence/EvidenceFreshnessPanel";
 import { deriveFreshness } from "@/content-types/evidence-freshness";
+import { TopicCompareLinks } from "@/components/compare/TopicCompareLinks";
+import { LearnBedsideShell, BedsideView } from "@/components/content/ContentModeToggle";
+import { getBedsideGuide } from "@/content/bedside";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RelatedContent } from "@/components/content/RelatedContent";
 import { EvidenceTimeline } from "@/components/evidence/EvidenceTimeline";
@@ -100,6 +103,8 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
   const flashcards = getFlashcardsForTopic(topic.id);
   const questions = getQuestionsForTopic(topic.id);
 
+  const bedsideGuide = getBedsideGuide(topic.id);
+
   return (
     <TopicLayoutShell
       mobileNav={
@@ -138,6 +143,14 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
           />
 
           <TopicClinicalOrientation topic={topic} />
+
+          <TopicCompareLinks topicId={topic.id} />
+
+          <LearnBedsideShell
+            storageKey={`topic:${topic.slug}`}
+            bedside={bedsideGuide ? <BedsideView guide={bedsideGuide} topicTitle={topic.title} /> : undefined}
+            learn={
+              <div className="flex flex-col gap-6">
 
           {topic.status === "placeholder" && (
             <Callout tone="caution">
@@ -206,6 +219,9 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
               nextTopic={nextTopic?.id !== topic.id ? nextTopic : undefined}
             />
           </div>
+              </div>
+            }
+          />
         </div>
       }
       right={<EvidenceRightRail sectionIds={sectionIds} />}

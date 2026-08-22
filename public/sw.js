@@ -1,5 +1,5 @@
 /**
- * ICU Knowledge Map — Service Worker (Plain JavaScript - Version 5)
+ * ICU Knowledge Map — Service Worker (Plain JavaScript - Version 6)
  *
  * Resilient Precache Strategy:
  * - Pre-caches app shell, learning hubs, all 48 medication guides, and the search index.
@@ -11,10 +11,10 @@
  * - Friendly offline fallback for external literature links (PubMed, DOI, journals).
  */
 
-const CACHE_VERSION = "icu-km-v5";
-const APP_SHELL_CACHE = "icu-km-core-v5";
-const CONTENT_CACHE = "icu-km-content-v5";
-const STATIC_CACHE = "icu-km-static-v5";
+const CACHE_VERSION = "icu-km-v6";
+const APP_SHELL_CACHE = "icu-km-core-v6";
+const CONTENT_CACHE = "icu-km-content-v6";
+const STATIC_CACHE = "icu-km-static-v6";
 
 /** Core URLs guaranteed for offline ICU education */
 const PRECACHE_URLS = [
@@ -29,6 +29,7 @@ const PRECACHE_URLS = [
   "/learn/daily-challenge",
   "/learn/physiology-compare",
   "/learn/physiology-playground",
+  "/compare",
   "/progress",
   "/library",
   // Search index — precached so global search keeps working offline.

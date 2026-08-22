@@ -85,7 +85,7 @@ export function StudySetsPanel({ catalog }: StudySetsPanelProps) {
         <button
           type="submit"
           disabled={newSetName.trim() === ""}
-          className="min-h-11 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-contrast transition-opacity disabled:opacity-40"
+          className="min-h-11 rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
         >
           Create set
         </button>
@@ -144,7 +144,7 @@ export function StudySetsPanel({ catalog }: StudySetsPanelProps) {
                     {items.length > 0 && (
                       <Link
                         href={`/learn/study-session/${set.id}`}
-                        className="min-h-11 rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-contrast"
+                        className="min-h-11 rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-white"
                       >
                         Start session
                       </Link>

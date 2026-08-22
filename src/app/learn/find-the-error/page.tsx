@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
-import { FindTheErrorPlayer } from "@/components/learn/FindTheErrorPlayer";
+import { FindTheErrorPlayer2 } from "@/components/learn/FindTheErrorPlayer2";
 import { icuErrors } from "@/content/icu-errors";
 
 export const metadata: Metadata = {
@@ -30,13 +30,13 @@ export default function FindTheErrorPage() {
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-ink">Find the ICU Error</h1>
           <p className="mt-1 text-sm text-ink-muted leading-relaxed">
-            One proposed management plan. One critical, life-threatening error. Identify the faulty order, understand the underlying pathophysiology, and review the guideline-directed corrective approach.
+            Classify every line of the proposed plan — correct, questionable, context-dependent, or dangerous. Marking everything dangerous scores nothing: precision matters.
           </p>
         </div>
       </div>
 
       {/* Interactive Player */}
-      <FindTheErrorPlayer errors={icuErrors} />
+      <FindTheErrorPlayer2 errors={icuErrors} />
     </div>
   );
 }

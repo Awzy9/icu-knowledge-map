@@ -30,7 +30,8 @@ export type SearchEntryType =
   | "rapid-decision"
   | "error-hunt"
   | "flashcard"
-  | "question";
+  | "question"
+  | "comparison";
 
 export interface SearchEntry {
   readonly id: string;
@@ -60,6 +61,14 @@ interface RapidDecisionLike {
   readonly relatedTopicId?: string;
 }
 
+interface ComparisonLike {
+  readonly id: string;
+  readonly title: string;
+  readonly subtitle?: string;
+  readonly system: string;
+  readonly entities: readonly { readonly label: string }[];
+}
+
 interface IcuErrorLike {
   readonly id: string;
   readonly title: string;
@@ -82,6 +91,7 @@ export interface SearchIndexInput {
   readonly icuErrors?: readonly IcuErrorLike[];
   readonly flashcards?: readonly Flashcard[];
   readonly questions?: readonly Question[];
+  readonly comparisons?: readonly ComparisonLike[];
   /** Medication slugs that render a physiology/hemodynamics section. */
   readonly medicationSlugsWithPhysiology?: readonly string[];
 }
@@ -316,6 +326,18 @@ export function buildSearchIndex(input: SearchIndexInput): readonly SearchEntry[
         href: `/learn/find-the-error#${error.id}`,
         contentId: formatContentId("error-hunt", error.id),
         keywords: kw(error.difficulty),
+      }),
+    ),
+
+    ...(input.comparisons ?? []).map(
+      (c): SearchEntry => ({
+        id: `comparison-${c.id}`,
+        type: "comparison",
+        title: c.title,
+        subtitle: clamp(c.subtitle ?? c.entities.map((e) => e.label).join(" vs ")),
+        href: `/compare/${c.id}`,
+        contentId: formatContentId("comparison", c.id),
+        keywords: kw(c.system, c.entities.map((e) => e.label)),
       }),
     ),
 

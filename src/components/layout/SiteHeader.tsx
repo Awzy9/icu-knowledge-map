@@ -10,6 +10,7 @@ const primaryLinks = [
   { href: "/medications", label: "Medications" },
   { href: "/topics", label: "Topics" },
   { href: "/problems", label: "Clinical Problems" },
+  { href: "/compare", label: "Compare" },
   { href: "/pathways", label: "Pathways" },
 ];
 

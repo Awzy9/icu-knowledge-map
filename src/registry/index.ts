@@ -14,6 +14,7 @@ import { medicationChallenges } from "@/content/medication-challenges";
 import { rapidDecisions } from "@/content/rapid-decisions";
 import { icuErrors } from "@/content/icu-errors";
 import { physiologyProfiles } from "@/content/physiology-profiles";
+import { getAllComparisons } from "@/content/comparisons";
 import type { ClinicalCase } from "@/content-types/clinical-case";
 import type { MedicationChallenge } from "@/content-types/medication-challenge";
 import type {
@@ -323,6 +324,7 @@ const searchIndex: readonly SearchEntry[] = buildSearchIndex({
   icuErrors,
   flashcards,
   questions,
+  comparisons: getAllComparisons(),
   medicationSlugsWithPhysiology: physiologyProfiles.map((profile) => profile.id),
 });
 
@@ -558,6 +560,12 @@ export function resolveContentId(contentId: string): ResolvedContent | undefined
       const calculator = calculatorsById.get(localId);
       return calculator
         ? make(calculator.title, calculator.description, `/calculators/${calculator.id}`)
+        : undefined;
+    }
+    case "comparison": {
+      const comparison = getAllComparisons().find((c) => c.id === localId);
+      return comparison
+        ? make(comparison.title, comparison.subtitle ?? comparison.system, `/compare/${comparison.id}`)
         : undefined;
     }
     default:
