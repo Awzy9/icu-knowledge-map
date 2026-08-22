@@ -259,7 +259,7 @@ export const asthma: Topic = {
             },
             {
               label: "Permissive Hypercapnia",
-              value: "Accept arterial PaCO2 of 60–90 mmHg (pH ≥ 7.15–7.20) to avoid over-ventilation and gas trapping. Correct severe acidemia (pH < 7.10) with slow bicarbonate infusion or buffering if refractory myocardial depression occurs.",
+              value: "Accept elevated arterial PaCO2 and respiratory acidemia to avoid over-ventilation, gas trapping, and dynamic hyperinflation, monitoring hemodynamic stability and airway pressures.",
             },
           ],
         },

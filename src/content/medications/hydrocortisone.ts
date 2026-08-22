@@ -5,155 +5,201 @@ export const hydrocortisone: Medication = {
   slug: "hydrocortisone",
   name: "Hydrocortisone",
   genericName: "Hydrocortisone Sodium Succinate",
-  brandNames: ["Solu-Cortef"],
-  class: "Short-Acting Corticosteroid with Significant Mineralocorticoid Activity",
-  category: "endocrine-metabolic",
-  subcategory: "Endocrine & Metabolic",
-  summary:
-    "The primary ICU corticosteroid for vasopressor-refractory septic shock (guideline-conditional), adrenal crisis, and CIRCI — distinguished from methylprednisolone and other synthetic steroids by clinically significant retained mineralocorticoid activity, which is exactly why it is preferred whenever mineralocorticoid replacement matters.",
+  brandNames: ["Solu-Cortef", "A-Hydrocort"],
+  class: "Short-Acting Glucocorticoid with Clinically Relevant Mineralocorticoid Activity",
+  category: "corticosteroids",
+  subcategory: "Corticosteroids",
+  summary: "First-line stress-dose corticosteroid for vasopressor-refractory septic shock and acute adrenal crisis — provides balanced glucocorticoid anti-inflammatory action and physiological mineralocorticoid activity.",
   mechanism: {
-    title: "Glucocorticoid Receptor Gene Transcription + Retained Mineralocorticoid Receptor Activity",
+    title: "Glucocorticoid & Mineralocorticoid Receptor Activation",
     steps: [
-      "Diffuses into cells and binds the cytosolic glucocorticoid receptor (GR).",
-      "The activated hydrocortisone-GR complex translocates to the nucleus, binding glucocorticoid response elements to upregulate anti-inflammatory genes and repress pro-inflammatory transcription factors (e.g., NF-kB, AP-1) — broadly suppressing cytokine production, leukocyte trafficking, and inflammatory mediator release.",
-      "Unlike synthetic steroids further modified away from the mineralocorticoid receptor, hydrocortisone retains clinically significant mineralocorticoid receptor activity, promoting renal sodium and water retention and potassium/hydrogen excretion — this is why it, not methylprednisolone, is used for adrenal insufficiency and adrenal crisis, where mineralocorticoid replacement matters.",
-      "In septic shock specifically, hydrocortisone is thought to act partly through a permissive effect that restores vascular smooth muscle responsiveness to endogenous and exogenous catecholamines, rather than purely through anti-inflammatory action."
+      "Lipophilic molecule diffuses across plasma membrane and binds cytoplasmic glucocorticoid receptors (GR) and mineralocorticoid receptors (MR).",
+      "Receptor-ligand complex homodimerizes and translocates into the nucleus.",
+      "Transrepression: Inhibits NF-κB and AP-1 transcription factors, suppressing pro-inflammatory cytokines (TNF-α, IL-1β, IL-6) and inducible nitric oxide synthase (iNOS).",
+      "Transactivation: Upregulates anti-inflammatory proteins (lipocortin-1/annexin A1, IκB-α, IL-10) and increases adrenergic receptor density/sensitivity on vascular smooth muscle.",
+      "MR Activation: Promotes renal distal tubular Na⁺/water reabsorption and K⁺ excretion, supporting intravascular volume in adrenal crisis."
     ],
-    visualDiagram: "Hydrocortisone → Glucocorticoid Receptor → Gene Transcription Changes → Inflammatory Signaling ↓ // + Mineralocorticoid Receptor Activity → Na+/Water Retention, K+/H+ Excretion"
+    visualDiagram: "GR Activation → NF-κB Inhibition (Cytokines ↓) + Vascular Adrenoceptor Expression ↑ + MR Activation (Na⁺ Retention)"
   },
   pkPd: {
     type: "receptor-occupancy",
-    targetParameter: "Indication-specific — hemodynamic/shock-reversal effect in septic shock; cortisol replacement in adrenal insufficiency, not a single measurable receptor-occupancy target",
-    halfLife: "Plasma half-life ~1.5–2 hours; biologic (anti-inflammatory) effect duration ~8–12 hours, considerably longer than the plasma half-life",
-    proteinBinding: "~90% at physiologic concentrations (cortisol-binding globulin and albumin); binding becomes saturated at pharmacologic ICU doses, increasing the free (active) drug fraction",
-    metabolism: "Hepatic metabolism, primarily via 11-beta-hydroxysteroid dehydrogenase and other hepatic enzymes",
-    elimination: "Renal excretion of hepatic metabolites",
-    vdNotes: "Distributes widely. Critically ill patients often have reduced cortisol-binding globulin, which can increase the free (active) fraction at a given total dose — part of why total serum cortisol measurements are notoriously unreliable in critical illness."
+    targetParameter: "Continuous MAP maintenance; rapid shock reversal; cortisol replacement",
+    halfLife: "Plasma t1/2: 1.5–2 hours (Biological tissue effect: 8–12 hours)",
+    proteinBinding: "90% (primarily bound to corticosteroid-binding globulin / transcortin; free fraction increases in critical illness hypoalbuminemia)",
+    metabolism: "Extensive hepatic conversion by 11β-HSD and hepatic conjugation to glucuronides",
+    elimination: "Renal excretion of inactive conjugated metabolites (>90%)",
+    vdNotes: "Vd ~0.3–0.5 L/kg; distributes widely into inflamed tissues and crosses placenta/BBB modestly"
   },
   icuReasoning: {
     whyIChooseIt: [
-      "Guideline-conditional adjunct in septic shock that is inadequately responsive to fluids and vasopressors, where it modestly reduces time to shock resolution and vasopressor requirement.",
-      "First-line replacement therapy for adrenal crisis and acute adrenal insufficiency, given its retained mineralocorticoid activity.",
-      "Preferred agent when Critical Illness-Related Corticosteroid Insufficiency (CIRCI) is being addressed, per current SCCM/ESICM guidance."
+      "Supported by 2024 SCCM Focused Update for both septic shock and severe community-acquired pneumonia requiring ICU care (CAPE COD trial: 200 mg/day continuous IV reduced 28-day mortality).",
+      "Surviving Sepsis Campaign (SSC 2026 / 2021) and SCCM 2024 recommended first-line steroid for vasopressor-refractory septic shock (norepinephrine/epinephrine ≥0.25 mcg/kg/min for ≥4 hours).",
+      "Essential drug of choice for acute adrenal crisis — provides both glucocorticoid support and sufficient mineralocorticoid activity (1:1 ratio) at stress doses (≥100–200 mg/day) without requiring separate fludrocortisone.",
+      "Shorter biological half-life (8–12h) facilitates quick dose titration and rapid recovery of HPA axis compared to long-acting dexamethasone.",
+      "Continuous IV infusion (200 mg/24h) minimizes blood glucose volatility and glycemic peaks compared to bolus regimens."
     ],
     whyIDont: [
-      "The trial-level evidence in septic shock is genuinely conflicting — ADRENAL showed no 90-day mortality benefit, while APROCCHSS (hydrocortisone plus fludrocortisone) did. It is not a universally mortality-benefiting therapy, and framing it that way overstates the evidence.",
-      "Causes hyperglycemia, which complicates concurrent insulin/glycemic-control management.",
-      "CIRCI itself has no single validated diagnostic test — the random cortisol/ACTH-stimulation-test approach has fallen out of favor, so the decision to treat is largely clinical and empirical rather than lab-confirmed."
+      "Not indicated for sepsis without shock or easily responsive shock (e.g., low-dose vasopressors alone).",
+      "Mineralocorticoid action induces fluid retention and hypernatremia, which can worsen pulmonary edema in volume-overloaded ARDS.",
+      "Dose-dependent secondary hyperglycemia requiring insulin titration in up to 30–50% of ICU patients.",
+      "Prolonged courses (>7–10 days without taper) risk severe ICU-acquired weakness, immunosuppression, and secondary infections."
     ],
-    bedsidePearl: "Septic-shock dosing and adrenal-crisis dosing are not the same regimen — septic shock uses 200 mg/day (divided or continuous infusion), while true adrenal crisis is front-loaded with a 100 mg bolus. And not every short ICU steroid course needs a prolonged taper: a few days of stress-dose hydrocortisone in septic shock, stopped as shock resolves, is a reasonable approach per typical trial protocols — reflexively tapering every course, or never tapering any course, are both oversimplifications."
+    bedsidePearl: "In septic shock, continuous IV infusion of hydrocortisone (200 mg/day) results in significantly tighter glycemic control and fewer nursing interventions than 50 mg IV q6h boluses. Always wean steroids once vasopressors are successfully discontinued!"
   },
   dosing: {
-    routine: "Dosing is indication-specific — see Syndrome-Specific Regimens below. Septic-shock dosing and adrenal-crisis dosing differ meaningfully in both total dose and administration pattern.",
+    routine: "Septic Shock: 200 mg/day IV as continuous infusion (preferred) OR 50 mg IV q6h. Acute Adrenal Crisis: 100 mg IV bolus stat, followed by 200 mg/24h continuous IV infusion (or 50 mg IV q6h).",
     syndromeSpecific: [
       {
-        syndrome: "Septic Shock (Guideline-Conditional, Vasopressor-Refractory)",
-        regimen: "200 mg/day IV, given either as 50 mg IV every 6 hours or as a continuous infusion (institution-dependent); continued while vasopressor-dependent, then typically tapered as shock resolves rather than stopped abruptly.",
-        reference: "Trial regimens vary between ADRENAL (continuous infusion) and APROCCHSS (50 mg IV q6h plus fludrocortisone) — the evidence does not establish one single universal regimen as superior.",
-        note: "This is a CONDITIONAL recommendation reserved for shock inadequately responsive to fluids and vasopressors, not a routine septic-shock therapy."
+        syndrome: "Severe Community-Acquired Pneumonia (CAPE COD criteria)",
+        regimen: "200 mg/day IV continuous infusion initiated early (within 24h of ICU admission). 8-day course with adaptive 8-to-14 day taper per protocol.",
+        reference: "Dequin PF et al. CAPE COD Trial. N Engl J Med 2023;388:1931-1941; 2024 SCCM Focused Update on Corticosteroids",
+        note: "Reduced 28-day mortality (6.2% vs 11.9%, p=0.006) in severe CAP requiring ICU admission (PSI class V, mechanically ventilated, or PaO2/FiO2 < 300)."
       },
       {
-        syndrome: "Adrenal Crisis / Acute Adrenal Insufficiency",
-        regimen: "100 mg IV bolus, followed by 50 mg IV every 6 hours (or a continuous infusion equivalent), alongside aggressive isotonic fluid resuscitation and treatment of the precipitating illness.",
-        note: "This is a higher-acuity, more front-loaded regimen than the septic-shock protocol — do not substitute the septic-shock dosing pattern for true adrenal crisis."
+        syndrome: "Refractory Septic Shock (SSC 2026)",
+        regimen: "200 mg/day IV continuous infusion (or 50 mg IV q6h) until shock reversal, typically for 5–7 days, then taper as vasopressors wean.",
+        reference: "Surviving Sepsis Campaign Guidelines 2021/2026; ADRENAL / APROCCHSS Trials",
+        note: "Start when norepinephrine or epinephrine dose is ≥0.25 mcg/kg/min for at least 4 hours."
+      },
+      {
+        syndrome: "Acute Adrenal Crisis",
+        regimen: "100 mg IV stat bolus, then 200 mg/24h continuous IV infusion (or 50 mg IV q6h). Taper over 3–5 days to oral replacement once stable.",
+        reference: "Endocrine Society Clinical Practice Guidelines",
+        note: "At doses ≥100 mg/day, hydrocortisone provides maximal mineralocorticoid receptor saturation; fludrocortisone is unnecessary during acute high-dose IV phase."
+      },
+      {
+        syndrome: "CIRCI (Critical Illness-Related Corticosteroid Insufficiency)",
+        regimen: "200 mg/day IV continuous infusion for 7 days, then taper over 3–5 days.",
+        reference: "SCCM/ESICM CIRCI Guidelines",
+        note: "ACTH stimulation testing is no longer routinely recommended to guide steroid initiation in septic shock."
       }
     ],
     renallyAdjusted: [
-      { crclRange: "Any CrCl", dose: "No specific renal dose adjustment defined; hydrocortisone is hepatically metabolized. Monitor fluid/sodium retention more closely in renal impairment given the drug's mineralocorticoid activity." }
+      {
+        crclRange: "Any CrCl / AKI / ESRD",
+        dose: "No renal dosage adjustment required. Monitor for sodium/fluid retention and hypokalemia."
+      }
     ],
-    hdDosing: "No specific supplemental post-HD dosing required; not significantly removed by dialysis given protein binding and hepatic metabolism.",
-    crrtDosing: "No specific CRRT dose adjustment defined; dose per indication and monitor volume status/electrolytes given concurrent CRRT fluid management."
+    hdDosing: "No supplemental dose required post-hemodialysis.",
+    crrtDosing: "No dosage adjustment needed for CRRT (CVVH, CVVHD, CVVHDF)."
   },
   organFailure: {
-    renalConsiderations: "No specific dose reduction required. Monitor for fluid retention and electrolyte effects (sodium retention, potassium/hydrogen excretion) more closely given hydrocortisone's mineralocorticoid activity, especially in oliguric renal impairment.",
-    hepaticConsiderations: "Hydrocortisone does not require hepatic bioactivation (unlike prednisone), making it a reasonable choice when hepatic dysfunction is a concern, though hepatic clearance of the drug itself may still be somewhat reduced in significant impairment."
+    renalConsiderations: "Mineralocorticoid activity can cause sodium retention, edema, and hypokalemia. In severe oligoanuric AKI, observe for fluid accumulation.",
+    hepaticConsiderations: "Hepatic clearance is impaired in cirrhosis or acute liver failure, leading to prolonged circulating half-life and enhanced glucocorticoid exposure; monitor glucose closely."
   },
   toxicity: {
     majorWarnings: [
-      "Hyperglycemia — common and often significant; anticipate increased insulin requirements.",
-      "Hypernatremia and fluid retention from mineralocorticoid activity, particularly at higher or prolonged doses.",
-      "Increased infection risk, including reactivation of latent infections, and a blunted febrile response that can mask an evolving new infection.",
-      "ICU-acquired weakness/critical illness myopathy risk, particularly with concurrent neuromuscular blockade.",
-      "Increased risk of stress-related mucosal disease, typically in combination with other risk factors (mechanical ventilation, coagulopathy).",
-      "Neuropsychiatric effects including delirium, agitation, or mood disturbance, especially at higher doses."
+      "Marked hyperglycemia: increases risk of secondary bacterial and fungal infections; blood glucose protocol required.",
+      "ICU-Acquired Weakness / Critical Illness Myopathy: synergistic myopathy risk when combined with neuromuscular blocking agents (NMBAs).",
+      "Steroid-induced leukocytosis: demargination of polymorphonuclear neutrophils can cause WBC elevation without signifying new infection.",
+      "HPA axis suppression: abrupt cessation after >7–14 days of stress dosing can precipitate secondary adrenal crisis."
     ],
     organToxicities: [
-      { organ: "Metabolic/Endocrine", description: "Hyperglycemia, hypernatremia, fluid retention, and HPA-axis suppression with prolonged use." },
-      { organ: "Musculoskeletal", description: "ICU-acquired weakness/myopathy, particularly with concurrent neuromuscular blocking agents." },
-      { organ: "Immunologic/Infectious", description: "Increased infection risk and a blunted febrile response, which can delay recognition of a new or worsening infection." },
-      { organ: "Gastrointestinal", description: "Increased risk of stress-related mucosal disease, particularly when combined with other risk factors." },
-      { organ: "Neuropsychiatric", description: "Delirium, agitation, or mood disturbance, particularly at higher doses." }
+      {
+        organ: "Endocrine & Metabolic",
+        description: "Hyperglycemia, hypokalemia, hypernatremia, secondary adrenal insufficiency upon rapid withdrawal."
+      },
+      {
+        organ: "Neurological & Psychiatric",
+        description: "ICU delirium, steroid psychosis, insomnia, mood lability."
+      },
+      {
+        organ: "Gastrointestinal",
+        description: "Gastric mucosal ulceration, upper GI bleeding (especially with concurrent coagulopathy or mechanical ventilation)."
+      },
+      {
+        organ: "Musculoskeletal",
+        description: "Acute quadriplegic myopathy, severe muscle catabolism."
+      }
     ]
   },
   interactions: [
     {
-      drug: "Insulin / oral hypoglycemics",
-      mechanism: "Corticosteroid-induced insulin resistance and hyperglycemia",
-      consequence: "Increased insulin requirements and less predictable glucose control",
-      icuAction: "Anticipate higher insulin needs and monitor glucose more frequently while hydrocortisone is running, and again as it is tapered or stopped."
+      drug: "Neuromuscular Blockers (e.g., Cisatracurium, Rocuronium)",
+      mechanism: "Synergistic inhibition of muscle protein synthesis and receptor down-regulation",
+      consequence: "Prolonged critical illness myopathy and delayed ventilator weaning",
+      icuAction: "Minimize duration of concurrent NMBAs and steroids; monitor train-of-four and perform daily wake-up trials."
     },
     {
-      drug: "Neuromuscular blocking agents",
-      mechanism: "Additive risk of ICU-acquired weakness/myopathy",
-      consequence: "Prolonged weakness and difficulty weaning from mechanical ventilation",
-      icuAction: "Minimize concurrent duration of both agents where possible and monitor strength."
+      drug: "CYP3A4 Inducers (e.g., Rifampin, Phenytoin, Carbamazepine)",
+      mechanism: "Accelerated hepatic 11β-HSD and CYP3A4 metabolism of hydrocortisone",
+      consequence: "Subtherapeutic corticosteroid levels and treatment failure in adrenal crisis",
+      icuAction: "Increase hydrocortisone dose by 50–100% when co-administered with strong CYP3A4 inducers."
+    },
+    {
+      drug: "Insulin / Oral Antidiabetics",
+      mechanism: "Opposing physiological effect on hepatic gluconeogenesis and peripheral insulin sensitivity",
+      consequence: "Severe hyperglycemia",
+      icuAction: "Initiate proactive intravenous insulin infusion with frequent glucose monitoring (q1–2h initially, then q4h)."
     }
   ],
   monitoring: {
     parameters: [
-      "Blood glucose, closely and serially",
-      "Serum sodium and fluid balance",
-      "Signs of new or worsening infection, recognizing the febrile response may be blunted",
-      "Blood pressure and vasopressor requirement trend (for the septic-shock indication)",
-      "Mental status"
+      "Blood glucose every 2–4 hours during continuous infusion (target 140–180 mg/dL)",
+      "Serum potassium, sodium, and chloride daily (or q12h in unstable shock)",
+      "Vasopressor requirements (wean hydrocortisone after vasopressors are stopped)",
+      "Surveillance for secondary superinfections (fungemia, VAP, bacteremia)",
+      "ICU delirium screening via CAM-ICU twice daily"
     ]
   },
   evidenceTraceability: {
-    guidelineIds: ["circi-guideline-sccm-esicm-2017"],
+    guidelineIds: ["septic-shock-ssc2026-corticosteroids"],
     claimCitations: [
       {
-        claim: "The ADRENAL trial found no significant 90-day mortality difference with hydrocortisone in septic shock, though secondary outcomes favored faster shock resolution and a shorter ICU stay.",
-        source: "Venkatesh ES, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock. N Engl J Med. 2018;378(9):797-808.",
-        citationUrl: "https://pubmed.ncbi.nlm.nih.gov/29347874/"
+        claim: "CAPE COD randomized controlled trial demonstrated early IV hydrocortisone 200 mg/day continuous infusion significantly reduced 28-day mortality in severe CAP admitted to the ICU.",
+        source: "Dequin PF, Meziani F, Quenot JP, et al. Hydrocortisone in Severe Community-Acquired Pneumonia. N Engl J Med. 2023;388(21):1931-1941. PMID: 37272571."
       },
       {
-        claim: "The APROCCHSS trial found hydrocortisone plus fludrocortisone significantly reduced 90-day mortality in septic shock, in contrast to ADRENAL.",
-        source: "Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock. N Engl J Med. 2018;378(9):809-818.",
-        citationUrl: "https://pubmed.ncbi.nlm.nih.gov/29490185/"
+        claim: "Surviving Sepsis Campaign suggests IV hydrocortisone 200 mg/day for septic shock refractory to vasopressors.",
+        source: "Surviving Sepsis Campaign 2021/2026 Guidelines. Crit Care Med 2021;49:e1063-e1143."
       },
       {
-        claim: "The 2017 SCCM/ESICM guideline provides the current framework for diagnosing and managing Critical Illness-Related Corticosteroid Insufficiency (CIRCI).",
-        source: "Annane D, et al. Guidelines for the Diagnosis and Management of Critical Illness-Related Corticosteroid Insufficiency (CIRCI). Crit Care Med. 2017;45(12):2078-2088.",
-        citationUrl: "https://pubmed.ncbi.nlm.nih.gov/28938253/"
+        claim: "ADRENAL trial showed hydrocortisone 200 mg/day continuous infusion significantly accelerated shock reversal and reduced ICU stay, without 90-day mortality difference.",
+        source: "Venkatesh B, et al. Adjunctive Glucocorticoid Therapy in Patients with Septic Shock. N Engl J Med 2018;378:797-808."
+      },
+      {
+        claim: "APROCCHSS trial showed hydrocortisone plus fludrocortisone significantly reduced 90-day all-cause mortality in refractory septic shock.",
+        source: "Annane D, et al. Hydrocortisone plus Fludrocortisone for Adults with Septic Shock. N Engl J Med 2018;378:809-818."
       }
     ]
   },
   patientScenarios: [
     {
-      title: "Norepinephrine-Refractory Septic Shock",
-      clinicalContext: "A patient in septic shock remains on escalating norepinephrine despite adequate fluid resuscitation and source-control efforts.",
-      decision: "Add hydrocortisone 200 mg/day IV (in divided doses or continuous infusion, per institutional protocol).",
-      rationale: "Guideline-conditional adjunct associated with faster shock reversal and reduced vasopressor duration — framed as a hemodynamic adjunct, not a proven standalone mortality intervention."
+      title: "Vasopressor-Refractory Septic Shock",
+      clinicalContext: "A 64-year-old patient with severe fecal peritonitis remains hypotensive (MAP 58 mmHg) despite 3.5 L balanced crystalloids, norepinephrine at 0.35 mcg/kg/min, and vasopressin at 0.03 units/min for 5 hours.",
+      decision: "Initiate hydrocortisone 200 mg/24h continuous IV infusion.",
+      rationale: "Patient meets international consensus criteria for refractory septic shock; stress-dose hydrocortisone restores vascular tone, shortens duration of vasopressor support, and accelerates shock resolution."
     },
     {
-      title: "Known Adrenal Insufficiency with Hypotension and Hyponatremia During Acute Illness",
-      clinicalContext: "A patient with known primary adrenal insufficiency presents with hypotension, hyponatremia, hyperkalemia, and an acute illness precipitant.",
-      decision: "Give hydrocortisone 100 mg IV bolus, followed by 50 mg IV every 6 hours, with aggressive isotonic fluid resuscitation and treatment of the precipitating illness.",
-      rationale: "This is adrenal crisis — hydrocortisone's retained mineralocorticoid activity, combined with fluids, addresses the combined glucocorticoid and mineralocorticoid deficiency driving the presentation."
+      title: "Acute Adrenal Crisis in Known Addisonian",
+      clinicalContext: "A 32-year-old with primary adrenal insufficiency presents with severe gastroenteritis, vomiting, MAP 50 mmHg, Na⁺ 124 mEq/L, K⁺ 6.1 mEq/L, and blood glucose 52 mg/dL.",
+      decision: "Administer hydrocortisone 100 mg IV bolus stat, followed by 200 mg/24h continuous infusion, isotonic fluid resuscitation, and D50W.",
+      rationale: "Hydrocortisone provides both life-saving glucocorticoid receptor activation and mineralocorticoid activity (at doses >100 mg/day), correcting hypotension and electrolyte disturbances without needing fludrocortisone acutely."
     }
   ],
   examTraps: [
     {
-      misconception: "Hydrocortisone is a proven mortality-reducing therapy in septic shock.",
-      reality: "MIXED. The two largest modern trials disagree — ADRENAL showed no mortality benefit, while APROCCHSS (hydrocortisone plus fludrocortisone) did.",
-      explanation: "Current guidance treats hydrocortisone as a conditional adjunct for faster shock reversal, not an unambiguous mortality intervention — presenting it as settled, proven mortality benefit overstates the evidence."
+      misconception: "Every patient with sepsis or mild septic shock should automatically receive stress-dose steroids on admission.",
+      reality: "Steroids are only indicated when adequate fluid resuscitation and vasopressor therapy (≥0.25 mcg/kg/min) fail to restore hemodynamic stability.",
+      explanation: "Indiscriminate steroid use in mild sepsis does not improve survival and increases the burden of hyperglycemia, secondary infections, and ICU weakness."
     },
     {
-      misconception: "Every ICU patient who receives a short course of stress-dose steroids needs a prolonged taper before stopping.",
-      reality: "FALSE as a blanket rule. A short (days-long) course of stress-dose hydrocortisone in septic shock, stopped as shock resolves, is a reasonable approach consistent with typical trial protocols.",
-      explanation: "The reflexive 'steroids always need a taper' rule applies most clearly to prolonged, higher-dose, or chronic therapy — not necessarily to a short stress-dose ICU course, though HPA-axis suppression risk should still be considered on a case-by-case basis."
+      misconception: "Hydrocortisone must always be co-administered with oral fludrocortisone in acute adrenal crisis.",
+      reality: "Stress-dose hydrocortisone (≥100–200 mg/day) saturates mineralocorticoid receptors; fludrocortisone is only required when hydrocortisone is tapered down to maintenance doses (<50 mg/day).",
+      explanation: "Hydrocortisone has an inherent mineralocorticoid:glucocorticoid ratio of 1:1. 200 mg of hydrocortisone delivers the mineralocorticoid equivalence of ~100–200 mcg fludrocortisone."
     }
   ],
-  searchAliases: ["hydrocortisone", "solu-cortef", "stress dose steroids", "septic shock steroids", "adrenal crisis", "circi"],
-  relatedTopicIds: ["septic-shock", "endocrine-emergencies"]
+  searchAliases: [
+    "hydrocortisone",
+    "solu-cortef",
+    "stress dose steroids",
+    "adrenal crisis steroid",
+    "septic shock hydrocortisone",
+    "cortisol"
+  ],
+  relatedTopicIds: [
+    "septic-shock",
+    "shock",
+    "endocrine-emergencies"
+  ]
 };

@@ -37,7 +37,7 @@ export function ContinueLearning({ totalTopics = 64, totalCases = 10 }: Continue
       {recentItems.length > 0 ? (
         <div className="space-y-3">
           <h3 className="text-sm font-semibold text-ink/70 uppercase tracking-wider">Recent Activity</h3>
-          {recentItems.map((item: any, i: number) => (
+          {recentItems.map((item, i) => (
             <Link 
               key={i} 
               href={item.href}

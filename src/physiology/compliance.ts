@@ -18,5 +18,8 @@ export const compliance: PhysiologyConcept = {
     "Compliance and driving pressure are directly linked — falling compliance for a fixed tidal volume shows up as rising driving pressure.",
   ],
   relatedConceptIds: ["physiology.driving-pressure", "physiology.plateau-pressure", "physiology.resistance"],
-  relatedTopicIds: ["ards", "mechanical-ventilation"],
+  relatedTopicIds: [
+  "ards",
+  "mechanical-ventilation"
+],
 };

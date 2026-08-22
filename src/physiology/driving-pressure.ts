@@ -18,7 +18,9 @@ export const drivingPressure: PhysiologyConcept = {
     "Used alongside PEEP titration: a PEEP change that increases driving pressure has likely overdistended the lung rather than recruited it.",
   ],
   relatedConceptIds: ["physiology.compliance", "physiology.plateau-pressure", "physiology.transpulmonary-pressure"],
-  relatedTopicIds: ["ards"],
+  relatedTopicIds: [
+  "ards"
+],
   references: [{ kind: "guideline", id: "ards-guideline-low-tidal-volume", relevance: "Driving pressure is calculated from the same plateau-pressure and PEEP targets this guideline recommends." }],
   visual: { kind: "pressure-relationship", defaultPlateauPressure: 24, defaultPeep: 10 },
 };

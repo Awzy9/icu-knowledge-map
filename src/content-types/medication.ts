@@ -12,6 +12,7 @@ export const medicationCategorySchema = z.enum([
   "endocrine-metabolic",
   "diuretics",
   "electrolytes-emergency",
+  "corticosteroids",
 ]);
 export type MedicationCategory = z.infer<typeof medicationCategorySchema>;
 

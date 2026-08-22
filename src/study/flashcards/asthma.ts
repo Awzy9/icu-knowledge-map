@@ -89,7 +89,7 @@ export const asthmaFlashcards: readonly Flashcard[] = [
     "id": "asthma.fc.permissive-hypercapnia",
     "topicId": "asthma",
     "question": "What is permissive hypercapnia, and what is its primary objective in mechanical ventilation for asthma?",
-    "answer": "Tolerating elevated PaCO2 (e.g., 50–70 mmHg) and moderate respiratory acidosis (pH ≥ 7.15–7.20) as a practical strategy to prevent dynamic hyperinflation and barotrauma.",
+    "answer": "Accepting elevated PaCO2 and respiratory acidemia to prioritize lung-protective mechanics, prolong expiratory time, and prevent dynamic hyperinflation and auto-PEEP.",
     "explanation": "Attempting to normalize PaCO2 by increasing minute ventilation causes severe gas trapping, high plateau pressures, pneumothorax, and cardiovascular collapse.",
     "difficulty": "intermediate",
     "category": "Management",

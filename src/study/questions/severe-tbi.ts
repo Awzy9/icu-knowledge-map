@@ -41,11 +41,11 @@ export const severeTbiQuestions: readonly Question[] = [
     stem: "What was the definitive finding of the CRASH trial regarding high-dose corticosteroid (methylprednisolone) administration in acute traumatic brain injury?",
     options: [
       { id: "a", text: "Steroids reduced ICP and significantly reduced 14-day mortality.", isCorrect: false },
-      { id: "b", text: "High-dose corticosteroids significantly increased 14-day and 6-month mortality; steroids are strictly contraindicated in acute TBI.", isCorrect: true },
+      { id: "b", text: "High-dose corticosteroids significantly increased 14-day and 6-month mortality; corticosteroids should not be used to treat acute TBI.", isCorrect: true },
       { id: "c", text: "Steroids improved functional recovery in moderate TBI but not severe TBI.", isCorrect: false },
       { id: "d", text: "Steroids had no effect on any clinical endpoint.", isCorrect: false }
     ],
-    explanation: "The CRASH trial (Lancet 2004, n=10,008) showed that high-dose methylprednisolone caused a statistically significant increase in 14-day mortality (21.1% vs 17.9%, RR 1.18, P=0.0001) and 6-month disability. Corticosteroids are strongly contraindicated in acute traumatic brain injury (Level I recommendation, BTF Guidelines).",
+    explanation: "The CRASH trial (Lancet 2004, n=10,008) showed that high-dose methylprednisolone caused a statistically significant increase in 14-day mortality (21.1% vs 17.9%, RR 1.18, P=0.0001) and 6-month disability. Corticosteroids should not be used to treat acute traumatic brain injury because large randomized evidence demonstrated increased mortality (Level I recommendation, BTF Guidelines).",
     difficulty: "basic",
     category: "Evidence",
     references: [

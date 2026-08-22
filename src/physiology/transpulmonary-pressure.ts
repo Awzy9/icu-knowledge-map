@@ -18,5 +18,8 @@ export const transpulmonaryPressure: PhysiologyConcept = {
     "Provides the physiologic rationale for interpreting plateau pressure cautiously rather than as an absolute lung-stress number in every patient.",
   ],
   relatedConceptIds: ["physiology.plateau-pressure", "physiology.driving-pressure", "physiology.compliance"],
-  relatedTopicIds: ["ards", "mechanical-ventilation"],
+  relatedTopicIds: [
+  "ards",
+  "mechanical-ventilation"
+],
 };

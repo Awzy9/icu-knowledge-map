@@ -65,7 +65,7 @@ export function OfflineIndicator() {
           <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
           <line x1="12" y1="20" x2="12.01" y2="20" />
         </svg>
-        <span>Offline Mode — All 47 medications and core cases available</span>
+        <span>Offline Mode — All 35 medications and core cases available</span>
       </div>
     );
   }

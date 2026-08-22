@@ -4,6 +4,7 @@ import { VqSpectrumVisual } from "./VqSpectrumVisual";
 import { Do2BreakdownVisual } from "./Do2BreakdownVisual";
 import { StarlingCurveVisual } from "./StarlingCurveVisual";
 import { AcidBaseVisual } from "./AcidBaseVisual";
+import { CausalChainVisual } from "./CausalChainVisual";
 
 interface PhysiologyVisualPanelProps {
   readonly visual: PhysiologyVisual;
@@ -34,6 +35,13 @@ export function PhysiologyVisualPanel({ visual }: PhysiologyVisualPanelProps) {
           defaultHco3={visual.defaultHco3}
           defaultNa={visual.defaultNa}
           defaultCl={visual.defaultCl}
+        />
+      );
+    case "causal-chain":
+      return (
+        <CausalChainVisual
+          states={visual.states}
+          defaultState={visual.defaultState}
         />
       );
     default:

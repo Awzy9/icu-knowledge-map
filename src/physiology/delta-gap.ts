@@ -18,5 +18,7 @@ export const deltaGap: PhysiologyConcept = {
     "A high delta ratio can unmask a concurrent metabolic alkalosis (e.g. from vomiting, diuretics, or nasogastric losses) layered on top of an anion-gap acidosis.",
   ],
   relatedConceptIds: ["physiology.anion-gap", "physiology.mixed-disorders", "physiology.henderson-hasselbalch"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
 };

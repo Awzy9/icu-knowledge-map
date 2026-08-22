@@ -18,5 +18,7 @@ export const osmolarGap: PhysiologyConcept = {
     "Guides the urgency of empiric antidote therapy (fomepizole) and nephrology consultation for dialysis while definitive alcohol levels are pending.",
   ],
   relatedConceptIds: ["physiology.anion-gap", "physiology.henderson-hasselbalch"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
 };

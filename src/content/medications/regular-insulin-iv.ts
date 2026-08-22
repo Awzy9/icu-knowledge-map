@@ -48,7 +48,7 @@ export const regularInsulinIv: Medication = {
     syndromeSpecific: [
       {
         syndrome: "Diabetic Ketoacidosis (DKA) / Hyperosmolar Hyperglycemic State (HHS)",
-        regimen: "Continuous IV infusion at 0.1 units/kg/hr (a bolus is not required per current consensus guidance, though some local protocols still use one). Do NOT start insulin until serum potassium is confirmed ≥3.3–3.5 mEq/L. Add dextrose to IV fluids once glucose falls to roughly 200–250 mg/dL (DKA) or 250–300 mg/dL (HHS), and continue the insulin infusion — do not stop it — until the anion gap closes and ketoacidosis has actually resolved.",
+        regimen: "Continuous IV infusion at 0.1 units/kg/hr (a bolus is not required per current consensus guidance, though some local protocols still use one). Do NOT start insulin until serum potassium is confirmed ≥ 3.5 mEq/L. Add dextrose to IV fluids once glucose falls to roughly 200–250 mg/dL (DKA) or 250–300 mg/dL (HHS), and continue the insulin infusion — do not stop it — until the anion gap closes and ketoacidosis has actually resolved.",
         reference: "ADA Consensus Report on Hyperglycemic Crises in Adults, 2024",
         note: "The treatment endpoint in DKA is resolution of the acidosis/ketosis (anion gap, bicarbonate, pH) — not a normal glucose. Stopping insulin at normoglycemia risks rebound ketoacidosis."
       },
@@ -127,7 +127,7 @@ export const regularInsulinIv: Medication = {
     {
       title: "Severe DKA with Potassium 3.1 mEq/L",
       clinicalContext: "New DKA diagnosis with pH 7.05, anion gap 28, glucose 480 mg/dL, and serum potassium 3.1 mEq/L.",
-      decision: "Hold insulin, replete potassium first (e.g., IV KCl), and start the insulin infusion only once potassium is ≥3.3–3.5 mEq/L, alongside fluid resuscitation.",
+      decision: "Hold insulin, replete potassium first (e.g., IV KCl), and start the insulin infusion only once potassium is ≥ 3.5 mEq/L, alongside fluid resuscitation.",
       rationale: "Starting insulin in significant hypokalemia drives potassium further into cells, risking a life-threatening arrhythmia or respiratory muscle weakness before the underlying acidosis has even begun to improve."
     },
     {

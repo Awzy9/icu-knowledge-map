@@ -18,6 +18,9 @@ export const deadSpace: PhysiologyConcept = {
     "Persistently elevated dead-space fraction in ARDS is a marker of more severe disease and a supportive data point when considering escalation of therapy.",
   ],
   relatedConceptIds: ["physiology.ventilation-perfusion-mismatch", "physiology.shunt"],
-  relatedTopicIds: ["ards", "mechanical-ventilation"],
+  relatedTopicIds: [
+  "ards",
+  "mechanical-ventilation"
+],
   visual: { kind: "vq-spectrum", defaultRatio: 1.8 },
 };

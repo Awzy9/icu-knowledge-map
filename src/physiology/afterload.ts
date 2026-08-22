@@ -18,5 +18,7 @@ export const afterload: PhysiologyConcept = {
     "Explains why aggressive vasopressor use can worsen forward flow in a patient with significant ventricular dysfunction, even while raising the blood pressure number.",
   ],
   relatedConceptIds: ["physiology.svr", "physiology.contractility", "physiology.rv-failure-physiology"],
-  relatedTopicIds: ["shock"],
+  relatedTopicIds: [
+  "shock"
+],
 };

@@ -18,5 +18,8 @@ export const do2Vo2Relationship: PhysiologyConcept = {
     "Persistently elevated or rising lactate despite an apparently 'adequate' cardiac output should prompt reassessment of whether demand has risen rather than assuming resuscitation has failed.",
   ],
   relatedConceptIds: ["physiology.oxygen-delivery-equation", "physiology.oxygen-consumption", "physiology.cardiac-output"],
-  relatedTopicIds: ["shock", "sepsis"],
+  relatedTopicIds: [
+  "shock",
+  "sepsis"
+],
 };

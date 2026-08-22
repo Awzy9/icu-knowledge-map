@@ -18,6 +18,8 @@ export const ventilationPerfusionMismatch: PhysiologyConcept = {
     "Helps distinguish shunt-dominant hypoxemia (ARDS, pneumonia, atelectasis) from dead-space-dominant processes (pulmonary embolism), which raise PaCO2 rather than lower PaO2.",
   ],
   relatedConceptIds: ["physiology.shunt", "physiology.dead-space", "physiology.oxygen-delivery-equation"],
-  relatedTopicIds: ["ards"],
+  relatedTopicIds: [
+  "ards"
+],
   visual: { kind: "vq-spectrum", defaultRatio: 1 },
 };

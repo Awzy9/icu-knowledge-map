@@ -41,6 +41,30 @@ export function CasePlayer({ caseData }: CasePlayerProps) {
     }
   }, [caseData.id, progress, caseData.steps]);
 
+  const handleCommit = () => {
+    if (!selectedOptionId || hasCommitted) return;
+
+    setHasCommitted(true);
+    const step = caseData.steps[currentStepIndex];
+    const option = step.options.find((o) => o.id === selectedOptionId)!;
+
+    const classification = option.outcome?.classification || (option.isCorrect ? "appropriate" : "suboptimal");
+
+    recordStepResult(
+      caseData.id,
+      step.id,
+      selectedOptionId,
+      option.isCorrect,
+      currentStepIndex,
+      {
+        stepPrompt: step.prompt,
+        selectedOptionText: option.text,
+        classification,
+      },
+      option.nextStepId
+    );
+  };
+
   // Keyboard shortcut (Enter to commit)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -66,30 +90,6 @@ export function CasePlayer({ caseData }: CasePlayerProps) {
   const handleOptionSelect = (optionId: string) => {
     if (hasCommitted) return;
     setSelectedOptionId(optionId);
-  };
-
-  const handleCommit = () => {
-    if (!selectedOptionId || hasCommitted) return;
-
-    setHasCommitted(true);
-    const step = caseData.steps[currentStepIndex];
-    const option = step.options.find((o) => o.id === selectedOptionId)!;
-
-    const classification = option.outcome?.classification || (option.isCorrect ? "appropriate" : "suboptimal");
-
-    recordStepResult(
-      caseData.id,
-      step.id,
-      selectedOptionId,
-      option.isCorrect,
-      currentStepIndex,
-      {
-        stepPrompt: step.prompt,
-        selectedOptionText: option.text,
-        classification,
-      },
-      option.nextStepId
-    );
   };
 
   const handleNextStep = () => {

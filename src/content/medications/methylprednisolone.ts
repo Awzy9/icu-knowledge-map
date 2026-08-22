@@ -5,157 +5,189 @@ export const methylprednisolone: Medication = {
   slug: "methylprednisolone",
   name: "Methylprednisolone",
   genericName: "Methylprednisolone Sodium Succinate",
-  brandNames: ["Solu-Medrol"],
-  class: "Intermediate-Acting Synthetic Corticosteroid with Minimal Mineralocorticoid Activity",
-  category: "endocrine-metabolic",
-  subcategory: "Endocrine & Metabolic",
-  summary:
-    "Preferred ICU corticosteroid for severe asthma exacerbation, COPD exacerbation, and select inflammatory lung disease — higher glucocorticoid potency and negligible mineralocorticoid activity distinguish it from hydrocortisone; ARDS steroid evidence is heterogeneous across regimens and should not be presented as a single settled protocol.",
+  brandNames: ["Solu-Medrol", "Depo-Medrol", "Medrol"],
+  class: "Intermediate-Acting Synthetic Glucocorticoid with Minimal Mineralocorticoid Activity",
+  category: "corticosteroids",
+  subcategory: "Corticosteroids",
+  summary: "Potent parenteral glucocorticoid with ~5× the anti-inflammatory potency of hydrocortisone and minimal mineralocorticoid action — cornerstone therapy for severe asthma and COPD exacerbations, and non-resolving fibroproliferative ARDS.",
   mechanism: {
-    title: "High-Affinity Glucocorticoid Receptor Binding with Negligible Mineralocorticoid Activity",
+    title: "Potent Glucocorticoid Receptor Transrepression & Transactivation",
     steps: [
-      "Diffuses into cells and binds the cytosolic glucocorticoid receptor; the activated complex translocates to the nucleus and alters transcription of anti- and pro-inflammatory genes, using the same core genomic mechanism as hydrocortisone.",
-      "Structurally modified relative to cortisol to have markedly higher glucocorticoid receptor affinity (roughly 5x hydrocortisone) and negligible mineralocorticoid receptor activity — this potency and selectivity profile is why it, not hydrocortisone, is favored for pulmonary and inflammatory indications where sodium-retaining mineralocorticoid effects are unwanted.",
-      "Suppresses eosinophilic and broader inflammatory airway infiltration in asthma/COPD, reduces airway wall edema, and — over hours, not minutes — restores beta-2 adrenergic receptor responsiveness to inhaled bronchodilators.",
-      "This delayed onset (hours) is exactly why systemic corticosteroids are never a rescue bronchodilator in their own right — they support and potentiate bronchodilator therapy rather than replacing it acutely."
+      "Rapidly enters target cells and binds high-affinity cytoplasmic glucocorticoid receptors (GR-α).",
+      "GR-steroid complex homodimerizes and translocates to nuclear response elements (GREs).",
+      "Directly represses AP-1 and NF-κB transcription factors, turning off gene expression for pro-inflammatory cytokines (IL-1, IL-2, IL-6, IL-8, TNF-α), chemokines, and inducible COX-2.",
+      "Stimulates expression of lipocortin-1 (annexin A1), inhibiting phospholipase A2 (PLA2) and blocking leukotriene/prostaglandin cascades in pulmonary airways.",
+      "Possesses 5:1 glucocorticoid-to-mineralocorticoid selectivity over hydrocortisone, preventing significant sodium retention and volume overload."
     ],
-    visualDiagram: "Methylprednisolone → High-Affinity Glucocorticoid Receptor Binding → Gene Transcription Changes → Airway Inflammation ↓, Eosinophil Infiltration ↓ → (Hours Later) Restored Beta-2 Agonist Responsiveness"
+    visualDiagram: "GR Agonism (5× Potency) → Lipocortin-1 ↑ + NF-κB Suppression ↓ → Bronchial & Alveolar Anti-Inflammation"
   },
   pkPd: {
     type: "receptor-occupancy",
-    targetParameter: "Indication-specific anti-inflammatory/immunomodulatory effect — not a single measurable target",
-    halfLife: "Plasma half-life ~2–3 hours; biologic (anti-inflammatory) half-life considerably longer at roughly 18–36 hours (intermediate-acting), which is why once- or twice-daily dosing achieves sustained effect",
-    proteinBinding: "~60–70%, less than hydrocortisone, with a smaller specifically cortisol-binding-globulin-bound fraction",
-    metabolism: "Extensive hepatic metabolism",
-    elimination: "Renal excretion of hepatic metabolites",
-    vdNotes: "Widely distributed, including good lung tissue penetration relevant to its pulmonary indications."
+    targetParameter: "Airway resistance reduction, PaO2/FiO2 ratio improvement, inflammatory cytokine suppression",
+    halfLife: "Plasma t1/2: 2.5–3 hours (Biological tissue duration: 18–36 hours)",
+    proteinBinding: "77% bound to transcortin and albumin; free active fraction higher than hydrocortisone",
+    metabolism: "Hepatic CYP3A4-mediated oxidation to inactive metabolites",
+    elimination: "Renal excretion of conjugated metabolites (<10% unchanged)",
+    vdNotes: "Vd ~0.7–1.5 L/kg; high lung tissue penetration makes it ideal for acute pulmonary inflammation"
   },
   icuReasoning: {
     whyIChooseIt: [
-      "Preferred over hydrocortisone for pulmonary/inflammatory indications (severe asthma, COPD exacerbation) given higher glucocorticoid potency without unwanted mineralocorticoid (sodium-retaining) activity.",
-      "Intermediate duration of action supports once- or twice-daily dosing rather than an every-6-hour regimen.",
-      "A reasonable IV option for patients who cannot reliably take or absorb oral prednisone."
+      "Established first-line systemic corticosteroid for acute severe asthma exacerbations and status asthmaticus when oral administration is impaired (~32–40 mg/day IV, equivalent to oral prednisone 40–50 mg/day per GINA 2026).",
+      "Effective for acute exacerbations of COPD requiring ICU/NIV support (~32–40 mg IV daily for 5 days per GOLD 2026 recommendations).",
+      "Low mineralocorticoid activity prevents intravascular fluid expansion and severe hypokalemia, making it preferable to hydrocortisone in non-cardiogenic pulmonary edema / ARDS where volume retention is undesirable.",
+      "Intermediate biological duration (18–36h) provides smooth anti-inflammatory coverage with once- or twice-daily dosing."
     ],
     whyIDont: [
-      "Lacks clinically useful mineralocorticoid activity, making it a poor choice for adrenal insufficiency/adrenal crisis, where that specific activity is needed — use hydrocortisone instead.",
-      "ARDS corticosteroid evidence is heterogeneous across different agents, doses, and durations — there is no single universally validated ARDS steroid protocol, and presenting one regimen as definitive misrepresents the evidence base.",
-      "Carries the same class-wide hyperglycemia, infection-risk, and ICU-acquired-weakness concerns as other systemic corticosteroids."
+      "Not appropriate as sole monotherapy for acute primary adrenal crisis because it lacks sufficient mineralocorticoid activity to replace aldosterone.",
+      "High incidence of acute steroid-induced hyperglycemia; frequent glucose monitoring and sliding scale/infusion insulin required.",
+      "In acute ARDS, high-dose unguided pulsed megadoses (>1–2 g/day) increase secondary infection rates and mortality; protocolized physiological dosing is mandatory.",
+      "Potential for prolonged muscle weakness and quadriparesis if co-administered with non-depolarizing paralytics for >48 hours."
     ],
-    bedsidePearl: "Be precise about what the underlying trial evidence actually tested. The REDUCE trial's well-known '5-day vs 14-day' short-course finding for COPD exacerbation studied oral PREDNISONE, not IV methylprednisolone — dose-equivalence tables let you cross-titrate between the two, but that is not the same as the trial having directly tested methylprednisolone."
+    bedsidePearl: "For severe asthma or COPD exacerbation, oral prednisone and IV methylprednisolone have equivalent clinical efficacy if enteral absorption is intact. Reserve IV methylprednisolone for patients who are intubated, vomiting, or in impending respiratory arrest!"
   },
   dosing: {
-    routine: "Dosing is indication-specific — see Syndrome-Specific Regimens below.",
+    routine: "Severe Asthma: ~32–40 mg/day IV (prednisone-equivalent 40–50 mg/day) in 1–2 divided doses for 5–7 days. Severe COPD: ~32–40 mg/day IV for 5 days total per GOLD 2026.",
     syndromeSpecific: [
       {
-        syndrome: "Severe Asthma Exacerbation",
-        regimen: "40–80 mg/day IV in 1–2 divided doses (e.g., 40 mg IV every 12 hours), or per institutional protocol; transition to oral prednisone-equivalent dosing once the patient can reliably tolerate oral intake and is clinically improving.",
-        reference: "GINA current strategy report",
-        note: "Oral and IV corticosteroids have shown comparable efficacy when GI absorption is intact — IV is chosen in the ICU mainly for reliability of delivery, not because it is inherently more effective."
+        syndrome: "Severe Acute Asthma / Status Asthmaticus",
+        regimen: "32–40 mg/day IV in 1–2 divided doses (or 1 mg/kg/day IV). Transition to oral prednisone (40–50 mg/day) once enteral intake is feasible, completing a 5–7 day total course.",
+        reference: "GINA 2026 Global Strategy for Asthma Management and Prevention",
+        note: "Systemic corticosteroids (oral or IV) accelerate airflow recovery; oral administration is preferred when enteral absorption is intact."
       },
       {
-        syndrome: "COPD Exacerbation",
-        regimen: "A common approach is 40 mg IV daily (referencing the oral prednisone 40 mg/day short-course evidence base) with early transition to oral therapy once tolerated; total course duration is typically around 5 days rather than a prolonged taper.",
-        reference: "GOLD current strategy report; short-course duration evidence largely derived from the REDUCE trial (oral prednisone, not methylprednisolone)",
-        note: "Be explicit that the REDUCE trial's 5-day-vs-14-day duration finding is about oral prednisone, not a direct methylprednisolone dosing study — the extrapolation to methylprednisolone is by dose-equivalence, not direct trial evidence."
+        syndrome: "Acute Exacerbation of COPD (ICU / NIV)",
+        regimen: "32–40 mg IV daily (or in 2 divided doses) for 5 days total (equivalent to oral prednisone 40 mg/day).",
+        reference: "GOLD 2026 Report; REDUCE Trial (JAMA 2013)",
+        note: "5 days of systemic corticosteroids is non-inferior to 14 days and prevents cumulative toxicity."
       },
       {
-        syndrome: "ARDS (Selected Patients — Evidence Heterogeneous)",
-        regimen: "No single universally validated regimen exists; published trials have used differing corticosteroids, doses, and durations. Consult current institutional protocol and guideline nuance rather than assuming one fixed methylprednisolone regimen applies.",
-        note: "Do not present ARDS corticosteroid therapy as having one settled dosing regimen — the trial evidence base uses genuinely heterogeneous steroid choices, doses, and treatment durations."
+        syndrome: "Persistent ARDS (Study-Specific Protocol: Meduri / Late Phase)",
+        regimen: "Study-Specific Regimen: 1–2 mg/kg/day IV (divided or continuous) × 7–14 days, followed by structured taper per specific trial protocol (e.g., Meduri et al. Chest 2007).",
+        reference: "2024 SCCM Focused Update on Corticosteroids in ARDS; Meduri Trial Protocol",
+        note: "Current 2024 SCCM guidance supports considering corticosteroids in moderate-to-severe ARDS, but does not mandate a single universal molecule or dose. Do not blend methylprednisolone protocols with DEXA-ARDS."
       }
     ],
     renallyAdjusted: [
-      { crclRange: "Any CrCl", dose: "No specific renal dose adjustment defined; methylprednisolone is hepatically metabolized." }
+      {
+        crclRange: "Any CrCl / AKI / ESRD",
+        dose: "No dosage adjustment required."
+      }
     ],
-    hdDosing: "No specific supplemental post-HD dosing required; not significantly removed by dialysis.",
-    crrtDosing: "No specific CRRT dose adjustment defined; dose per indication."
+    hdDosing: "No supplemental dose required post-hemodialysis.",
+    crrtDosing: "No dosage adjustment required for CRRT."
   },
   organFailure: {
-    renalConsiderations: "No specific dose reduction required; monitor for hyperglycemia and fluid status as with any systemic corticosteroid.",
-    hepaticConsiderations: "Significant hepatic impairment may reduce clearance and prolong systemic exposure — monitor for an exaggerated or prolonged corticosteroid effect."
+    renalConsiderations: "Minimal mineralocorticoid effect compared to hydrocortisone; safer in patients with hypervolemia and oliguric AKI.",
+    hepaticConsiderations: "Extensively metabolized by hepatic CYP3A4; monitor for enhanced glucocorticoid adverse effects (hyperglycemia, agitation) in severe hepatic failure."
   },
   toxicity: {
     majorWarnings: [
-      "Hyperglycemia — common and often significant.",
-      "Increased infection risk and a blunted febrile response, which can mask a new or worsening infection.",
-      "ICU-acquired weakness/myopathy risk, particularly with concurrent neuromuscular blockade — a specific, well-documented concern when methylprednisolone and neuromuscular blocking agents are combined in severe asthma/status asthmaticus management.",
-      "Increased risk of stress-related mucosal disease, typically in combination with other risk factors.",
-      "Neuropsychiatric effects including agitation, delirium, or mood disturbance, especially at higher doses.",
-      "Minimal mineralocorticoid activity means methylprednisolone does NOT reliably treat concurrent adrenal insufficiency or mineralocorticoid deficiency — use hydrocortisone, or add fludrocortisone, if that specific need exists."
+      "Severe acute hyperglycemia: can induce hyperosmolar states and increase surgical site or bloodstream infection rates.",
+      "Neuropsychiatric disturbances: acute steroid psychosis, severe agitation, sleep disruption, delirium.",
+      "Critical Illness Polyneuromyopathy (CIPNM): exacerbated when combined with neuromuscular blockade or aminoglycosides.",
+      "Immunosuppression and masking of infection: blunts pyrexia; steroid leukocytosis occurs independently of active bacteremia."
     ],
     organToxicities: [
-      { organ: "Metabolic/Endocrine", description: "Hyperglycemia and HPA-axis suppression with prolonged use; unlike hydrocortisone, minimal direct mineralocorticoid effect." },
-      { organ: "Musculoskeletal", description: "ICU-acquired weakness/myopathy — a specific, well-recognized risk when combined with neuromuscular blocking agents in severe asthma/status asthmaticus management (acute quadriplegic myopathy of critical illness)." },
-      { organ: "Immunologic/Infectious", description: "Increased infection risk and a blunted febrile response." },
-      { organ: "Gastrointestinal", description: "Increased risk of stress-related mucosal disease." },
-      { organ: "Neuropsychiatric", description: "Agitation, delirium, or mood disturbance, particularly at higher doses." }
+      {
+        organ: "Endocrine & Metabolic",
+        description: "Marked hyperglycemia, insulin resistance, suppression of endogenous hypothalamic-pituitary-adrenal (HPA) axis."
+      },
+      {
+        organ: "Neurological & Psychiatric",
+        description: "Steroid psychosis, agitation, insomnia, ICU delirium, emotional lability."
+      },
+      {
+        organ: "Musculoskeletal",
+        description: "Acute necrotizing myopathy when combined with NMBAs; proximal muscle atrophy with prolonged courses (>7–10 days)."
+      },
+      {
+        organ: "Gastrointestinal",
+        description: "Gastric ulceration and bleeding, particularly with concurrent NSAIDs or anticoagulation."
+      }
     ]
   },
   interactions: [
     {
-      drug: "Neuromuscular blocking agents (especially in severe asthma/status asthmaticus)",
-      mechanism: "Additive/synergistic risk of severe ICU-acquired weakness (acute quadriplegic myopathy)",
-      consequence: "Prolonged, sometimes severe weakness and difficulty weaning from mechanical ventilation",
-      icuAction: "Minimize concurrent duration of both agents; use the lowest effective NMBA dose and duration, and consider daily interruption where feasible."
+      drug: "Non-depolarizing NMBAs (Cisatracurium, Rocuronium)",
+      mechanism: "Synergistic catabolic effect on skeletal muscle sarcomeres and motor endplates",
+      consequence: "Profound prolonged quadriparesis and ICU-acquired weakness / acute quadriplegic myopathy",
+      icuAction: "Limit concurrent NMBA duration to <48h whenever feasible; perform daily train-of-four and spontaneous breathing trials."
     },
     {
-      drug: "Insulin / oral hypoglycemics",
-      mechanism: "Corticosteroid-induced insulin resistance",
-      consequence: "Increased insulin requirements",
-      icuAction: "Anticipate higher insulin needs and monitor glucose closely."
+      drug: "Strong CYP3A4 Inducers (Phenytoin, Carbamazepine, Rifampin)",
+      mechanism: "Induction of hepatic CYP3A4 accelerating methylprednisolone clearance",
+      consequence: "Reduced methylprednisolone serum concentrations and diminished clinical anti-inflammatory efficacy",
+      icuAction: "Monitor clinical response carefully; dose titration may be required during co-administration."
     },
     {
-      drug: "Strong CYP3A4 inhibitors/inducers",
-      mechanism: "Altered hepatic metabolism of methylprednisolone",
-      consequence: "Increased or decreased corticosteroid exposure",
-      icuAction: "Be aware of significant CYP3A4 interactions (e.g., certain antifungals, rifampin) and adjust clinical monitoring accordingly."
+      drug: "Insulin / Oral Hypoglycemics",
+      mechanism: "Glucocorticoid-induced gluconeogenesis and peripheral insulin resistance",
+      consequence: "Severe hyperglycemia and increased insulin requirements (often requiring 50–100% insulin dose increases)",
+      icuAction: "Initiate proactive ICU insulin infusion protocol or increase sliding scale coverage with regular fingersticks q4h."
     }
   ],
   monitoring: {
     parameters: [
-      "Blood glucose",
-      "Signs of new or worsening infection",
-      "Neuromuscular strength/exam, particularly if combined with neuromuscular blockade",
-      "Mental status",
-      "Respiratory status and response to therapy (asthma/COPD indications)"
+      "Blood glucose every 4–6 hours (anticipate insulin requirement escalation)",
+      "Peak inspiratory and plateau pressures, dynamic compliance in ventilated patients",
+      "Signs of secondary infection (fever curve, sputum purulence, procalcitonin)",
+      "Daily neurological exam and CAM-ICU delirium screening",
+      "Peripheral muscle strength and readiness for physical therapy / mobilization"
     ]
   },
   evidenceTraceability: {
-    guidelineIds: ["gina-guideline-current", "gold-guideline-current"],
+    guidelineIds: ["asthma-guideline-gina-2026"],
+    trialIds: ["pneumonia-cape-cod-trial"],
     claimCitations: [
       {
-        claim: "A 5-day course of oral prednisone was non-inferior to a 14-day course for COPD exacerbation, supporting shorter corticosteroid courses.",
-        source: "Leuppi JD, et al. Short-term vs Conventional Glucocorticoid Therapy in Acute Exacerbations of Chronic Obstructive Pulmonary Disease: The REDUCE Randomized Clinical Trial. JAMA. 2013;309(21):2223-2231.",
-        citationUrl: "https://pubmed.ncbi.nlm.nih.gov/23695200/"
+        claim: "Systemic corticosteroids accelerate recovery of airflow obstruction and reduce hospitalization length in severe acute asthma and COPD exacerbations.",
+        source: "Global Initiative for Asthma (GINA 2026 Report); Global Initiative for Chronic Obstructive Lung Disease (GOLD 2026 Report)."
+      },
+      {
+        claim: "Short-course corticosteroid therapy (5 days) is non-inferior to longer courses (14 days) in acute exacerbations of COPD.",
+        source: "Leuppi JD, et al. Short-term vs Conventional Glucocorticoid Therapy in Acute Exacerbations of COPD (REDUCE). JAMA 2013;309:2223-2231."
       }
     ]
   },
   patientScenarios: [
     {
-      title: "Severe Asthma Exacerbation Requiring ICU Admission",
-      clinicalContext: "A patient with a severe asthma exacerbation and poor response to bronchodilators is admitted to the ICU.",
-      decision: "Give methylprednisolone 40 mg IV every 12 hours (or per institutional protocol), understanding that a meaningful anti-inflammatory/bronchodilator-potentiating effect takes hours, not minutes, to develop.",
-      rationale: "Systemic corticosteroids reduce airway inflammation and restore beta-2 receptor responsiveness, but are never a substitute for immediate bronchodilator/rescue therapy given their delayed onset."
+      title: "Acute Severe Asthma Exacerbation in the Resuscitation Bay",
+      clinicalContext: "A 28-year-old with severe brittle asthma presents with diaphoresis, pulsus paradoxus 22 mmHg, PEFR 30% predicted, speaking in single words despite 3 continuous albuterol/ipratropium nebulizers.",
+      decision: "Administer methylprednisolone 60–80 mg IV stat (or 1 mg/kg IV) along with IV magnesium sulfate 2 g over 20 min and continuous inhaled beta-agonists.",
+      rationale: "Early systemic corticosteroid administration accelerates the reduction of airway edema and inflammation. Because oral intake is impaired by severe dyspnea, parenteral IV administration is indicated."
     },
     {
-      title: "Methylprednisolone Mistakenly Substituted for Hydrocortisone in Adrenal Crisis",
-      clinicalContext: "A patient with known adrenal insufficiency in crisis is given methylprednisolone instead of hydrocortisone.",
-      decision: "Recognize the mineralocorticoid gap and add hydrocortisone (or fludrocortisone) rather than simply increasing the methylprednisolone dose.",
-      rationale: "Methylprednisolone's negligible mineralocorticoid activity does not address the sodium/volume component of adrenal crisis — potency-equivalent dosing does not substitute for the specific receptor activity that's actually needed."
+      title: "Hospitalized COPD Exacerbation on Non-Invasive Ventilation",
+      clinicalContext: "A 66-year-old with severe COPD (GOLD Stage 3) admitted to ICU on BiPAP with PaCO2 68 mmHg and pH 7.28. The junior resident orders methylprednisolone 125 mg IV q6h for 14 days.",
+      decision: "Modify order to oral Prednisone 40 mg daily (or IV Methylprednisolone 32–40 mg daily if oral route is unavailable) for 5 days total.",
+      rationale: "Per GOLD 2026 and the REDUCE trial, 5 days of systemic corticosteroid therapy (prednisone 40 mg/day or equivalent) is non-inferior to 14 days, achieving identical FEV1 recovery and avoiding cumulative steroid toxicity."
     }
   ],
   examTraps: [
     {
-      misconception: "There is one universally agreed methylprednisolone regimen for ARDS.",
-      reality: "FALSE. ARDS corticosteroid trial evidence uses heterogeneous agents, doses, and durations — there is no single settled regimen.",
-      explanation: "Presenting ARDS steroid therapy as having one fixed protocol misrepresents a genuinely mixed and evolving evidence base; institutional and guideline-specific protocols should be consulted rather than assuming one universal number."
+      misconception: "IV methylprednisolone works faster and better than oral prednisone for severe asthma.",
+      reality: "Oral and IV systemic corticosteroids have equivalent clinical efficacy and time to onset of anti-inflammatory action (4–6 hours).",
+      explanation: "Oral prednisone has near 100% bioavailability. IV route is reserved for patients unable to swallow, vomiting, mechanically ventilated, or in severe respiratory distress."
     },
     {
-      misconception: "The REDUCE trial proved that a short methylprednisolone course is as effective as a long one for COPD.",
-      reality: "Not precisely — REDUCE studied oral PREDNISONE, not IV methylprednisolone.",
-      explanation: "The finding is often generalized in practice to systemic corticosteroids broadly via dose-equivalence reasoning, but citing REDUCE as direct methylprednisolone evidence overstates exactly what the trial tested."
+      misconception: "Methylprednisolone is the drug of choice for acute primary adrenal crisis.",
+      reality: "Hydrocortisone is the drug of choice for adrenal crisis because it provides essential mineralocorticoid activity (1:1 ratio) that methylprednisolone lacks.",
+      explanation: "Adrenal crisis involves life-threatening aldosterone and cortisol deficiency. Methylprednisolone does not provide adequate mineralocorticoid replacement."
     }
   ],
-  searchAliases: ["methylprednisolone", "solu-medrol", "asthma steroids", "copd steroids", "ards steroids"],
-  relatedTopicIds: ["asthma", "copd-exacerbation", "ards"]
+  searchAliases: [
+    "methylprednisolone",
+    "solu-medrol",
+    "medrol",
+    "asthma steroid",
+    "copd steroid",
+    "ards steroid"
+  ],
+  relatedTopicIds: [
+    "asthma",
+    "copd-exacerbation",
+    "ards",
+    "pneumonia",
+    "respiratory-failure-basics"
+  ]
 };

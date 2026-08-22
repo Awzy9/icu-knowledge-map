@@ -280,51 +280,5 @@ export const hemodynamicChallenges: MedicationChallenge[] = [
     relatedTopicIds: ["shock", "septic-shock"],
     tags: ["vasopressors", "metabolic", "lactate"],
     references: ["Guidelines and Textbooks"]
-  },
-  {
-    id: "hemo-amiodarone-dose-confusion",
-    challengeType: "dose-change",
-    difficulty: "intermediate",
-    system: "Cardiovascular",
-    stem: "A 70-year-old man with a history of ischemic cardiomyopathy develops sustained monomorphic ventricular tachycardia with a palpable pulse and a blood pressure of 92/58 mmHg. A nurse prepares to give amiodarone 300 mg IV as a rapid push, as used in the hospital's cardiac arrest protocol. What is the most appropriate correction to this plan?",
-    options: [
-      { id: "opt-slow-load", text: "Give 150 mg IV over 10 minutes, followed by a tapering infusion, not a rapid push", isCorrect: true },
-      { id: "opt-push-as-planned", text: "Give the 300 mg rapid push as planned since the rhythm is VT", isCorrect: false },
-      { id: "opt-hold", text: "Hold amiodarone entirely and observe", isCorrect: false },
-      { id: "opt-300-slow", text: "Give 300 mg IV over 10 minutes instead of as a push", isCorrect: false }
-    ],
-    explanation: "This patient has a perfusing rhythm (pulse and measurable blood pressure), not cardiac arrest. The 300 mg rapid IV/IO push dose is specific to pulseless VT/VF during active cardiac arrest. A perfusing patient with stable VT should receive the slower loading regimen — 150 mg IV over 10 minutes followed by a tapering infusion — since a rapid push in a patient with a blood pressure will cause severe hypotension.",
-    whyNotAlternatives: [
-      { optionId: "opt-push-as-planned", drug: "Amiodarone (arrest dose)", reasoning: "This dosing and administration rate is reserved for pulseless cardiac arrest, not a perfusing patient with a measurable blood pressure." },
-      { optionId: "opt-hold", drug: "Amiodarone (withheld)", reasoning: "Withholding treatment entirely leaves a hemodynamically tenuous VT untreated; the correct action is to use the right regimen, not no regimen." },
-      { optionId: "opt-300-slow", drug: "Amiodarone (wrong total dose)", reasoning: "The total dose, not just the rate, is wrong — the loading dose for stable VT is 150 mg, not 300 mg." }
-    ],
-    relatedMedicationSlugs: ["amiodarone"],
-    relatedTopicIds: ["arrhythmias"],
-    tags: ["antiarrhythmics", "dosing-safety", "vt"],
-    references: ["Panchal AR, et al. 2020 American Heart Association Guidelines for CPR and ECC. Circulation. 2020;142(16_suppl_2):S366-S468."]
-  },
-  {
-    id: "hemo-adenosine-technique",
-    challengeType: "best-drug",
-    difficulty: "foundation",
-    system: "Cardiovascular",
-    stem: "A hemodynamically stable 30-year-old woman presents with a regular narrow-complex tachycardia at 190 bpm. Adenosine 6 mg is ordered. It is given slowly over about 30 seconds through a small IV in the hand, followed by a slow saline flush. The rhythm does not change. What is the most likely explanation?",
-    options: [
-      { id: "opt-technique", text: "The administration technique, not the diagnosis or dose, was the problem", isCorrect: true },
-      { id: "opt-doesnt-work", text: "Adenosine simply doesn't work for this rhythm", isCorrect: false },
-      { id: "opt-higher-dose", text: "The patient needs a higher dose regardless of technique", isCorrect: false },
-      { id: "opt-not-av-dependent", text: "The rhythm must not actually be AV-node-dependent", isCorrect: false }
-    ],
-    explanation: "Adenosine has a half-life under 10 seconds. Given slowly through a small distal IV, with a slow flush, the drug is cleared by cellular uptake before it reaches the AV node in an effective concentration. The fix is technique — a rapid push through the most proximal, largest-bore IV available, immediately followed by a rapid flush — not necessarily a higher dose or a different diagnosis.",
-    whyNotAlternatives: [
-      { optionId: "opt-doesnt-work", drug: "Adenosine", reasoning: "AV-node-dependent reentrant SVT is exactly the rhythm adenosine is designed to interrupt; a lack of effect first raises suspicion for a technique problem, not drug failure." },
-      { optionId: "opt-higher-dose", drug: "Adenosine", reasoning: "Escalating the dose without fixing the delivery technique risks repeating the same failure at a higher, more uncomfortable dose." },
-      { optionId: "opt-not-av-dependent", drug: "Adenosine", reasoning: "A regular narrow-complex tachycardia at this rate is most consistent with an AV-node-dependent mechanism; technique should be corrected and adenosine retried before assuming a different mechanism." }
-    ],
-    relatedMedicationSlugs: ["adenosine"],
-    relatedTopicIds: ["arrhythmias"],
-    tags: ["antiarrhythmics", "administration-technique", "svt"],
-    references: ["Panchal AR, et al. 2020 American Heart Association Guidelines for CPR and ECC. Circulation. 2020;142(16_suppl_2):S366-S468."]
   }
 ];

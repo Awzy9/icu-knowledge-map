@@ -18,5 +18,8 @@ export const potassiumHandling: PhysiologyConcept = {
     "Refractory hyperkalemia despite medical therapy, especially with oliguria or anuria, is a standard indication for urgent dialysis.",
   ],
   relatedConceptIds: ["physiology.tubular-function", "physiology.sodium-handling"],
-  relatedTopicIds: ["hyperkalemia", "aki"],
+  relatedTopicIds: [
+  "hyperkalemia",
+  "aki"
+],
 };

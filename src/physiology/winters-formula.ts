@@ -18,6 +18,8 @@ export const wintersFormula: PhysiologyConcept = {
     "A PaCO2 lower than predicted points to a concurrent primary respiratory alkalosis (e.g. sepsis-driven tachypnea, salicylate toxicity) layered on top of the metabolic acidosis.",
   ],
   relatedConceptIds: ["physiology.compensation", "physiology.anion-gap", "physiology.mixed-disorders"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
   visual: { kind: "acid-base-map", defaultPh: 7.32, defaultPaco2: 34, defaultHco3: 16, defaultNa: 138, defaultCl: 106 },
 };

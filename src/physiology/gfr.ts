@@ -18,5 +18,7 @@ export const gfr: PhysiologyConcept = {
     "Drug dosing for renally cleared medications is adjusted based on estimated GFR, which becomes less reliable as creatinine lags behind acute changes in true filtration.",
   ],
   relatedConceptIds: ["physiology.filtration", "physiology.tubular-function"],
-  relatedTopicIds: ["aki"],
+  relatedTopicIds: [
+  "aki"
+],
 };

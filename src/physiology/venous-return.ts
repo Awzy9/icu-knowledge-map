@@ -18,5 +18,7 @@ export const venousReturn: PhysiologyConcept = {
     "The passive leg raise maneuver works by transiently auto-transfusing venous blood centrally, testing whether increased venous return would increase cardiac output.",
   ],
   relatedConceptIds: ["physiology.preload", "physiology.svr", "physiology.auto-peep"],
-  relatedTopicIds: ["shock"],
+  relatedTopicIds: [
+  "shock"
+],
 };

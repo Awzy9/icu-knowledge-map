@@ -18,6 +18,9 @@ export const contractility: PhysiologyConcept = {
     "Sepsis-associated cardiomyopathy is a reversible contractility problem that can mimic or compound the distributive component of septic shock.",
   ],
   relatedConceptIds: ["physiology.preload", "physiology.afterload", "physiology.cardiac-output"],
-  relatedTopicIds: ["shock", "sepsis"],
+  relatedTopicIds: [
+  "shock",
+  "sepsis"
+],
   visual: { kind: "starling-curve", defaultPreload: 50, defaultContractility: "reduced" },
 };

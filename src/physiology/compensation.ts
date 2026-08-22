@@ -18,5 +18,7 @@ export const compensation: PhysiologyConcept = {
     "Guides the pace of correcting any acute-on-chronic disturbance, since compensation that took days to develop shouldn't be reversed in hours.",
   ],
   relatedConceptIds: ["physiology.henderson-hasselbalch", "physiology.winters-formula", "physiology.mixed-disorders"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
 };

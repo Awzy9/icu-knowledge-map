@@ -97,7 +97,7 @@ export function useLearningProgress(counts: {
 
     const topicsNotStarted = Math.max(0, counts.totalTopics - (topicsLearning + topicsPracticed + topicsStrong));
 
-    // 2. Medication Breakdown — computed from real structured signals across all medications
+    // 2. Medication Breakdown — computed from real structured signals across all 35 medications
     const medicationList: MedicationProgressItem[] = [];
     let medsNotStarted = 0;
     let medsLearning = 0;

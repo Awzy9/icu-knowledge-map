@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "dev:lan": "next dev -H 0.0.0.0",
-    "build": "npx tsx scripts/validate.ts && next build",
-    "validate": "npx tsx scripts/validate.ts",
-    "validate:relationships": "npx tsx scripts/validate.ts",
+    "build": "tsx scripts/validate.ts && next build",
+    "validate": "tsx scripts/validate.ts",
+    "validate:relationships": "tsx scripts/validate.ts",
     "start": "next start",
     "start:lan": "next start -H 0.0.0.0",
     "lint": "eslint"
@@ -28,6 +28,11 @@
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
     "tailwindcss": "^4",
+    "tsx": "^4.23.12",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true,
+    "esbuild@0.28.2": true
   }
 }

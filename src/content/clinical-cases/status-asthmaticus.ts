@@ -88,7 +88,7 @@ export const statusAsthmaticusCase: ClinicalCase = {
           id: "2-a",
           text: "Low starting respiratory rate (10–14/min), low VT (6–8 mL/kg PBW), high inspiratory flow (70–90 L/min), long expiratory time (I:E ratio ≥1:4), and permissive hypercapnia",
           isCorrect: true,
-          explanation: "The primary ventilator goal in status asthmaticus is preventing dynamic hyperinflation (Auto-PEEP), NOT normalizing PaCO2. Maximizing expiratory time (initial low RR 10–14/min, short inspiratory time via high inspiratory flow 70–90 L/min) allows exhalation of trapped air. Permissive hypercapnia is maintained as a practical clinical strategy (accepting elevated PaCO2 while keeping pH in a safe range, generally ≥ 7.15–7.20) to avoid barotrauma and hemodynamic collapse.",
+          explanation: "The primary ventilator goal in status asthmaticus is preventing dynamic hyperinflation (Auto-PEEP), NOT normalizing PaCO2. Maximizing expiratory time (initial low RR 10–14/min, short inspiratory time via high inspiratory flow 70–90 L/min) allows exhalation of trapped air. Permissive hypercapnia is maintained to prioritize lung-protective mechanics and prevent dynamic hyperinflation (accepting elevated PaCO2 and respiratory acidemia while monitoring hemodynamic tolerance and avoiding high airway pressures), avoiding barotrauma and hemodynamic collapse.",
           physiologicReasoning: "Severe airflow resistance dramatically increases the expiratory time constant; long expiratory time prevents progressive breath-stacking.",
           nextStepId: "step-3",
           outcome: {

@@ -5,6 +5,30 @@ import { evidenceRefSchema } from "./relationship";
 export const physiologySystemSchema = z.enum(["respiratory", "cardiovascular", "renal", "acid-base"]);
 export type PhysiologySystem = z.infer<typeof physiologySystemSchema>;
 
+export const chainNodeSchema = z.object({
+  /** The physiologic event text. */
+  text: z.string().min(1),
+  /** Optional arrow direction — always accompanied by a text label. */
+  direction: z.enum(["up", "down", "neutral"]).optional(),
+  /** Highlight this node for emphasis. */
+  emphasis: z.boolean().optional(),
+  /** Small annotation below the node. */
+  annotation: z.string().optional(),
+});
+export type ChainNode = z.infer<typeof chainNodeSchema>;
+
+export const chainStateSchema = z.object({
+  /** Toggle-button label (e.g. "Normal", "Disease", "+ Norepinephrine"). */
+  label: z.string().min(1),
+  /** Brief description shown below the toggle row. */
+  description: z.string().optional(),
+  /** Ordered chain nodes, top to bottom. Must have at least 1 node. */
+  chain: z.array(chainNodeSchema).min(1),
+  /** Colour theme for nodes in this state. */
+  color: z.enum(["blue", "red", "green", "amber", "default"]).optional(),
+});
+export type ChainState = z.infer<typeof chainStateSchema>;
+
 /**
  * A small, fixed library of reusable interactive visual kinds — each backed
  * by a deterministic, client-side-only formula (no AI, no network calls).
@@ -41,6 +65,13 @@ export const physiologyVisualSchema = z.discriminatedUnion("kind", [
     defaultHco3: z.number(),
     defaultNa: z.number(),
     defaultCl: z.number(),
+  }),
+  z.object({
+    kind: z.literal("causal-chain"),
+    /** Initial state label shown (e.g. "normal", "disease", "treatment") */
+    defaultState: z.string().min(1),
+    /** Ordered list of toggle states with full node chains. */
+    states: z.array(chainStateSchema).min(1),
   }),
 ]);
 export type PhysiologyVisual = z.infer<typeof physiologyVisualSchema>;

@@ -18,5 +18,8 @@ export const renalAcidBaseRegulation: PhysiologyConcept = {
     "Explains why correcting a chronic respiratory acidosis too quickly on a ventilator can produce a transient post-hypercapnic metabolic alkalosis — the elevated bicarbonate hasn't yet been renally cleared.",
   ],
   relatedConceptIds: ["physiology.henderson-hasselbalch", "physiology.compensation", "physiology.tubular-function"],
-  relatedTopicIds: ["aki", "metabolic-acidosis"],
+  relatedTopicIds: [
+  "aki",
+  "metabolic-acidosis"
+],
 };

@@ -18,6 +18,8 @@ export const preload: PhysiologyConcept = {
     "Distinguishes hypovolemic shock (low preload, responsive to fluids) from cardiogenic and distributive shock, where preload may already be adequate or even elevated.",
   ],
   relatedConceptIds: ["physiology.cardiac-output", "physiology.venous-return", "physiology.contractility"],
-  relatedTopicIds: ["shock"],
+  relatedTopicIds: [
+  "shock"
+],
   visual: { kind: "starling-curve", defaultPreload: 40, defaultContractility: "normal" },
 };

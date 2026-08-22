@@ -18,5 +18,7 @@ export const tubularFunction: PhysiologyConcept = {
     "Nephrotoxin avoidance (aminoglycosides, contrast, prolonged NSAID use) is aimed specifically at protecting these metabolically vulnerable tubular segments.",
   ],
   relatedConceptIds: ["physiology.gfr", "physiology.sodium-handling", "physiology.potassium-handling"],
-  relatedTopicIds: ["aki"],
+  relatedTopicIds: [
+  "aki"
+],
 };

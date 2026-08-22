@@ -12,17 +12,9 @@ interface ChallengeCardProps {
 
 export function ChallengeCard({ challenge }: ChallengeCardProps) {
   const { recordChallenge, getChallengeResult } = useChallengeHistory();
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  
   const historyEntry = getChallengeResult(challenge.id);
   const isCompleted = !!historyEntry;
-  
-  // Set initial selected ID if already completed
-  useEffect(() => {
-    if (historyEntry) {
-      setSelectedId(historyEntry.selectedOptionId);
-    }
-  }, [historyEntry]);
+  const [selectedId, setSelectedId] = useState<string | null>(historyEntry?.selectedOptionId ?? null);
 
   const handleSelect = (option: ChallengeOption) => {
     if (isCompleted) return;
@@ -30,8 +22,6 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
     setSelectedId(option.id);
     recordChallenge(challenge.id, option.id, option.isCorrect);
   };
-
-  const selectedOption = challenge.options.find(o => o.id === selectedId);
 
   return (
     <div className="bg-surface rounded-xl border border-border shadow-md overflow-hidden flex flex-col">

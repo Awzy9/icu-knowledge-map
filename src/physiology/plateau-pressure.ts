@@ -18,7 +18,10 @@ export const plateauPressure: PhysiologyConcept = {
     "Used together with PEEP to calculate driving pressure, which many clinicians now treat as the more informative single number.",
   ],
   relatedConceptIds: ["physiology.driving-pressure", "physiology.compliance", "physiology.transpulmonary-pressure"],
-  relatedTopicIds: ["ards", "mechanical-ventilation"],
+  relatedTopicIds: [
+  "ards",
+  "mechanical-ventilation"
+],
   references: [{ kind: "guideline", id: "ards-guideline-low-tidal-volume", relevance: "This guideline's core recommendation targets plateau pressure ≤ 30 cmH2O alongside low tidal volume." }],
   visual: { kind: "pressure-relationship", defaultPlateauPressure: 28, defaultPeep: 8 },
 };

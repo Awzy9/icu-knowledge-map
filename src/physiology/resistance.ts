@@ -18,5 +18,8 @@ export const resistance: PhysiologyConcept = {
     "High resistance combined with insufficient expiratory time is the mechanism behind auto-PEEP.",
   ],
   relatedConceptIds: ["physiology.compliance", "physiology.auto-peep", "physiology.work-of-breathing"],
-  relatedTopicIds: ["mechanical-ventilation", "ards"],
+  relatedTopicIds: [
+  "mechanical-ventilation",
+  "ards"
+],
 };

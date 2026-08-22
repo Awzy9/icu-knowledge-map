@@ -10,6 +10,7 @@ import { ceftriaxone } from "./ceftriaxone";
 import { cisatracurium } from "./cisatracurium";
 import { clevidipine } from "./clevidipine";
 import { daptomycin } from "./daptomycin";
+import { dexamethasone } from "./dexamethasone";
 import { dexmedetomidine } from "./dexmedetomidine";
 import { dobutamine } from "./dobutamine";
 import { dopamine } from "./dopamine";
@@ -59,6 +60,7 @@ export const allMedications: readonly Medication[] = [
   cisatracurium,
   clevidipine,
   daptomycin,
+  dexamethasone,
   dexmedetomidine,
   dobutamine,
   dopamine,

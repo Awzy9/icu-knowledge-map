@@ -21,16 +21,6 @@ export function MedicationCard({ medication }: MedicationCardProps) {
         return "bg-amber-50 text-amber-800 dark:bg-amber-950 dark:text-amber-200 border-amber-200 dark:border-amber-900";
       case "antihypertensives-vasodilators":
         return "bg-blue-50 text-blue-800 dark:bg-blue-950 dark:text-blue-200 border-blue-200 dark:border-blue-900";
-      case "antiarrhythmics":
-        return "bg-orange-50 text-orange-800 dark:bg-orange-950 dark:text-orange-200 border-orange-200 dark:border-orange-900";
-      case "anticoagulants":
-        return "bg-red-50 text-red-800 dark:bg-red-950 dark:text-red-200 border-red-200 dark:border-red-900";
-      case "endocrine-metabolic":
-        return "bg-cyan-50 text-cyan-800 dark:bg-cyan-950 dark:text-cyan-200 border-cyan-200 dark:border-cyan-900";
-      case "diuretics":
-        return "bg-lime-50 text-lime-800 dark:bg-lime-950 dark:text-lime-200 border-lime-200 dark:border-lime-900";
-      case "electrolytes-emergency":
-        return "bg-fuchsia-50 text-fuchsia-800 dark:bg-fuchsia-950 dark:text-fuchsia-200 border-fuchsia-200 dark:border-fuchsia-900";
       default:
         return "bg-slate-50 text-slate-800 border-slate-200";
     }

@@ -122,7 +122,7 @@ export function ProgressDashboard({ totalTopics, totalCases }: ProgressDashboard
               <h3 className="text-lg font-bold text-ink">Medication Learning States</h3>
             </div>
             <span className="text-xs font-medium text-ink-muted bg-surface-elevated px-2.5 py-1 rounded-full border border-border">
-              47 Medications
+              35 Medications
             </span>
           </div>
 

@@ -18,5 +18,7 @@ export const filtration: PhysiologyConcept = {
     "Understanding the filtration barrier explains why albumin is normally absent from urine, making albuminuria a sensitive marker of early glomerular injury.",
   ],
   relatedConceptIds: ["physiology.gfr", "physiology.tubular-function"],
-  relatedTopicIds: ["aki"],
+  relatedTopicIds: [
+  "aki"
+],
 };

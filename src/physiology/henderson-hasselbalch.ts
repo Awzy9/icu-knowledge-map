@@ -18,6 +18,8 @@ export const hendersonHasselbalch: PhysiologyConcept = {
     "Underlies bedside blood gas interpretation in every ventilated ICU patient, not just those with a primary metabolic derangement.",
   ],
   relatedConceptIds: ["physiology.anion-gap", "physiology.compensation", "physiology.mixed-disorders"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
   visual: { kind: "acid-base-map", defaultPh: 7.36, defaultPaco2: 32, defaultHco3: 18, defaultNa: 138, defaultCl: 104 },
 };

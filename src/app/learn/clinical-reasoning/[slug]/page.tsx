@@ -6,17 +6,18 @@ import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { CasePlayer } from "@/components/learn/CasePlayer";
 
 interface Props {
-  params: {
+  readonly params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export function generateStaticParams() {
   return getAllClinicalCaseSlugs().map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const caseData = getClinicalCase(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const caseData = getClinicalCase(slug);
   if (!caseData) {
     return { title: "Case Not Found" };
   }
@@ -26,8 +27,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function CasePage({ params }: Props) {
-  const caseData = getClinicalCase(params.slug);
+export default async function CasePage({ params }: Props) {
+  const { slug } = await params;
+  const caseData = getClinicalCase(slug);
 
   if (!caseData) {
     notFound();

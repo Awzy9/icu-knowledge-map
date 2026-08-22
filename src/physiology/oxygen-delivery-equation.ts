@@ -23,6 +23,9 @@ export const oxygenDeliveryEquation: PhysiologyConcept = {
     "physiology.cardiac-output",
     "physiology.ventilation-perfusion-mismatch",
   ],
-  relatedTopicIds: ["ards", "shock"],
+  relatedTopicIds: [
+  "ards",
+  "shock"
+],
   visual: { kind: "do2-breakdown", defaultCardiacOutput: 5, defaultHemoglobin: 12, defaultSao2: 97 },
 };

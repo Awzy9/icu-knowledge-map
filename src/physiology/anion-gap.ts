@@ -18,6 +18,8 @@ export const anionGap: PhysiologyConcept = {
     "Trending the anion gap over time is used to track resolution of the underlying process (e.g. clearing lactate, resolving ketoacidosis) alongside the primary lab values.",
   ],
   relatedConceptIds: ["physiology.henderson-hasselbalch", "physiology.delta-gap", "physiology.osmolar-gap"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
   visual: { kind: "acid-base-map", defaultPh: 7.3, defaultPaco2: 30, defaultHco3: 16, defaultNa: 140, defaultCl: 104 },
 };

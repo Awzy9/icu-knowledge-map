@@ -18,5 +18,7 @@ export const sodiumHandling: PhysiologyConcept = {
     "Diuretic therapy works by blocking sodium reabsorption at specific tubular sites, and understanding which segment a diuretic targets explains its potency and side-effect profile.",
   ],
   relatedConceptIds: ["physiology.tubular-function", "physiology.potassium-handling"],
-  relatedTopicIds: ["aki"],
+  relatedTopicIds: [
+  "aki"
+],
 };

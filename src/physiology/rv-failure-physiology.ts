@@ -18,5 +18,8 @@ export const rvFailurePhysiology: PhysiologyConcept = {
     "Correcting hypoxia, hypercapnia, and acidosis are first-line therapies for acute RV failure, because all three directly raise pulmonary vascular resistance.",
   ],
   relatedConceptIds: ["physiology.afterload", "physiology.preload", "physiology.plateau-pressure"],
-  relatedTopicIds: ["ards", "shock"],
+  relatedTopicIds: [
+  "ards",
+  "shock"
+],
 };

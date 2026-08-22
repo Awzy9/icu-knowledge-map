@@ -18,6 +18,9 @@ export const cardiacOutput: PhysiologyConcept = {
     "Directly determines oxygen delivery (DO2 = CO × CaO2 × 10), linking cardiovascular and respiratory physiology at the bedside.",
   ],
   relatedConceptIds: ["physiology.preload", "physiology.contractility", "physiology.afterload", "physiology.oxygen-delivery-equation"],
-  relatedTopicIds: ["shock", "ards"],
+  relatedTopicIds: [
+  "shock",
+  "ards"
+],
   visual: { kind: "starling-curve", defaultPreload: 60, defaultContractility: "normal" },
 };

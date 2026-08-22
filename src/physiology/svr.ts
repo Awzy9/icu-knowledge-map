@@ -18,5 +18,8 @@ export const svr: PhysiologyConcept = {
     "Falling SVR despite adequate volume resuscitation is a hallmark of septic shock and the physiologic target of vasopressor titration in that setting.",
   ],
   relatedConceptIds: ["physiology.afterload", "physiology.cardiac-output", "physiology.venous-return"],
-  relatedTopicIds: ["shock", "sepsis"],
+  relatedTopicIds: [
+  "shock",
+  "sepsis"
+],
 };

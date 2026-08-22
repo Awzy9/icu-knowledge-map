@@ -18,6 +18,9 @@ export const shunt: PhysiologyConcept = {
     "Helps set expectations at the bedside: chasing FiO2 higher in a shunt-dominant patient has diminishing and eventually negligible returns.",
   ],
   relatedConceptIds: ["physiology.ventilation-perfusion-mismatch", "physiology.dead-space", "physiology.oxygen-delivery-equation"],
-  relatedTopicIds: ["ards", "cardiogenic-pulmonary-edema"],
+  relatedTopicIds: [
+  "ards",
+  "cardiogenic-pulmonary-edema"
+],
   visual: { kind: "vq-spectrum", defaultRatio: 0.1 },
 };

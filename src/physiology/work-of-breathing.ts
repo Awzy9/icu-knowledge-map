@@ -18,5 +18,8 @@ export const workOfBreathing: PhysiologyConcept = {
     "Persistently high work of breathing despite adequate oxygenation and ventilation is itself an indication for ongoing ventilatory support, since respiratory muscle fatigue is a distinct failure mode from gas exchange failure.",
   ],
   relatedConceptIds: ["physiology.resistance", "physiology.compliance", "physiology.auto-peep"],
-  relatedTopicIds: ["respiratory-failure-basics", "mechanical-ventilation"],
+  relatedTopicIds: [
+  "respiratory-failure-basics",
+  "mechanical-ventilation"
+],
 };

@@ -18,5 +18,7 @@ export const mixedDisorders: PhysiologyConcept = {
     "Explains why two patients with the same pH can be in very different clinical situations — one may have a single, well-compensated process, and the other two or three simultaneous, partially offsetting ones.",
   ],
   relatedConceptIds: ["physiology.compensation", "physiology.delta-gap", "physiology.winters-formula"],
-  relatedTopicIds: ["metabolic-acidosis"],
+  relatedTopicIds: [
+  "metabolic-acidosis"
+],
 };

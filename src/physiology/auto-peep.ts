@@ -18,5 +18,8 @@ export const autoPeep: PhysiologyConcept = {
     "Managed by lowering respiratory rate, shortening inspiratory time, treating bronchospasm, and choosing a larger endotracheal tube when possible — not by adding more set PEEP as a reflex.",
   ],
   relatedConceptIds: ["physiology.resistance", "physiology.work-of-breathing", "physiology.plateau-pressure"],
-  relatedTopicIds: ["mechanical-ventilation", "pneumothorax"],
+  relatedTopicIds: [
+  "mechanical-ventilation",
+  "pneumothorax"
+],
 };

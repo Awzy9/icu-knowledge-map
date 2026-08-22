@@ -70,7 +70,7 @@ export const ardsCase: ClinicalCase = {
           id: "1-c",
           text: "Increase tidal volume to 600 mL to blow off PaCO2 and normalize arterial pH",
           isCorrect: false,
-          explanation: "Normalizing PaCO2 at the expense of tidal volumes >6 mL/kg causes severe volutrauma and increases mortality. Permissive hypercapnia is safe down to pH ~7.20.",
+          explanation: "Normalizing PaCO2 at the expense of tidal volumes >6 mL/kg causes severe volutrauma and increases mortality. Permissive hypercapnia may be accepted when necessary to maintain lung-protective ventilation. Tolerance depends on the degree of acidemia, hemodynamics, RV function/pulmonary hypertension, intracranial pressure, arrhythmias, and overall clinical context.",
           whyNot: "Volutrauma is fatal in ARDS; mild respiratory acidosis is preferred over alveolar rupture.",
           nextStepId: "step-branch-excessive-driving-pressure",
           outcome: {
@@ -100,7 +100,7 @@ export const ardsCase: ClinicalCase = {
       options: [
         {
           id: "branch-ards-a",
-          text: "Calculate Ideal Body Weight (57 kg) and strictly reduce tidal volume to 6 mL/kg (340 mL), titrating down to 4 mL/kg if Pplat remains > 30 cmH2O",
+          text: "Calculate Ideal Body Weight (57 kg) and reduce tidal volume to 6 mL/kg (340 mL), titrating down toward 4 mL/kg if Pplat remains > 30 cmH2O",
           isCorrect: true,
           explanation: "Scaling tidal volumes strictly to Ideal Body Weight (IBW) rather than actual weight reduces transpulmonary shear strain on the small functional lung volume ('baby lung') and brings driving pressure below 14–15 cmH2O.",
           physiologicReasoning: "Reduces mechanical energy delivery (ergotrauma) and normalizes cyclic alveolar strain.",

@@ -18,5 +18,8 @@ export const oxygenConsumption: PhysiologyConcept = {
     "Sedation and mechanical ventilation reduce the oxygen cost of breathing, effectively lowering VO2 in a patient with severe respiratory distress.",
   ],
   relatedConceptIds: ["physiology.oxygen-delivery-equation", "physiology.do2-vo2-relationship", "physiology.cardiac-output"],
-  relatedTopicIds: ["shock", "sepsis"],
+  relatedTopicIds: [
+  "shock",
+  "sepsis"
+],
 };
