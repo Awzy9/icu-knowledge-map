@@ -11,6 +11,9 @@ import { questions } from "@/study/questions";
 import { allMedications } from "@/content/medications";
 import { clinicalCases } from "@/content/clinical-cases";
 import { medicationChallenges } from "@/content/medication-challenges";
+import { rapidDecisions } from "@/content/rapid-decisions";
+import { icuErrors } from "@/content/icu-errors";
+import { physiologyProfiles } from "@/content/physiology-profiles";
 import type { ClinicalCase } from "@/content-types/clinical-case";
 import type { MedicationChallenge } from "@/content-types/medication-challenge";
 import type {
@@ -30,6 +33,7 @@ import type {
   TopicCategory,
   Trial,
 } from "@/content-types";
+import { parseContentId, type ContentKind } from "@/lib/content-id";
 import { buildEvidenceIndex, type EvidenceIndex } from "./build-evidence-index";
 import { buildGraph, resolveRelationships as resolveGraphRelationships, type GraphData, type ResolvedRelationship } from "./build-graph";
 import { buildKnowledgeMapTree, type KnowledgeMapNode } from "./build-knowledge-map";
@@ -314,6 +318,12 @@ const searchIndex: readonly SearchEntry[] = buildSearchIndex({
   physiologyConcepts,
   clinicalProblems,
   medications: allMedications,
+  clinicalCases,
+  rapidDecisions,
+  icuErrors,
+  flashcards,
+  questions,
+  medicationSlugsWithPhysiology: physiologyProfiles.map((profile) => profile.id),
 });
 
 export function getSearchIndex(): readonly SearchEntry[] {
@@ -445,4 +455,119 @@ export function getRelatedContentForTopic(id: string) {
   ];
 
   return { items: items.slice(0, 6) };
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Canonical content id resolution                                           */
+/* -------------------------------------------------------------------------- */
+
+export interface ResolvedContent {
+  readonly contentId: string;
+  readonly kind: ContentKind;
+  readonly title: string;
+  readonly subtitle: string;
+  readonly href: string;
+}
+
+/**
+ * Resolves a canonical content id ("topic:ards") to something renderable.
+ * Returns undefined for ids whose target no longer exists, so a stale study-set
+ * entry is skipped rather than crashing the page.
+ */
+export function resolveContentId(contentId: string): ResolvedContent | undefined {
+  const parsed = parseContentId(contentId);
+  if (!parsed) return undefined;
+  const { kind, localId } = parsed;
+
+  const make = (title: string, subtitle: string, href: string): ResolvedContent => ({
+    contentId,
+    kind,
+    title,
+    subtitle,
+    href,
+  });
+
+  switch (kind) {
+    case "topic": {
+      const topic = allTopics.find((t) => t.id === localId || t.slug === localId);
+      return topic ? make(topic.title, topic.oneLiner, `/topics/${topic.slug}`) : undefined;
+    }
+    case "medication": {
+      const med = medicationsBySlug.get(localId) ?? allMedications.find((m) => m.id === localId);
+      return med ? make(med.name, med.class, `/medications/${med.slug}`) : undefined;
+    }
+    case "physiology": {
+      const concept = physiologyConcepts.find((c) => c.slug === localId || c.id === localId);
+      return concept ? make(concept.title, concept.summary, `/physiology/${concept.slug}`) : undefined;
+    }
+    case "pathway": {
+      const pathway = pathways.find((p) => p.slug === localId || p.id === localId);
+      return pathway ? make(pathway.title, pathway.oneLiner, `/pathways/${pathway.slug}`) : undefined;
+    }
+    case "problem": {
+      const problem = clinicalProblems.find((p) => p.slug === localId || p.id === localId);
+      return problem ? make(problem.title, problem.oneLiner, `/problems/${problem.slug}`) : undefined;
+    }
+    case "case": {
+      const kase = clinicalCases.find((c) => c.slug === localId || c.id === localId);
+      return kase
+        ? make(kase.title, kase.subtitle, `/learn/clinical-reasoning/${kase.slug}`)
+        : undefined;
+    }
+    case "rapid-decision": {
+      const decision = rapidDecisions.find((d) => d.id === localId);
+      return decision
+        ? make(decision.question, "Rapid ICU Decision", `/learn/rapid-decisions#${decision.id}`)
+        : undefined;
+    }
+    case "error-hunt": {
+      const error = icuErrors.find((e) => e.id === localId);
+      return error ? make(error.title, "Find the ICU Error", `/learn/find-the-error#${error.id}`) : undefined;
+    }
+    case "flashcard": {
+      const card = flashcardsById.get(localId);
+      const topic = card ? allTopics.find((t) => t.id === card.topicId) : undefined;
+      return card && topic
+        ? make(card.question, `Flashcard — ${topic.title}`, `/flashcards/${topic.slug}`)
+        : undefined;
+    }
+    case "question": {
+      const question = questionsById.get(localId);
+      const topic = question ? allTopics.find((t) => t.id === question.topicId) : undefined;
+      return question && topic
+        ? make(question.stem, `Question — ${topic.title}`, `/questions/${topic.slug}`)
+        : undefined;
+    }
+    case "trial": {
+      const trial = trialsById.get(localId);
+      return trial ? make(trial.name, `${trial.journal}, ${trial.year}`, `/trials/${trial.id}`) : undefined;
+    }
+    case "guideline": {
+      const guideline = guidelinesById.get(localId);
+      return guideline
+        ? make(guideline.title, `${guideline.abbreviation}, ${guideline.year}`, `/guidelines/${guideline.id}`)
+        : undefined;
+    }
+    case "systematic-review": {
+      const review = reviewsById.get(localId);
+      return review
+        ? make(review.title, `${review.authorsOrGroup}, ${review.year}`, `/evidence/${review.id}`)
+        : undefined;
+    }
+    case "calculator": {
+      const calculator = calculatorsById.get(localId);
+      return calculator
+        ? make(calculator.title, calculator.description, `/calculators/${calculator.id}`)
+        : undefined;
+    }
+    default:
+      return undefined;
+  }
+}
+
+/** Batch resolver used by study sets; silently drops ids that no longer exist. */
+export function resolveContentIds(contentIds: readonly string[]): readonly ResolvedContent[] {
+  return contentIds
+    .map((id) => resolveContentId(id))
+    .filter((item): item is ResolvedContent => item !== undefined);
 }

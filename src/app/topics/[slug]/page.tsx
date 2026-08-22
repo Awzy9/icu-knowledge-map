@@ -23,6 +23,8 @@ import { SectionNav } from "@/components/content/SectionNav";
 import { KnowledgeMap } from "@/components/knowledge-map/KnowledgeMap";
 import { KnowledgeMapTree } from "@/components/knowledge-map/KnowledgeMapTree";
 import { EvidenceRightRail } from "@/components/evidence/EvidenceRightRail";
+import { EvidenceFreshnessPanel } from "@/components/evidence/EvidenceFreshnessPanel";
+import { deriveFreshness } from "@/content-types/evidence-freshness";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { RelatedContent } from "@/components/content/RelatedContent";
 import { EvidenceTimeline } from "@/components/evidence/EvidenceTimeline";
@@ -167,6 +169,17 @@ export default async function TopicDetailPage({ params }: TopicPageProps) {
 
             {/* Assessment Section (Flashcards + Questions) */}
             <TopicAssessmentSection topicId={topic.id} topicSlug={topic.slug} />
+
+            {/* Evidence Freshness — review provenance, authored not inferred */}
+            <div className="mt-8">
+              <EvidenceFreshnessPanel
+                freshness={deriveFreshness({
+                  lastReviewed: topic.lastReviewed,
+                  explicit: topic.evidenceFreshness,
+                })}
+                currentStatusNote={topic.currentStatus}
+              />
+            </div>
 
             {/* References Section */}
             <TopicReferencesSection

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { getSearchIndex } from "@/registry";
 import { SearchTrigger } from "@/components/search/SearchTrigger";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { DesktopNavMore } from "./DesktopNavMore";
@@ -29,8 +28,6 @@ const secondaryLinks = [
 const allLinks = [...primaryLinks, ...secondaryLinks, { href: "/library", label: "My Library" }, { href: "/about", label: "About" }];
 
 export function SiteHeader() {
-  const searchIndex = getSearchIndex();
-
   return (
     <header className="border-b border-border bg-surface">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
@@ -49,10 +46,10 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <div className="hidden lg:block">
-            <SearchTrigger index={searchIndex} variant="full" />
+            <SearchTrigger variant="full" />
           </div>
           <div className="lg:hidden">
-            <SearchTrigger index={searchIndex} variant="icon" />
+            <SearchTrigger variant="icon" />
           </div>
           <Link
             href="/library"

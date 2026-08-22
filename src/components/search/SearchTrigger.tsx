@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { SearchEntry } from "@/registry";
 import { SearchDialog } from "./SearchDialog";
 
 interface SearchTriggerProps {
-  readonly index: readonly SearchEntry[];
   /** "full" shows the labeled pill with a keyboard-shortcut hint (desktop); "icon" is a compact icon-only button (mobile header). */
   readonly variant?: "full" | "icon";
 }
@@ -19,7 +17,7 @@ function SearchIcon() {
   );
 }
 
-export function SearchTrigger({ index, variant = "full" }: SearchTriggerProps) {
+export function SearchTrigger({ variant = "full" }: SearchTriggerProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -55,7 +53,7 @@ export function SearchTrigger({ index, variant = "full" }: SearchTriggerProps) {
           <span className="ml-2 rounded border border-border px-1.5 py-0.5 text-xs text-ink-faint">⌘K</span>
         </button>
       )}
-      {open && <SearchDialog index={index} onClose={() => setOpen(false)} />}
+      {open && <SearchDialog onClose={() => setOpen(false)} />}
     </>
   );
 }

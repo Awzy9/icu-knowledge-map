@@ -3,6 +3,7 @@ import { Inter, Source_Serif_4 } from "next/font/google";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { OfflineIndicator } from "@/components/layout/OfflineIndicator";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { SITE_URL } from "@/lib/site-url";
 import "./globals.css";
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: { readonly children: React.Reac
           <div className="flex-1">{children}</div>
           <OfflineIndicator />
           <SiteFooter />
+          <MobileBottomNav />
         </ThemeProvider>
       </body>
     </html>

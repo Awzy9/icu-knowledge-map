@@ -66,31 +66,73 @@ export interface DailyChallengeRecord {
   streak: number;
 }
 
+/** A user-created collection of canonical content ids ("topic:ards"). */
+export interface StudySet {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  /** Ordered canonical content ids. Order is user-controlled (reorder). */
+  itemIds: string[];
+}
+
+/** One attempt at a Rapid Decision or a Find-the-Error case. */
+export interface PracticeAttempt {
+  selectedOptionId: string;
+  correct: boolean;
+  attemptedAt: string;
+}
+
+/**
+ * "Why is this wrong?" per-line classification attempt. `lineIndex` refers to
+ * the position within the error case's icuPlan array.
+ */
+export interface LineClassificationAttempt {
+  lineIndex: number;
+  selected: "correct" | "questionable" | "context-dependent" | "dangerous";
+  expected: "correct" | "questionable" | "context-dependent" | "dangerous";
+  isMatch: boolean;
+  attemptedAt: string;
+}
+
 export interface UnifiedLearningState {
-  version: 2;
+  version: 3;
   lastActiveTimestamp: string;
-  
+
   // Entity engagements
   topics: Record<string, { viewed: boolean; lastViewedAt?: string; completed: boolean }>;
   medications: Record<string, { viewed: boolean; lastViewedAt?: string }>;
-  
+
   // Interactive engines
   cases: Record<string, CaseProgressRecord>;
   challenges: Record<string, { attempts: ChallengeAttempt[]; lastAttemptedAt: string }>;
   questions: Record<string, { attempts: QuestionAttempt[]; lastAttemptedAt: string }>;
   flashcards: Record<string, { status: "known" | "review"; lastReviewedAt: string }>;
-  
+  /** Rapid ICU Decisions results, keyed by decision id. */
+  rapidDecisions: Record<string, { attempts: PracticeAttempt[]; lastAttemptedAt: string }>;
+  /** Find the ICU Error results, keyed by error case id. */
+  errorHunts: Record<
+    string,
+    {
+      attempts: PracticeAttempt[];
+      lineClassifications: LineClassificationAttempt[];
+      lastAttemptedAt: string;
+    }
+  >;
+
   // User library & session
   bookmarks: BookmarkItem[];
+  studySets: StudySet[];
   recentActivity: ActivityRecord[];
   dailyChallenge: DailyChallengeRecord;
-  preferences: { theme?: string; fontSize?: string };
+  preferences: { theme?: string; fontSize?: string; bedsideMode?: boolean };
 }
 
 export const STORAGE_KEY_V2 = "icu-km:unified-state:v2";
+export const STORAGE_KEY_V3 = "icu-km:unified-state:v3";
 
 export const DEFAULT_LEARNING_STATE: UnifiedLearningState = {
-  version: 2,
+  version: 3,
   lastActiveTimestamp: new Date().toISOString(),
   topics: {},
   medications: {},
@@ -98,7 +140,10 @@ export const DEFAULT_LEARNING_STATE: UnifiedLearningState = {
   challenges: {},
   questions: {},
   flashcards: {},
+  rapidDecisions: {},
+  errorHunts: {},
   bookmarks: [],
+  studySets: [],
   recentActivity: [],
   dailyChallenge: {
     lastCompletedDate: null,
@@ -245,38 +290,67 @@ export function migrateLegacyState(): UnifiedLearningState {
 /**
  * Reads the unified learning state from localStorage with safe fallback and cache.
  */
+/** Normalizes any parsed payload (v2 or v3) into a complete v3 state object. */
+function normalizeToV3(parsed: Record<string, unknown>): UnifiedLearningState {
+  const get = <T,>(key: string, fallback: T): T =>
+    (parsed[key] as T | undefined) ?? fallback;
+
+  return {
+    ...DEFAULT_LEARNING_STATE,
+    ...parsed,
+    version: 3,
+    topics: get("topics", {}),
+    medications: get("medications", {}),
+    cases: get("cases", {}),
+    challenges: get("challenges", {}),
+    questions: get("questions", {}),
+    flashcards: get("flashcards", {}),
+    // New in v3 — absent in a v2 payload.
+    rapidDecisions: get("rapidDecisions", {}),
+    errorHunts: get("errorHunts", {}),
+    bookmarks: Array.isArray(parsed.bookmarks) ? (parsed.bookmarks as BookmarkItem[]) : [],
+    studySets: Array.isArray(parsed.studySets) ? (parsed.studySets as StudySet[]) : [],
+    recentActivity: Array.isArray(parsed.recentActivity)
+      ? (parsed.recentActivity as ActivityRecord[])
+      : [],
+    dailyChallenge: {
+      ...DEFAULT_LEARNING_STATE.dailyChallenge,
+      ...((parsed.dailyChallenge as Partial<DailyChallengeRecord>) || {}),
+    },
+    preferences: get("preferences", {}),
+  };
+}
+
 export function getUnifiedLearningState(): UnifiedLearningState {
   if (typeof window === "undefined") return DEFAULT_LEARNING_STATE;
 
   try {
-    const raw = localStorage.getItem(STORAGE_KEY_V2);
+    const raw = localStorage.getItem(STORAGE_KEY_V3);
     if (raw === cachedRaw && cachedRaw !== null) {
       return cachedState;
     }
 
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed && parsed.version === 2) {
+      if (parsed && typeof parsed === "object") {
         cachedRaw = raw;
-        cachedState = {
-          ...DEFAULT_LEARNING_STATE,
-          ...parsed,
-          topics: parsed.topics || {},
-          medications: parsed.medications || {},
-          cases: parsed.cases || {},
-          challenges: parsed.challenges || {},
-          questions: parsed.questions || {},
-          flashcards: parsed.flashcards || {},
-          bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks : [],
-          recentActivity: Array.isArray(parsed.recentActivity) ? parsed.recentActivity : [],
-          dailyChallenge: { ...DEFAULT_LEARNING_STATE.dailyChallenge, ...(parsed.dailyChallenge || {}) },
-          preferences: parsed.preferences || {},
-        };
+        cachedState = normalizeToV3(parsed);
         return cachedState;
       }
     }
 
-    // If V2 doesn't exist yet, perform legacy migration
+    // Upgrade an existing v2 state in place — nothing is lost.
+    const rawV2 = localStorage.getItem(STORAGE_KEY_V2);
+    if (rawV2) {
+      const parsedV2 = JSON.parse(rawV2);
+      if (parsedV2 && typeof parsedV2 === "object") {
+        const upgraded = normalizeToV3(parsedV2);
+        saveUnifiedLearningState(upgraded);
+        return upgraded;
+      }
+    }
+
+    // No v3 and no v2 — fall back to the original per-key legacy migration.
     const migrated = migrateLegacyState();
     saveUnifiedLearningState(migrated);
     return migrated;
@@ -295,11 +369,11 @@ export function saveUnifiedLearningState(nextState: UnifiedLearningState): void 
   try {
     const updated = {
       ...nextState,
-      version: 2 as const,
+      version: 3 as const,
       lastActiveTimestamp: new Date().toISOString(),
     };
     const raw = JSON.stringify(updated);
-    localStorage.setItem(STORAGE_KEY_V2, raw);
+    localStorage.setItem(STORAGE_KEY_V3, raw);
     cachedRaw = raw;
     cachedState = updated;
     emitChange();
@@ -415,24 +489,12 @@ export function importLearningState(jsonStr: string): { success: boolean; error?
     if (!parsed || typeof parsed !== "object") {
       return { success: false, error: "Invalid JSON format." };
     }
-    if (parsed.version !== 2 && parsed.version !== 1) {
+    if (parsed.version !== 3 && parsed.version !== 2 && parsed.version !== 1) {
       return { success: false, error: "Unsupported schema version." };
     }
 
     const normalized: UnifiedLearningState = {
-      ...DEFAULT_LEARNING_STATE,
-      ...parsed,
-      version: 2,
-      topics: parsed.topics || {},
-      medications: parsed.medications || {},
-      cases: parsed.cases || {},
-      challenges: parsed.challenges || {},
-      questions: parsed.questions || {},
-      flashcards: parsed.flashcards || {},
-      bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks : [],
-      recentActivity: Array.isArray(parsed.recentActivity) ? parsed.recentActivity : [],
-      dailyChallenge: { ...DEFAULT_LEARNING_STATE.dailyChallenge, ...(parsed.dailyChallenge || {}) },
-      preferences: parsed.preferences || {},
+      ...normalizeToV3(parsed),
       lastActiveTimestamp: new Date().toISOString(),
     };
 
@@ -447,6 +509,7 @@ export function importLearningState(jsonStr: string): { success: boolean; error?
 export function resetLearningState(): void {
   if (typeof window === "undefined") return;
   try {
+    localStorage.removeItem(STORAGE_KEY_V3);
     localStorage.removeItem(STORAGE_KEY_V2);
     // Clean legacy keys as well to prevent re-migration
     const legacyKeys = [

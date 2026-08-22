@@ -14,3 +14,4 @@ export * from "./medication";
 export * from "./clinical-case";
 export * from "./medication-challenge";
 export * from "./physiology-profile";
+export * from "./evidence-freshness";

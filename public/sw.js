@@ -1,18 +1,20 @@
 /**
- * ICU Knowledge Map — Service Worker (Plain JavaScript - Version 4)
+ * ICU Knowledge Map — Service Worker (Plain JavaScript - Version 5)
  *
  * Resilient Precache Strategy:
- * - Pre-caches app shell, learning hubs, and all 48 medication guides.
+ * - Pre-caches app shell, learning hubs, all 48 medication guides, and the search index.
  * - Uses Promise.allSettled per-URL caching so a single failed route never rejects the whole install.
- * - Stale-while-revalidate for HTML and app bundles.
+ * - Network-first for /medications and /search-index.json so a new deployment is
+ *   visible immediately when online, with cache fallback when offline.
+ * - Stale-while-revalidate for other HTML and app bundles.
  * - Cache-first for static assets (fonts, icons, compiled JS/CSS).
  * - Friendly offline fallback for external literature links (PubMed, DOI, journals).
  */
 
-const CACHE_VERSION = "icu-km-v4";
-const APP_SHELL_CACHE = "icu-km-core-v4";
-const CONTENT_CACHE = "icu-km-content-v4";
-const STATIC_CACHE = "icu-km-static-v4";
+const CACHE_VERSION = "icu-km-v5";
+const APP_SHELL_CACHE = "icu-km-core-v5";
+const CONTENT_CACHE = "icu-km-content-v5";
+const STATIC_CACHE = "icu-km-static-v5";
 
 /** Core URLs guaranteed for offline ICU education */
 const PRECACHE_URLS = [
@@ -26,8 +28,11 @@ const PRECACHE_URLS = [
   "/learn/medication-challenges",
   "/learn/daily-challenge",
   "/learn/physiology-compare",
+  "/learn/physiology-playground",
   "/progress",
   "/library",
+  // Search index — precached so global search keeps working offline.
+  "/search-index.json",
   "/medications",
   "/medications/steroids-in-icu",
   "/topics",
@@ -178,6 +183,34 @@ self.addEventListener("fetch", function (event) {
           return response;
         });
       })
+    );
+    return;
+  }
+
+  // Rapidly-changing resources -> Network-first with cache fallback.
+  // These are the things that go stale visibly after a deploy: the medication
+  // library index (its count/contents change) and the search index itself.
+  // Online users always get the newest deployed copy; offline users still get
+  // the cached one.
+  if (url.pathname === "/medications" || url.pathname === "/search-index.json") {
+    event.respondWith(
+      fetch(event.request)
+        .then(function (networkResponse) {
+          if (networkResponse && networkResponse.ok) {
+            const clone = networkResponse.clone();
+            caches.open(CONTENT_CACHE).then(function (cache) {
+              cache.put(event.request, clone);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(function () {
+          return caches.match(event.request).then(function (cached) {
+            if (cached) return cached;
+            if (event.request.mode === "navigate") return caches.match("/offline");
+            return undefined;
+          });
+        })
     );
     return;
   }

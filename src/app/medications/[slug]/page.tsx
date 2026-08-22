@@ -76,7 +76,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </div>
 
       {/* 1. Mechanism & Target Diagram */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="mechanism" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>🧬</span> Mechanism of Action & Target Pathway
         </h2>
@@ -108,7 +108,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       <PkPdVisualizer pkPd={med.pkPd} drugName={med.name} />
 
       {/* 4. ICU Clinical Reasoning */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="reasoning" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>⚖️</span> ICU Clinical Reasoning
         </h2>
@@ -148,7 +148,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 5. Dosing & Administration */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="dosing" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>💉</span> Dosing & Administration Protocols
         </h2>
@@ -250,7 +250,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 6. Organ Failure Considerations */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="organ-dysfunction" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>🩺</span> Organ Failure Considerations
         </h2>
@@ -267,7 +267,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 7. Toxicity & Safety Warnings */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="toxicity" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>⚠️</span> Toxicity & Safety Warnings
         </h2>
@@ -293,7 +293,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 8. Bedside Drug Interactions */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="interactions" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>🔄</span> Bedside Drug Interactions
         </h2>
@@ -322,7 +322,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 9. Monitoring & TDM Protocols */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="monitoring" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>📊</span> Monitoring & TDM Protocols
         </h2>
@@ -366,7 +366,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       {med.stewardship && <BroadNotBetterCallout stewardship={med.stewardship} drugName={med.name} />}
 
       {/* 11. Evidence & Claim-Level Citations */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="evidence" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>📚</span> Evidence Traceability & Guideline Citations
         </h2>
@@ -388,7 +388,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 12. Patient Scenarios */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="scenarios" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>🩺</span> Bedside Patient Scenarios
         </h2>
@@ -407,7 +407,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
       </section>
 
       {/* 13. Exam Traps & Misconceptions */}
-      <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+      <section id="exam-traps" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
         <h2 className="text-lg font-bold text-ink flex items-center gap-2">
           <span>🎯</span> Exam Traps & Board Misconceptions
         </h2>
@@ -429,7 +429,7 @@ export default async function MedicationDetailPage({ params }: MedicationPagePro
 
       {/* 14. Hemodynamics & Physiology */}
       {med.category === "vasopressors-inotropes" && (
-        <section className="rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
+        <section id="physiology" className="scroll-mt-24 rounded-xl border border-border bg-card p-6 shadow-xs space-y-4">
           <h2 className="text-lg font-bold text-ink flex items-center gap-2">
             <span>🫀</span> Physiology & Hemodynamics
           </h2>

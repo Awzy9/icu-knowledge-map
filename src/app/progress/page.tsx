@@ -1,10 +1,11 @@
-import React, { Suspense } from "react";
+import React from "react";
 import type { Metadata } from "next";
 import { getAllTopics, getFlashcardsForTopic, getQuestionsForTopic, getAllClinicalCases } from "@/registry";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { ProgressSummary } from "@/components/study/ProgressSummary";
 import { ProgressDashboard } from "@/components/progress/ProgressDashboard";
 import { ContinueLearning } from "@/components/learn/ContinueLearning";
+import { StudyNextPanel } from "@/components/learn/StudyNextPanel";
 
 export const metadata: Metadata = { title: "Progress" };
 
@@ -32,13 +33,14 @@ export default function ProgressPage() {
         </p>
       </div>
       
-      <Suspense fallback={<div className="h-40 bg-surface animate-pulse rounded-xl" />}>
-        <ContinueLearning />
-      </Suspense>
+      {/* These are client components that never suspend. Wrapping them in a
+          Suspense boundary can leave their markup stranded in React's hidden
+          streaming container, so they are rendered directly. */}
+      <ContinueLearning />
 
-      <Suspense fallback={<div className="h-96 bg-surface animate-pulse rounded-xl" />}>
-        <ProgressDashboard totalTopics={allTopics.length} totalCases={cases.length} />
-      </Suspense>
+      <StudyNextPanel />
+
+      <ProgressDashboard totalTopics={allTopics.length} totalCases={cases.length} />
 
       <div className="mt-8">
         <h2 className="text-xl font-bold text-ink mb-4">Topic Mastery</h2>

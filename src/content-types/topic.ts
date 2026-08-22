@@ -7,6 +7,7 @@ import {
   topicSlugSchema,
 } from "./common";
 import { evidenceRefSchema, relationshipSchema } from "./relationship";
+import { evidenceFreshnessSchema } from "./evidence-freshness";
 
 export const sectionKindSchema = z.enum([
   "overview",
@@ -123,5 +124,11 @@ export const topicSchema = z.object({
   currentStatus: z.string().optional(),
   /** Plain citation strings for material that doesn't fit the Trial/Guideline/SystematicReview entity model. */
   otherReferences: z.array(z.string().min(1)).optional(),
+  /**
+   * Optional editorial review metadata. When omitted, freshness is derived
+   * from `lastReviewed` and treated as "current" — staleness is only ever
+   * asserted explicitly by an editor, never inferred from the calendar.
+   */
+  evidenceFreshness: evidenceFreshnessSchema.optional(),
 });
 export type Topic = z.infer<typeof topicSchema>;
